@@ -1,0 +1,135 @@
+<!-- Shared Hisaab page template. Copy HEAD, HEADER and FOOTER into every page verbatim. -->
+
+<!-- ===== DESIGN NOTES =====
+  Simple + creative. Warm paper background, deep green ink, lime highlight.
+  - Colours: ink #12302A (bg-ink / text-ink), paper #FAF7F0 (bg-paper), lime #D4F57A (bg-lime), mint #E6F0E8 (bg-mint), coral #FF8A5B (bg-coral, small accents only).
+  - Font: Outfit everywhere. Headings font-semibold, big and tight (tracking-tight). No extra-bold.
+  - Creative touches: a lime "highlighter" behind a key word (<span class="hl">word</span>), soft rounded-3xl cards,
+    hand-made SVG doodles/illustrations instead of photos (NO stock photos), little rotated sticker labels (class="sticker").
+  - Buttons: primary `px-6 py-3 rounded-full bg-ink text-paper text-sm font-medium hover:bg-ink-soft`;
+             secondary `px-6 py-3 rounded-full border border-ink text-sm font-medium hover:bg-ink hover:text-paper`.
+  - Inputs: `w-full bg-white border border-ink/15 rounded-xl px-4 py-3 text-sm outline-none focus:border-ink focus:ring-2 focus:ring-lime`.
+  - Lots of white space. Short text. No animated ping/pulse dots, no sparkle/star decorations.
+-->
+
+<!-- ===== HEAD (replace TITLE and DESCRIPTION) ===== -->
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TITLE | Hisaab — Bookkeeping & CFO for Small Business</title>
+  <meta name="description" content="DESCRIPTION">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: { DEFAULT: '#12302A', soft: '#1E4A40' },
+            paper: '#FAF7F0',
+            lime: '#D4F57A',
+            mint: '#E6F0E8',
+            coral: '#FF8A5B'
+          },
+          fontFamily: { sans: ['Outfit', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Outfit', sans-serif; color: #12302A; background: #FAF7F0; }
+    .hl { background: linear-gradient(transparent 55%, #D4F57A 55%); padding: 0 .15em; }
+    .sticker { display: inline-block; transform: rotate(-3deg); background: #D4F57A; border: 1.5px solid #12302A; border-radius: 9999px; padding: .25rem .8rem; font-size: .75rem; font-weight: 600; }
+    details summary::-webkit-details-marker { display: none; }
+    details[open] .chev { transform: rotate(45deg); }
+  </style>
+</head>
+<body class="antialiased">
+
+<!-- ===== HEADER (add `bg-ink text-paper` pill styling to the current page link: replace its classes with
+     "px-4 py-2 rounded-full bg-ink text-paper" in the desktop nav, and add "font-semibold underline" in the mobile nav) ===== -->
+  <header class="sticky top-0 z-40 bg-paper/90 backdrop-blur border-b border-ink/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-18 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 text-xl font-semibold tracking-tight">
+        <span class="w-8 h-8 rounded-lg bg-ink text-lime flex items-center justify-center">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg>
+        </span>
+        hisaab<span class="text-coral">.</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-2 text-sm font-medium">
+        <a href="index.html" class="px-4 py-2 rounded-full hover:bg-mint">Home</a>
+        <a href="services.html" class="px-4 py-2 rounded-full hover:bg-mint">Services</a>
+        <a href="services.html#pricing" class="px-4 py-2 rounded-full hover:bg-mint">Pricing</a>
+        <a href="contact.html" class="px-4 py-2 rounded-full hover:bg-mint">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="login.html" class="hidden sm:inline text-sm font-medium hover:underline">Client login</a>
+        <a href="contact.html#book" class="px-5 py-2.5 rounded-full bg-ink text-paper text-sm font-medium hover:bg-ink-soft transition-colors">Book a free call</a>
+        <button id="menu-btn" aria-label="Menu" class="md:hidden">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav id="mobile-menu" class="hidden md:hidden px-4 pb-4 space-y-3 text-sm font-medium">
+      <a href="index.html" class="block">Home</a>
+      <a href="services.html" class="block">Services</a>
+      <a href="services.html#pricing" class="block">Pricing</a>
+      <a href="contact.html" class="block">Contact</a>
+      <a href="login.html" class="block">Client login</a>
+    </nav>
+  </header>
+
+<!-- ===== FOOTER ===== -->
+  <footer class="bg-ink text-paper mt-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-10">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12 border-b border-paper/15">
+        <h2 class="text-3xl sm:text-5xl font-semibold tracking-tight max-w-xl">Know your numbers.<br><span class="text-lime">Grow with confidence.</span></h2>
+        <a href="contact.html#book" class="self-start md:self-auto px-6 py-3 rounded-full bg-lime text-ink text-sm font-semibold hover:bg-paper transition-colors">Book a free call →</a>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-10 text-sm">
+        <div>
+          <div class="font-semibold mb-3">Services</div>
+          <ul class="space-y-2 text-paper/70">
+            <li><a href="services.html#bookkeeping" class="hover:text-lime">Bookkeeping</a></li>
+            <li><a href="services.html#cfo" class="hover:text-lime">Fractional CFO</a></li>
+            <li><a href="services.html#compliance" class="hover:text-lime">GST & Compliance</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-semibold mb-3">Company</div>
+          <ul class="space-y-2 text-paper/70">
+            <li><a href="services.html#pricing" class="hover:text-lime">Pricing</a></li>
+            <li><a href="contact.html" class="hover:text-lime">Contact</a></li>
+            <li><a href="contact.html#faq" class="hover:text-lime">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-semibold mb-3">Clients</div>
+          <ul class="space-y-2 text-paper/70">
+            <li><a href="login.html" class="hover:text-lime">Client login</a></li>
+            <li><a href="dashboard.html" class="hover:text-lime">Dashboard</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-semibold mb-3">Say hello</div>
+          <ul class="space-y-2 text-paper/70">
+            <li>hello@hisaab.in</li>
+            <li>+91 98765 12345</li>
+            <li>Bengaluru, India</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pt-10 text-xs text-paper/50">&copy; 2026 Hisaab Advisory LLP. Made for small businesses.</div>
+    </div>
+  </footer>
+
+  <script src="assets/js/data.js"></script>
+  <!-- page script goes here; do NOT add another menu-btn listener (data.js handles it) -->
+</body>
+</html>

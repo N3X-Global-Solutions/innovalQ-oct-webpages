@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Hisaab — Bookkeeping & CFO for Small Business</title>
+  <meta name="description" content="Book a free 30-minute call with Hisaab. Talk to a bookkeeper or fractional CFO about your books, GST and growth plans. Based in Bengaluru, working across India.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: { DEFAULT: '#12302A', soft: '#1E4A40' },
+            paper: '#FAF7F0',
+            lime: '#D4F57A',
+            mint: '#E6F0E8',
+            coral: '#FF8A5B'
+          },
+          fontFamily: { sans: ['Outfit', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Outfit', sans-serif; color: #12302A; background: #FAF7F0; }
+    .hl { background: linear-gradient(transparent 55%, #D4F57A 55%); padding: 0 .15em; }
+    .sticker { display: inline-block; transform: rotate(-3deg); background: #D4F57A; border: 1.5px solid #12302A; border-radius: 9999px; padding: .25rem .8rem; font-size: .75rem; font-weight: 600; }
+    details summary::-webkit-details-marker { display: none; }
+    details[open] .chev { transform: rotate(45deg); }
+  </style>
+</head>
+<body class="antialiased">
+
+  <header class="relative z-40 bg-paper border-b border-ink/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-18 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 text-xl font-semibold tracking-tight">
+        <span class="w-8 h-8 rounded-lg bg-ink text-lime flex items-center justify-center">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg>
+        </span>
+        hisaab<span class="text-coral">.</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-2 text-sm font-medium">
+        <a href="index.html" class="px-4 py-2 rounded-full hover:bg-mint">Home</a>
+        <a href="services.html" class="px-4 py-2 rounded-full hover:bg-mint">Services</a>
+        <a href="services.html#pricing" class="px-4 py-2 rounded-full hover:bg-mint">Pricing</a>
+        <a href="contact.html" class="px-4 py-2 rounded-full bg-ink text-paper">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="login.html" class="hidden sm:inline text-sm font-medium hover:underline">Client login</a>
+        <a href="contact.html#book" class="px-5 py-2.5 rounded-full bg-ink text-paper text-sm font-medium hover:bg-ink-soft transition-colors">Book a free call</a>
+        <button id="menu-btn" aria-label="Menu" class="md:hidden">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav id="mobile-menu" class="hidden md:hidden px-4 pb-4 space-y-3 text-sm font-medium">
+      <a href="index.html" class="block">Home</a>
+      <a href="services.html" class="block">Services</a>
+      <a href="services.html#pricing" class="block">Pricing</a>
+      <a href="contact.html" class="block font-semibold underline">Contact</a>
+      <a href="login.html" class="block">Client login</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 pt-16 sm:pt-24 pb-10 relative">
+      <span class="sticker mb-6">Free 30-min call</span>
+      <h1 class="text-4xl sm:text-6xl font-semibold tracking-tight leading-[1.05] max-w-3xl">Let's talk about your <span class="hl">numbers</span>.</h1>
+      <p class="mt-6 text-lg text-ink/70 max-w-xl">Tell us a little about your business. We'll come to the call with honest advice, even if you don't sign up.</p>
+      <!-- doodle: speech bubble with rupee -->
+      <svg class="hidden lg:block absolute right-10 top-16 w-48 h-48" viewBox="0 0 200 200" fill="none" stroke="#12302A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M40 50h120a14 14 0 0 1 14 14v52a14 14 0 0 1-14 14H90l-28 24v-24H40a14 14 0 0 1-14-14V64a14 14 0 0 1 14-14z" fill="#fff"/>
+        <path d="M84 72h34M84 84h34M96 72c16 0 16 24 0 24h-10l26 22" />
+        <circle cx="150" cy="40" r="10" fill="#D4F57A"/>
+        <path d="M176 150c8 4 12 10 12 18" stroke="#FF8A5B"/>
+      </svg>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 grid lg:grid-cols-3 gap-8 items-start">
+      <!-- BOOKING FORM -->
+      <div id="book" class="scroll-mt-24 lg:col-span-2">
+        <div id="form-wrap" class="bg-white rounded-3xl border border-ink/10 p-6 sm:p-10">
+          <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Book a free 30-min call</h2>
+          <p class="mt-2 text-sm text-ink/60">Takes under a minute. We reply within one working day.</p>
+
+          <form id="book-form" class="mt-8 space-y-5" novalidate>
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label for="name" class="block text-sm font-medium mb-1.5">Your name</label>
+                <input id="name" name="name" type="text" autocomplete="name" placeholder="Kavya Rao" class="w-full bg-white border border-ink/15 rounded-xl px-4 py-3 text-sm outline-none focus:border-ink focus:ring-2 focus:ring-lime">
+                <p class="err hidden mt-1 text-xs text-red-600" data-for="name"></p>
+              </div>
+              <div>
+                <label for="business" class="block text-sm font-medium mb-1.5">Business name</label>
+                <input id="business" name="business" type="text" autocomplete="organization" placeholder="Brew Theory Cafés" class="w-full bg-white border border-ink/15 rounded-xl px-4 py-3 text-sm outline-none focus:border-ink focus:ring-2 focus:ring-lime">
+                <p class="err hidden mt-1 text-xs text-red-600" data-for="business"></p>
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium mb-1.5">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" placeholder="you@business.in" class="w-full bg-white border border-ink/15 rounded-xl px-4 py-3 text-sm outline-none focus:border-ink focus:ring-2 focus:ring-lime">
+                <p class="err hidden mt-1 text-xs text-red-600" data-for="email"></p>
+              </div>
+              <div>
+                <label for="phone" class="block text-sm font-medium mb-1.5">Phone</label>
+                <div class="flex">
+                  <span class="inline-flex items-center px-4 rounded-l-xl border border-r-0 border-ink/15 bg-mint text-sm font-medium">+91</span>
+                  <input id="phone" name="phone" type="tel" inputmode="numeric" maxlength="10" autocomplete="tel-national" placeholder="98765 12345" class="w-full bg-white border border-ink/15 rounded-xl rounded-l-none px-4 py-3 text-sm outline-none focus:border-ink focus:ring-2 focus:ring-lime">
+                </div>
+                <p class="err hidden mt-1 text-xs text-red-600" data-for="phone"></p>
+              </div>
+              <div>
+                <label for="type" class="block text-sm font-medium mb-1.5">Business type</label>
+                <select id="type" name="type" class="w-full bg-white border border-ink/15 rounded-xl px-4 py-3 text-sm outline-none focus:border-ink focus:ring-2 focus:ring-lime">
+                  <option value="">Choose one</option>
+                  <option>Café/Restaurant</option>
+                  <option>Retail</option>
+                  <option>D2C/E-commerce</option>
+                  <option>Agency/Services</option>
+                  <option>Clinic</option>
+                  <option>Startup</option>
+                  <option>Other</option>
+                </select>
+                <p class="err hidden mt-1 text-xs text-red-600" data-for="type"></p>
+              </div>
+              <div>
+                <label for="revenue" class="block text-sm font-medium mb-1.5">Monthly revenue</label>
+                <select id="revenue" name="revenue" class="w-full bg-white border border-ink/15 rounded-xl px-4 py-3 text-sm outline-none focus:border-ink focus:ring-2 focus:ring-lime">
+                  <option value="">Choose a range</option>
+                  <option>Under ₹5 L</option>
+                  <option>₹5–25 L</option>
+                  <option>₹25 L–1 Cr</option>
+                  <option>Above ₹1 Cr</option>
+                </select>
+                <p class="err hidden mt-1 text-xs text-red-600" data-for="revenue"></p>
+              </div>
+              <div class="sm:col-span-2">
+                <label for="plan" class="block text-sm font-medium mb-1.5">Plan you're interested in</label>
+                <select id="plan" name="plan" class="w-full bg-white border border-ink/15 rounded-xl px-4 py-3 text-sm outline-none focus:border-ink focus:ring-2 focus:ring-lime">
+                  <option value="Not sure yet">Not sure yet</option>
+                </select>
+              </div>
+              <div>
+                <label for="day" class="block text-sm font-medium mb-1.5">Preferred day</label>
+                <input id="day" name="day" type="date" class="w-full bg-white border border-ink/15 rounded-xl px-4 py-3 text-sm outline-none focus:border-ink focus:ring-2 focus:ring-lime">
+                <p class="err hidden mt-1 text-xs text-red-600" data-for="day"></p>
+              </div>
+              <div>
+                <span class="block text-sm font-medium mb-1.5" id="slot-label">Time slot (IST)</span>
+                <div id="slots" class="flex flex-wrap gap-2" role="radiogroup" aria-labelledby="slot-label"></div>
+                <p class="err hidden mt-1 text-xs text-red-600" data-for="slot"></p>
+              </div>
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-medium mb-1.5">Anything we should know? <span class="text-ink/40 font-normal">(optional)</span></label>
+              <textarea id="message" name="message" rows="4" placeholder="E.g. We're 6 months behind on books and want to open a second store." class="w-full bg-white border border-ink/15 rounded-xl px-4 py-3 text-sm outline-none focus:border-ink focus:ring-2 focus:ring-lime"></textarea>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:items-center gap-4 pt-2">
+              <button type="submit" class="px-6 py-3 rounded-full bg-ink text-paper text-sm font-medium hover:bg-ink-soft transition-colors">Book my free call →</button>
+              <span class="text-xs text-ink/50">No spam. No obligation.</span>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- CONTACT CARD -->
+      <aside class="space-y-6">
+        <div class="bg-mint rounded-3xl p-6 sm:p-8 relative overflow-hidden">
+          <svg class="absolute -right-4 -bottom-4 w-32 h-32" viewBox="0 0 120 120" fill="none" stroke="#12302A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M30 100V58l30-22 30 22v42z" fill="#fff"/>
+            <rect x="52" y="74" width="16" height="26" rx="2" fill="#D4F57A"/>
+            <path d="M40 66h10M70 66h10"/>
+            <path d="M14 100h92"/>
+          </svg>
+          <h2 class="text-xl font-semibold">Prefer to just say hi?</h2>
+          <ul class="mt-6 space-y-4 text-sm relative">
+            <li>
+              <div class="text-xs text-ink/50">Email</div>
+              <a href="mailto:hello@hisaab.in" class="font-medium hover:underline">hello@hisaab.in</a>
+            </li>
+            <li>
+              <div class="text-xs text-ink/50">Phone</div>
+              <a href="tel:+919876512345" class="font-medium hover:underline">+91 98765 12345</a>
+            </li>
+            <li>
+              <a href="https://wa.me/919876512345" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-ink text-paper text-sm font-medium hover:bg-ink-soft">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/><path d="M9 10c.5 2 2 3.5 4 4l1.2-1.2 2 1-.4 1.4c-3.5.5-7.5-3.5-7-7l1.4-.4 1 2z"/></svg>
+                Chat on WhatsApp
+              </a>
+            </li>
+            <li>
+              <div class="text-xs text-ink/50">Hours</div>
+              <div class="font-medium">Mon–Sat, 10 am – 7 pm</div>
+            </li>
+            <li class="pr-20">
+              <div class="text-xs text-ink/50">Office</div>
+              <div class="font-medium">Indiranagar, Bengaluru</div>
+              <div class="text-ink/60 text-xs mt-0.5">We work with clients across India, online.</div>
+            </li>
+          </ul>
+        </div>
+        <div class="bg-white rounded-3xl border border-ink/10 p-6">
+          <div class="text-sm font-semibold">What happens on the call</div>
+          <ol class="mt-4 space-y-3 text-sm text-ink/70">
+            <li class="flex gap-3"><span class="w-6 h-6 shrink-0 rounded-full bg-lime border border-ink text-xs font-semibold flex items-center justify-center text-ink">1</span>We look at how your books are kept today</li>
+            <li class="flex gap-3"><span class="w-6 h-6 shrink-0 rounded-full bg-lime border border-ink text-xs font-semibold flex items-center justify-center text-ink">2</span>We spot quick wins on GST, cash and costs</li>
+            <li class="flex gap-3"><span class="w-6 h-6 shrink-0 rounded-full bg-lime border border-ink text-xs font-semibold flex items-center justify-center text-ink">3</span>You get a clear plan and price. No pressure.</li>
+          </ol>
+        </div>
+      </aside>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="scroll-mt-24 max-w-3xl mx-auto px-4 sm:px-6 pt-20 sm:pt-28">
+      <div class="text-center">
+        <span class="sticker">FAQ</span>
+        <h2 class="mt-4 text-3xl sm:text-4xl font-semibold tracking-tight">Good <span class="hl">questions</span>.</h2>
+      </div>
+      <div class="mt-10 space-y-3" data-reveal>
+        <details class="bg-white rounded-2xl px-6 py-4 border border-ink/10">
+          <summary class="flex justify-between items-center gap-4 font-medium cursor-pointer list-none">Do I still need a CA?<span class="chev text-xl leading-none transition-transform">+</span></summary>
+          <p class="mt-3 text-sm text-ink/70">Yes, for your statutory audit and income tax return. We keep your books clean all year and hand everything to your CA at year-end, which usually makes their work faster and cheaper. Happy to work with your existing CA.</p>
+        </details>
+        <details class="bg-white rounded-2xl px-6 py-4 border border-ink/10">
+          <summary class="flex justify-between items-center gap-4 font-medium cursor-pointer list-none">Which software do you use?<span class="chev text-xl leading-none transition-transform">+</span></summary>
+          <p class="mt-3 text-sm text-ink/70">We work in Tally, Zoho Books or QuickBooks. If you already use one, we stay on it. If you are starting fresh, we usually suggest Zoho Books and set it up for you.</p>
+        </details>
+        <details class="bg-white rounded-2xl px-6 py-4 border border-ink/10">
+          <summary class="flex justify-between items-center gap-4 font-medium cursor-pointer list-none">Is my data safe?<span class="chev text-xl leading-none transition-transform">+</span></summary>
+          <p class="mt-3 text-sm text-ink/70">Yes. We sign an NDA, use read-only bank access wherever possible, and store documents in an encrypted client portal. Only your assigned bookkeeper and CFO can see your files.</p>
+        </details>
+        <details class="bg-white rounded-2xl px-6 py-4 border border-ink/10">
+          <summary class="flex justify-between items-center gap-4 font-medium cursor-pointer list-none">How do I send receipts and bills?<span class="chev text-xl leading-none transition-transform">+</span></summary>
+          <p class="mt-3 text-sm text-ink/70">Upload them in the client portal, forward them to your dedicated email address, or simply send a photo on WhatsApp. We take it from there.</p>
+        </details>
+        <details class="bg-white rounded-2xl px-6 py-4 border border-ink/10">
+          <summary class="flex justify-between items-center gap-4 font-medium cursor-pointer list-none">What if I'm behind on my books?<span class="chev text-xl leading-none transition-transform">+</span></summary>
+          <p class="mt-3 text-sm text-ink/70">Very common. We do a one-time catch-up (priced by the number of months) and then move you to a regular monthly plan. We'll also check for missed GST or TDS filings.</p>
+        </details>
+        <details class="bg-white rounded-2xl px-6 py-4 border border-ink/10">
+          <summary class="flex justify-between items-center gap-4 font-medium cursor-pointer list-none">Can I switch plans later?<span class="chev text-xl leading-none transition-transform">+</span></summary>
+          <p class="mt-3 text-sm text-ink/70">Anytime. Upgrade or downgrade from the next month. No lock-in, no exit fee.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-ink text-paper mt-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-10">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12 border-b border-paper/15">
+        <h2 class="text-3xl sm:text-5xl font-semibold tracking-tight max-w-xl">Know your numbers.<br><span class="text-lime">Grow with confidence.</span></h2>
+        <a href="contact.html#book" class="self-start md:self-auto px-6 py-3 rounded-full bg-lime text-ink text-sm font-semibold hover:bg-paper transition-colors">Book a free call →</a>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-10 text-sm">
+        <div>
+          <div class="font-semibold mb-3">Services</div>
+          <ul class="space-y-2 text-paper/70">
+            <li><a href="services.html#bookkeeping" class="hover:text-lime">Bookkeeping</a></li>
+            <li><a href="services.html#cfo" class="hover:text-lime">Fractional CFO</a></li>
+            <li><a href="services.html#compliance" class="hover:text-lime">GST & Compliance</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-semibold mb-3">Company</div>
+          <ul class="space-y-2 text-paper/70">
+            <li><a href="services.html#pricing" class="hover:text-lime">Pricing</a></li>
+            <li><a href="contact.html" class="hover:text-lime">Contact</a></li>
+            <li><a href="contact.html#faq" class="hover:text-lime">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-semibold mb-3">Clients</div>
+          <ul class="space-y-2 text-paper/70">
+            <li><a href="login.html" class="hover:text-lime">Client login</a></li>
+            <li><a href="dashboard.html" class="hover:text-lime">Dashboard</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-semibold mb-3">Say hello</div>
+          <ul class="space-y-2 text-paper/70">
+            <li>hello@hisaab.in</li>
+            <li>+91 98765 12345</li>
+            <li>Bengaluru, India</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pt-10 text-xs text-paper/50">&copy; 2026 Hisaab Advisory LLP. Made for small businesses.</div>
+    </div>
+  </footer>
+
+  <script src="assets/js/data.js"></script>
+  <script>
+    (function () {
+      const form = document.getElementById('book-form');
+      const wrap = document.getElementById('form-wrap');
+      const planSel = document.getElementById('plan');
+      const dayInput = document.getElementById('day');
+      const slotsEl = document.getElementById('slots');
+      const SLOTS = ['10:00', '12:00', '15:00', '17:00'];
+      let slot = '';
+
+      // Plans + URL pre-select
+      PLANS.forEach(p => {
+        const o = document.createElement('option');
+        o.value = p.name;
+        o.textContent = p.name + ' — ' + formatINR(p.price) + '/month';
+        planSel.appendChild(o);
+      });
+      const wanted = new URLSearchParams(location.search).get('plan');
+      if (wanted) {
+        const match = PLANS.find(p => p.name.toLowerCase() === wanted.toLowerCase());
+        if (match) planSel.value = match.name;
+      }
+
+      // Date min = today (local)
+      const now = new Date();
+      const pad = n => String(n).padStart(2, '0');
+      const today = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+      dayInput.min = today;
+
+      // Slot pills
+      const base = 'slot px-4 py-2 rounded-full border text-sm font-medium transition-colors';
+      function paintSlots() {
+        slotsEl.querySelectorAll('.slot').forEach(b => {
+          const on = b.dataset.slot === slot;
+          b.className = base + (on ? ' bg-ink text-paper border-ink' : ' bg-white border-ink/15 hover:border-ink');
+          b.setAttribute('aria-checked', on);
+        });
+      }
+      SLOTS.forEach(s => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'slot';
+        b.dataset.slot = s;
+        b.setAttribute('role', 'radio');
+        b.textContent = s;
+        b.addEventListener('click', () => { slot = s; paintSlots(); setErr('slot', ''); });
+        slotsEl.appendChild(b);
+      });
+      paintSlots();
+
+      function setErr(field, msg) {
+        const p = form.querySelector(`.err[data-for="${field}"]`);
+        if (p) { p.textContent = msg; p.classList.toggle('hidden', !msg); }
+        const input = document.getElementById(field);
+        if (input) {
+          input.classList.toggle('border-red-500', !!msg);
+          input.classList.toggle('border-ink/15', !msg);
+          input.setAttribute('aria-invalid', !!msg);
+        }
+      }
+
+      const phoneInput = document.getElementById('phone');
+      phoneInput.addEventListener('input', () => { phoneInput.value = phoneInput.value.replace(/\D/g, '').slice(0, 10); });
+
+      form.querySelectorAll('input, select').forEach(el => {
+        el.addEventListener('input', () => setErr(el.id, ''));
+        el.addEventListener('change', () => setErr(el.id, ''));
+      });
+
+      function formatDay(iso) {
+        const [y, m, d] = iso.split('-').map(Number);
+        return new Date(y, m - 1, d).toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+      }
+
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const v = id => document.getElementById(id).value.trim();
+        const errors = {};
+        if (v('name').length < 2) errors.name = 'Please enter your name.';
+        if (!v('business')) errors.business = 'Please enter your business name.';
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('email'))) errors.email = 'Please enter a valid email.';
+        if (!/^[6-9]\d{9}$/.test(v('phone'))) errors.phone = 'Enter a 10-digit mobile number starting with 6–9.';
+        if (!v('type')) errors.type = 'Please choose your business type.';
+        if (!v('revenue')) errors.revenue = 'Please choose a revenue range.';
+        if (!v('day')) errors.day = 'Please pick a day.';
+        else if (v('day') < today) errors.day = 'Please pick today or a later date.';
+        if (!slot) errors.slot = 'Please pick a time slot.';
+
+        ['name', 'business', 'email', 'phone', 'type', 'revenue', 'day', 'slot'].forEach(f => setErr(f, errors[f] || ''));
+        const first = Object.keys(errors)[0];
+        if (first) {
+          const el = first === 'slot' ? slotsEl.querySelector('.slot') : document.getElementById(first);
+          if (el) el.focus();
+          return;
+        }
+
+        const firstName = v('name').split(' ')[0];
+        wrap.innerHTML = `
+          <div class="text-center py-6 sm:py-10">
+            <svg class="w-20 h-20 mx-auto" viewBox="0 0 80 80" fill="none" stroke="#12302A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="12" y="16" width="56" height="52" rx="10" fill="#E6F0E8"/>
+              <path d="M12 30h56M28 10v12M52 10v12"/>
+              <circle cx="40" cy="49" r="11" fill="#D4F57A"/>
+              <path d="M35 49l4 4 7-8"/>
+            </svg>
+            <span class="sticker mt-6">You're booked</span>
+            <h2 class="mt-4 text-2xl sm:text-3xl font-semibold tracking-tight">Thanks, ${escapeHTML(firstName)}! See you soon.</h2>
+            <p class="mt-3 text-ink/70 max-w-md mx-auto">We've pencilled in your free 30-min call for <strong class="text-ink">${escapeHTML(formatDay(v('day')))}</strong> at <strong class="text-ink">${escapeHTML(slot)} IST</strong>.</p>
+            <div class="mt-6 inline-block text-left bg-paper rounded-2xl px-5 py-4 text-sm">
+              <div><span class="text-ink/50">Business:</span> ${escapeHTML(v('business'))}</div>
+              <div><span class="text-ink/50">Plan:</span> ${escapeHTML(planSel.value)}</div>
+              <div><span class="text-ink/50">Invite goes to:</span> ${escapeHTML(v('email'))}</div>
+            </div>
+            <p class="mt-6 text-sm text-ink/60">Need to change the time? WhatsApp us on <a href="https://wa.me/919876512345" class="underline">+91 98765 12345</a>.</p>
+            <a href="services.html" class="mt-6 inline-block px-6 py-3 rounded-full border border-ink text-sm font-medium hover:bg-ink hover:text-paper">Explore our services</a>
+          </div>`;
+        wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    })();
+  </script>
+  <script src="assets/js/animations.js" data-accent="#12302A"></script>
+</body>
+</html>

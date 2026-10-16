@@ -1,0 +1,119 @@
+<!-- Shared Kavach page template. Copy HEAD, HEADER and FOOTER into every page verbatim. -->
+
+<!-- ===== HEAD (replace TITLE and DESCRIPTION) ===== -->
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TITLE | Kavach Insurance Brokers</title>
+  <meta name="description" content="DESCRIPTION">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brown: { DEFAULT: '#2B1B12', soft: '#4A3328' },
+            sand: { DEFAULT: '#DCC5B8', light: '#EBDDD4' },
+            cream: '#FFF6F0'
+          },
+          fontFamily: { sans: ['Montserrat', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Montserrat', sans-serif; color: #2B1B12; }
+    img { background: #EBDDD4; }
+    details summary::-webkit-details-marker { display: none; }
+    details[open] .chev { transform: rotate(180deg); }
+  </style>
+</head>
+<body class="bg-white antialiased">
+
+<!-- ===== HEADER (add `underline underline-offset-8 decoration-2` to the current page's link in both menus) ===== -->
+  <header class="bg-cream">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 text-xl font-extrabold tracking-tight">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2l8 3v6c0 5-3.5 9.5-8 11-4.5-1.5-8-6-8-11V5z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
+        Kavach
+      </a>
+
+      <nav class="hidden md:flex items-center gap-10 text-sm font-semibold">
+        <a href="index.html" class="hover:opacity-70">Home</a>
+        <a href="services.html" class="hover:opacity-70">Services</a>
+        <a href="about.html" class="hover:opacity-70">About</a>
+        <a href="contact.html" class="hover:opacity-70">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-5">
+        <a href="login.html" class="hidden sm:inline text-sm font-semibold hover:opacity-70">Client Login</a>
+        <a href="contact.html#quote" class="px-6 py-2.5 bg-brown text-white text-sm font-semibold rounded-md hover:bg-brown-soft transition-colors">Get a Quote</a>
+        <button id="menu-btn" aria-label="Menu" class="md:hidden">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav id="mobile-menu" class="hidden md:hidden px-4 pb-4 space-y-3 text-sm font-semibold">
+      <a href="index.html" class="block">Home</a>
+      <a href="services.html" class="block">Services</a>
+      <a href="about.html" class="block">About</a>
+      <a href="contact.html" class="block">Contact</a>
+      <a href="login.html" class="block">Client Login</a>
+    </nav>
+  </header>
+
+<!-- ===== FOOTER ===== -->
+  <footer class="bg-sand">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-14 grid grid-cols-2 md:grid-cols-6 gap-10 text-sm">
+      <div class="col-span-2">
+        <a href="index.html" class="flex items-center gap-2 text-xl font-extrabold">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2l8 3v6c0 5-3.5 9.5-8 11-4.5-1.5-8-6-8-11V5z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
+          Kavach
+        </a>
+        <p class="mt-4 font-semibold leading-relaxed max-w-[15rem]">Protecting the buildings, stock and people your business depends on.</p>
+      </div>
+      <div>
+        <h4 class="font-bold text-base mb-4">Company</h4>
+        <ul class="space-y-3 font-medium">
+          <li><a href="about.html" class="hover:opacity-70">Our Story</a></li>
+          <li><a href="about.html#team" class="hover:opacity-70">Our Team</a></li>
+          <li><a href="about.html#partners" class="hover:opacity-70">Insurer Partners</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-base mb-4">Insurance</h4>
+        <ul class="space-y-3 font-medium">
+          <li><a href="services.html#property" class="hover:opacity-70">Property</a></li>
+          <li><a href="services.html#liability" class="hover:opacity-70">Liability</a></li>
+          <li><a href="services.html#business-interruption" class="hover:opacity-70">Business Interruption</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-base mb-4">Support</h4>
+        <ul class="space-y-3 font-medium">
+          <li><a href="contact.html#faq" class="hover:opacity-70">FAQ</a></li>
+          <li><a href="contact.html" class="hover:opacity-70">Contact Us</a></li>
+          <li><a href="dashboard.html#claims" class="hover:opacity-70">Report a Claim</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-base mb-4">Reach Us</h4>
+        <ul class="space-y-3 font-medium">
+          <li>+91 98765 43210</li>
+          <li>help@kavach.in</li>
+          <li>Mumbai, India</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-brown/10 py-5 text-center text-xs font-medium">&copy; 2026 Kavach Insurance Brokers Pvt. Ltd. All rights reserved.</div>
+  </footer>
+
+  <script src="assets/js/data.js"></script>
+  <!-- page script goes here; do NOT add another menu-btn listener (data.js handles it) -->
+</body>
+</html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commercial Property &amp; Liability Insurance | Kavach Insurance Brokers</title>
+  <meta name="description" content="Kavach compares commercial property and liability insurance from 15+ top Indian insurers to protect your factory, warehouse, shop or office. Get a free quote today.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brown: { DEFAULT: '#2B1B12', soft: '#4A3328' },
+            sand: { DEFAULT: '#DCC5B8', light: '#EBDDD4' },
+            cream: '#FFF6F0'
+          },
+          fontFamily: { sans: ['Montserrat', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Montserrat', sans-serif; color: #2B1B12; }
+    img { background: #EBDDD4; }
+    details summary::-webkit-details-marker { display: none; }
+    details[open] .chev { transform: rotate(180deg); }
+
+    /* Slow, subtle zoom on the hero photo */
+    .hero-zoom img { animation: heroZoom 20s ease-in-out infinite alternate; }
+    @keyframes heroZoom { from { scale: 1; } to { scale: 1.05; } }
+
+    /* Insurer partner marquee (built by script only when motion is allowed) */
+    .marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+    .marquee-track { display: flex; width: max-content; padding: 6px 0; animation: marquee 40s linear infinite; }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-zoom img, .marquee-track { animation: none; }
+    }
+  </style>
+</head>
+<body class="bg-white antialiased">
+
+  <header class="bg-cream">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 text-xl font-extrabold tracking-tight">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2l8 3v6c0 5-3.5 9.5-8 11-4.5-1.5-8-6-8-11V5z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
+        Kavach
+      </a>
+
+      <nav class="hidden md:flex items-center gap-10 text-sm font-semibold">
+        <a href="index.html" class="hover:opacity-70 underline underline-offset-8 decoration-2">Home</a>
+        <a href="services.html" class="hover:opacity-70">Services</a>
+        <a href="about.html" class="hover:opacity-70">About</a>
+        <a href="contact.html" class="hover:opacity-70">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-5">
+        <a href="login.html" class="hidden sm:inline text-sm font-semibold hover:opacity-70">Client Login</a>
+        <a href="contact.html#quote" class="px-6 py-2.5 bg-brown text-white text-sm font-semibold rounded-md hover:bg-brown-soft transition-colors">Get a Quote</a>
+        <button id="menu-btn" aria-label="Menu" class="md:hidden">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav id="mobile-menu" class="hidden md:hidden px-4 pb-4 space-y-3 text-sm font-semibold">
+      <a href="index.html" class="block underline underline-offset-8 decoration-2">Home</a>
+      <a href="services.html" class="block">Services</a>
+      <a href="about.html" class="block">About</a>
+      <a href="contact.html" class="block">Contact</a>
+      <a href="login.html" class="block">Client Login</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="bg-cream relative pb-16 md:pb-0">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-10 items-center pt-10 md:pt-16 md:pb-32">
+        <div>
+          <span class="inline-flex items-center gap-2 bg-sand rounded-md px-3 py-1.5 text-xs font-bold uppercase tracking-wide">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2l8 3v6c0 5-3.5 9.5-8 11-4.5-1.5-8-6-8-11V5z"/></svg>
+            Licensed insurance broker
+          </span>
+          <h1 class="mt-5 text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1]">Protect What Your Business Is Built On</h1>
+          <p class="mt-6 text-sm sm:text-base font-medium max-w-md leading-relaxed">
+            Commercial property and liability cover for factories, warehouses, shops and offices across India, compared across the country's top insurers so you get the right protection at the right premium.
+          </p>
+          <div class="mt-10 flex flex-wrap gap-4">
+            <a href="contact.html#quote" class="px-6 py-3 bg-brown text-white text-sm font-semibold rounded-md hover:bg-brown-soft transition-colors">Get a Free Quote</a>
+            <a href="login.html" class="px-6 py-3 border-2 border-brown text-sm font-semibold rounded-md hover:bg-brown hover:text-white transition-colors">Client Login</a>
+          </div>
+        </div>
+        <div>
+          <div class="hero-zoom overflow-hidden isolate rounded-2xl shadow-xl" data-no-lift>
+            <img id="hero-img" alt="Glass-fronted commercial office towers" class="w-full h-72 sm:h-96 object-cover">
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick quote -->
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 md:absolute md:left-0 md:right-0 md:-bottom-14">
+        <form action="contact.html" method="get" class="bg-sand rounded-2xl shadow-lg p-5">
+          <p class="text-sm font-bold mb-3">Quick quote in 30 seconds</p>
+          <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
+            <label class="relative">
+              <span class="sr-only">Business type</span>
+              <select name="business" class="w-full appearance-none bg-cream rounded-md px-4 py-3 pr-9 text-sm font-semibold outline-none focus:ring-2 focus:ring-brown">
+                <option value="">Business type</option>
+                <option>Manufacturing</option>
+                <option>Warehouse &amp; Logistics</option>
+                <option>Retail</option>
+                <option>Office</option>
+                <option>Hospitality</option>
+              </select>
+              <svg class="w-4 h-4 absolute right-3 top-3.5 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg>
+            </label>
+            <label class="relative">
+              <span class="sr-only">Property value</span>
+              <select name="value" class="w-full appearance-none bg-cream rounded-md px-4 py-3 pr-9 text-sm font-semibold outline-none focus:ring-2 focus:ring-brown">
+                <option value="">Property value</option>
+                <option value="under-1cr">&lt; ₹1 Cr</option>
+                <option value="1-5cr">₹1–5 Cr</option>
+                <option value="5-25cr">₹5–25 Cr</option>
+                <option value="25cr-plus">₹25 Cr+</option>
+              </select>
+              <span class="w-4 h-4 absolute right-3 top-3.5 pointer-events-none rounded-full border-2 border-brown text-[9px] font-bold flex items-center justify-center">₹</span>
+            </label>
+            <label class="relative">
+              <span class="sr-only">Cover needed</span>
+              <select name="cover" class="w-full appearance-none bg-cream rounded-md px-4 py-3 pr-9 text-sm font-semibold outline-none focus:ring-2 focus:ring-brown">
+                <option value="">Cover needed</option>
+                <option>Property</option>
+                <option>Liability</option>
+                <option>Both</option>
+              </select>
+              <svg class="w-4 h-4 absolute right-3 top-3.5 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 3v6c0 5-3.5 9.5-8 11-4.5-1.5-8-6-8-11V5z"/></svg>
+            </label>
+            <button type="submit" class="bg-brown text-white text-sm font-semibold rounded-md py-3 hover:bg-brown-soft transition-colors">Get Quote</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Split + stats -->
+    <section class="pt-20 md:pt-40 pb-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-12 items-center">
+        <img id="warehouse-img" alt="Warehouse aisles stacked with stock on pallet racks" class="w-full h-72 sm:h-80 object-cover rounded-2xl" loading="lazy">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight">Risks Don't Wait. Neither Should Your Cover.</h2>
+          <p class="mt-5 text-sm font-medium leading-relaxed max-w-md">
+            A single fire, flood or break-in can wipe out years of work. We study your premises, stock and operations, find the gaps in your current policy, and place cover that actually pays out when it matters.
+          </p>
+          <div class="mt-8 grid grid-cols-3 gap-6">
+            <div>
+              <div class="text-2xl sm:text-3xl lg:text-4xl font-extrabold">₹2,400 Cr+</div>
+              <div class="text-xs sm:text-sm font-medium mt-1">Sum Insured Placed</div>
+            </div>
+            <div>
+              <div class="text-2xl sm:text-3xl lg:text-4xl font-extrabold">1,800+</div>
+              <div class="text-xs sm:text-sm font-medium mt-1">Businesses Protected</div>
+            </div>
+            <div>
+              <div class="text-2xl sm:text-3xl lg:text-4xl font-extrabold">96%</div>
+              <div class="text-xs sm:text-sm font-medium mt-1">Claims Settled</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Risks -->
+    <section id="risks" class="pb-24">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+        <h2 class="text-3xl sm:text-4xl font-extrabold">Risks We Protect You Against</h2>
+        <p class="mt-4 text-sm font-semibold max-w-md mx-auto">From the building itself to the people who walk through its doors, one broker for every major business risk.</p>
+        <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+          <div class="bg-sand rounded-2xl p-6 shadow-md">
+            <div class="w-12 h-12 bg-cream rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22c4 0 7-2.7 7-7 0-4-3-6.5-4-10-1.5 2-2 3.5-2 5-1.5-1-2.5-3-2.5-6C7 6.5 5 10.5 5 15c0 4.3 3 7 7 7z"/><path d="M12 22c-1.7 0-3-1.3-3-3.2 0-1.8 1.5-2.8 2-4.3.8 1 1 1.8 1 2.5.6-.4 1.2-1 1.5-2 1 1 1.5 2.3 1.5 3.8 0 1.9-1.3 3.2-3 3.2z"/></svg>
+            </div>
+            <h3 class="mt-5 font-bold">Fire &amp; Explosion</h3>
+            <p class="mt-2 text-sm font-medium leading-relaxed">Rebuild premises and replace machinery and stock after fire, short circuit or boiler blast.</p>
+          </div>
+          <div class="bg-sand rounded-2xl p-6 shadow-md">
+            <div class="w-12 h-12 bg-cream rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><path d="M7 14a5 5 0 01-.5-10A6 6 0 0118 6a4 4 0 010 8"/><path d="M2 18c2 0 2-1.5 4-1.5s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5"/><path d="M2 22c2 0 2-1.5 4-1.5s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5"/></svg>
+            </div>
+            <h3 class="mt-5 font-bold">Flood &amp; Natural Disaster</h3>
+            <p class="mt-2 text-sm font-medium leading-relaxed">Cover for monsoon flooding, cyclones, storms, earthquakes and landslides.</p>
+          </div>
+          <div class="bg-sand rounded-2xl p-6 shadow-md">
+            <div class="w-12 h-12 bg-cream rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/><path d="M12 14v3"/></svg>
+            </div>
+            <h3 class="mt-5 font-bold">Theft &amp; Burglary</h3>
+            <p class="mt-2 text-sm font-medium leading-relaxed">Pays for stolen stock, equipment and cash, plus damage from forced entry.</p>
+          </div>
+          <div class="bg-sand rounded-2xl p-6 shadow-md">
+            <div class="w-12 h-12 bg-cream rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><circle cx="9" cy="7" r="3.5"/><path d="M3 21a6 6 0 0112 0"/><path d="M17 8v6M14 11h6"/></svg>
+            </div>
+            <h3 class="mt-5 font-bold">Third-Party Injury</h3>
+            <p class="mt-2 text-sm font-medium leading-relaxed">Legal costs and compensation if a visitor or the public is hurt on your premises.</p>
+          </div>
+          <div class="bg-sand rounded-2xl p-6 shadow-md">
+            <div class="w-12 h-12 bg-cream rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+            </div>
+            <h3 class="mt-5 font-bold">Equipment Breakdown</h3>
+            <p class="mt-2 text-sm font-medium leading-relaxed">Repair or replace machinery, generators and electrical systems after sudden failure.</p>
+          </div>
+          <div class="bg-sand rounded-2xl p-6 shadow-md">
+            <div class="w-12 h-12 bg-cream rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 9l4 4 3-3 6 6"/><path d="M20 12v4h-4"/></svg>
+            </div>
+            <h3 class="mt-5 font-bold">Business Interruption</h3>
+            <p class="mt-2 text-sm font-medium leading-relaxed">Replaces lost profit and fixed costs like salaries and rent while you rebuild.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why choose -->
+    <section id="why" class="bg-cream py-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+        <h2 class="text-3xl sm:text-4xl font-extrabold">Why Businesses Choose Kavach</h2>
+        <p class="mt-4 text-sm font-semibold max-w-md mx-auto">We work for you, not the insurer, from the first quote to the final claim payout.</p>
+        <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+          <div class="bg-white rounded-2xl p-6 shadow-md">
+            <div class="w-12 h-12 bg-cream rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 3v18M5 7h14M3 14l2-7 2 7a2 2 0 01-4 0zM17 14l2-7 2 7a2 2 0 01-4 0zM8 21h8"/></svg>
+            </div>
+            <h3 class="mt-5 font-bold">Independent Advice</h3>
+            <p class="mt-2 text-sm font-medium leading-relaxed">We're tied to no insurer, so our only job is finding the cover that suits your business.</p>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow-md">
+            <div class="w-12 h-12 bg-cream rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="7" height="16" rx="1.5"/><rect x="14" y="4" width="7" height="16" rx="1.5"/><path d="M6 9h1M17 9h1M6 13h1M17 13h1"/></svg>
+            </div>
+            <h3 class="mt-5 font-bold">Compare 15+ Insurers</h3>
+            <p class="mt-2 text-sm font-medium leading-relaxed">Side-by-side quotes on premium, deductible, exclusions and claim ratio.</p>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow-md">
+            <div class="w-12 h-12 bg-cream rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2l8 3v6c0 5-3.5 9.5-8 11-4.5-1.5-8-6-8-11V5z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
+            </div>
+            <h3 class="mt-5 font-bold">Claims Advocacy</h3>
+            <p class="mt-2 text-sm font-medium leading-relaxed">A dedicated advisor handles surveyors and paperwork and pushes for a fair settlement.</p>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow-md">
+            <div class="w-12 h-12 bg-cream rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M7 13v-2M11 13V9M15 13v-4"/></svg>
+            </div>
+            <h3 class="mt-5 font-bold">One Online Dashboard</h3>
+            <p class="mt-2 text-sm font-medium leading-relaxed">Every policy, renewal date, document and claim in one secure login.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how" class="py-24">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+        <h2 class="text-3xl sm:text-4xl font-extrabold">How It Works</h2>
+        <p class="mt-4 text-sm font-semibold max-w-md mx-auto">Four simple steps from first conversation to full protection.</p>
+        <ol class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+          <li class="bg-sand rounded-2xl p-6 shadow-md">
+            <div class="w-12 h-12 bg-brown text-white rounded-lg flex items-center justify-center text-lg font-extrabold">1</div>
+            <h3 class="mt-5 font-bold">Tell us about your business</h3>
+            <p class="mt-2 text-sm font-medium leading-relaxed">Share your premises, assets and turnover in a 10-minute call or online form.</p>
+          </li>
+          <li class="bg-sand rounded-2xl p-6 shadow-md">
+            <div class="w-12 h-12 bg-brown text-white rounded-lg flex items-center justify-center text-lg font-extrabold">2</div>
+            <h3 class="mt-5 font-bold">We compare quotes</h3>
+            <p class="mt-2 text-sm font-medium leading-relaxed">We go to market and lay out the best options in plain language within 48 hours.</p>
+          </li>
+          <li class="bg-sand rounded-2xl p-6 shadow-md">
+            <div class="w-12 h-12 bg-brown text-white rounded-lg flex items-center justify-center text-lg font-extrabold">3</div>
+            <h3 class="mt-5 font-bold">You choose &amp; we place cover</h3>
+            <p class="mt-2 text-sm font-medium leading-relaxed">Pick your plan and we handle the proposal, inspection and policy issuance.</p>
+          </li>
+          <li class="bg-sand rounded-2xl p-6 shadow-md">
+            <div class="w-12 h-12 bg-brown text-white rounded-lg flex items-center justify-center text-lg font-extrabold">4</div>
+            <h3 class="mt-5 font-bold">We stand by you at claim time</h3>
+            <p class="mt-2 text-sm font-medium leading-relaxed">Report a loss and your advisor manages the claim through to settlement.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Insurer partners -->
+    <section id="partners" class="pb-24">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+        <p class="text-sm font-bold uppercase tracking-wide">Trusted insurer partners</p>
+        <div id="insurer-list" class="mt-6 flex flex-wrap justify-center gap-3"></div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="bg-cream py-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-center leading-tight">What Business Owners<br>Say About Kavach</h2>
+        <div id="review-list" class="mt-12 grid md:grid-cols-3 gap-6"></div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-brown text-white py-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight">Not sure what cover you need?</h2>
+          <p class="mt-3 text-sm font-medium text-white/80 max-w-lg">Talk to a Kavach advisor for a free risk review. No obligation, no jargon, just a clear picture of where your business is exposed.</p>
+        </div>
+        <div class="flex flex-wrap gap-4 shrink-0">
+          <a href="contact.html#quote" class="px-6 py-3 bg-cream text-brown text-sm font-semibold rounded-md hover:bg-sand transition-colors">Get a Free Quote</a>
+          <a href="services.html" class="px-6 py-3 border-2 border-white text-white text-sm font-semibold rounded-md hover:bg-white hover:text-brown transition-colors">Explore Services</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-sand">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-14 grid grid-cols-2 md:grid-cols-6 gap-10 text-sm">
+      <div class="col-span-2">
+        <a href="index.html" class="flex items-center gap-2 text-xl font-extrabold">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2l8 3v6c0 5-3.5 9.5-8 11-4.5-1.5-8-6-8-11V5z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
+          Kavach
+        </a>
+        <p class="mt-4 font-semibold leading-relaxed max-w-[15rem]">Protecting the buildings, stock and people your business depends on.</p>
+      </div>
+      <div>
+        <h4 class="font-bold text-base mb-4">Company</h4>
+        <ul class="space-y-3 font-medium">
+          <li><a href="about.html" class="hover:opacity-70">Our Story</a></li>
+          <li><a href="about.html#team" class="hover:opacity-70">Our Team</a></li>
+          <li><a href="about.html#partners" class="hover:opacity-70">Insurer Partners</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-base mb-4">Insurance</h4>
+        <ul class="space-y-3 font-medium">
+          <li><a href="services.html#property" class="hover:opacity-70">Property</a></li>
+          <li><a href="services.html#liability" class="hover:opacity-70">Liability</a></li>
+          <li><a href="services.html#business-interruption" class="hover:opacity-70">Business Interruption</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-base mb-4">Support</h4>
+        <ul class="space-y-3 font-medium">
+          <li><a href="contact.html#faq" class="hover:opacity-70">FAQ</a></li>
+          <li><a href="contact.html" class="hover:opacity-70">Contact Us</a></li>
+          <li><a href="dashboard.html#claims" class="hover:opacity-70">Report a Claim</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-base mb-4">Reach Us</h4>
+        <ul class="space-y-3 font-medium">
+          <li>+91 98765 43210</li>
+          <li>help@kavach.in</li>
+          <li>Mumbai, India</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-brown/10 py-5 text-center text-xs font-medium">&copy; 2026 Kavach Insurance Brokers Pvt. Ltd. All rights reserved.</div>
+  </footer>
+
+  <script src="assets/js/data.js"></script>
+  <script>
+    document.getElementById('hero-img').src = photo(PHOTOS.offices, 1200);
+    document.getElementById('warehouse-img').src = photo(PHOTOS.warehouse);
+
+    const pill = name => `<span class="bg-cream rounded-full px-5 py-2.5 text-sm font-bold shadow-sm whitespace-nowrap">${name}</span>`;
+    const insurerList = document.getElementById('insurer-list');
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      insurerList.innerHTML = INSURERS.map(pill).join('');
+    } else {
+      // Seamless marquee: two identical groups (each long enough to fill the row), track slides by exactly half
+      const group = `<div class="flex shrink-0 gap-3 pr-3">${[...INSURERS, ...INSURERS].map(pill).join('')}</div>`;
+      insurerList.className = 'mt-6 marquee';
+      insurerList.innerHTML = `<ul class="sr-only">${INSURERS.map(n => `<li>${n}</li>`).join('')}</ul>`
+        + `<div class="marquee-track" aria-hidden="true">${group}${group}</div>`;
+    }
+
+    const reviews = [
+      { name: 'Suresh Patel', company: 'Patel Polymers, Vapi', rating: '5.0', text: 'A short circuit gutted our moulding unit. Kavach had the surveyor on site in two days and our ₹1.8 Cr claim was settled in under seven weeks.' },
+      { name: 'Meena Krishnan', company: 'Krishna Cold Chain, Chennai', rating: '4.9', text: 'They compared five insurers for our warehouse and found broader flood cover while cutting our premium by 22%. The renewal was completely hassle-free.' },
+      { name: 'Arjun Mehta', company: 'Mehta Retail Stores, Pune', rating: '5.0', text: 'After a break-in at our flagship store, our advisor handled every document. We were reimbursed for the stolen stock and shutter repairs within a month.' }
+    ];
+
+    const star = '<svg class="w-3.5 h-3.5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z"/></svg>';
+
+    document.getElementById('review-list').innerHTML = reviews.map(r => `
+      <article class="bg-sand rounded-2xl p-6 shadow-md flex flex-col">
+        <div class="flex items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-full bg-brown text-white text-xs font-bold flex items-center justify-center shrink-0">${initials(r.name)}</div>
+            <div>
+              <div class="font-bold text-sm">${r.name}</div>
+              <div class="text-xs font-medium">${r.company}</div>
+            </div>
+          </div>
+          <span class="bg-white rounded px-2 py-0.5 text-xs font-bold flex items-center gap-1 shrink-0">${star}${r.rating}</span>
+        </div>
+        <p class="mt-4 text-sm font-medium leading-relaxed">&ldquo;${r.text}&rdquo;</p>
+      </article>
+    `).join('');
+  </script>
+  <script src="assets/js/animations.js" data-accent="#2B1B12"></script>
+</body>
+</html>

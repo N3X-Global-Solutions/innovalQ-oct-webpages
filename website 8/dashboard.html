@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Dashboard | Kavach Insurance Brokers</title>
+  <meta name="description" content="View your policies, compare quotes, track claims and download documents in your Kavach client dashboard.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brown: { DEFAULT: '#2B1B12', soft: '#4A3328' },
+            sand: { DEFAULT: '#DCC5B8', light: '#EBDDD4' },
+            cream: '#FFF6F0'
+          },
+          fontFamily: { sans: ['Montserrat', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Montserrat', sans-serif; color: #2B1B12; }
+    img { background: #EBDDD4; }
+    details summary::-webkit-details-marker { display: none; }
+    details[open] .chev { transform: rotate(180deg); }
+  </style>
+</head>
+<body class="bg-white antialiased">
+
+  <!-- Top bar -->
+  <header class="bg-cream">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-4">
+      <a href="index.html" class="flex items-center gap-2 text-xl font-extrabold tracking-tight">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2l8 3v6c0 5-3.5 9.5-8 11-4.5-1.5-8-6-8-11V5z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
+        Kavach
+      </a>
+      <div class="flex items-center gap-4 sm:gap-6 text-sm font-semibold min-w-0">
+        <span class="flex items-center gap-2 min-w-0">
+          <span id="user-initials" class="hidden sm:flex w-9 h-9 rounded-full bg-sand items-center justify-center text-xs font-bold"></span>
+          <span id="user-name" class="truncate"></span>
+        </span>
+        <button id="sign-out" class="shrink-0 hover:opacity-70">Sign out</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
+
+    <!-- Greeting + advisor -->
+    <section class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+      <div>
+        <p id="demo-note" class="hidden mb-2 text-xs font-semibold opacity-60">Demo mode</p>
+        <h1 id="greeting" class="text-3xl sm:text-4xl font-extrabold"></h1>
+        <p id="company" class="mt-2 text-sm font-medium opacity-70"></p>
+      </div>
+      <div class="bg-cream rounded-2xl p-5 flex items-center gap-4 md:min-w-[18rem]">
+        <span id="advisor-initials" class="w-11 h-11 rounded-full bg-brown text-white flex items-center justify-center text-sm font-bold shrink-0"></span>
+        <div class="text-sm min-w-0">
+          <p class="text-xs font-semibold opacity-60">Your advisor</p>
+          <p id="advisor-name" class="font-bold"></p>
+          <p class="mt-1 font-medium flex flex-wrap gap-x-3">
+            <a id="advisor-phone" class="hover:opacity-70"></a>
+            <a id="advisor-email" class="hover:opacity-70 truncate"></a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="bg-cream rounded-2xl p-5 sm:p-6"><p class="text-xs font-semibold opacity-60">Active policies</p><p id="stat-active" class="mt-2 text-2xl sm:text-3xl font-extrabold"></p></div>
+      <div class="bg-cream rounded-2xl p-5 sm:p-6"><p class="text-xs font-semibold opacity-60">Total sum insured</p><p id="stat-sum" class="mt-2 text-2xl sm:text-3xl font-extrabold"></p></div>
+      <div class="bg-cream rounded-2xl p-5 sm:p-6"><p class="text-xs font-semibold opacity-60">Annual premium</p><p id="stat-premium" class="mt-2 text-2xl sm:text-3xl font-extrabold"></p></div>
+      <div class="bg-cream rounded-2xl p-5 sm:p-6"><p class="text-xs font-semibold opacity-60">Open claims</p><p id="stat-claims" class="mt-2 text-2xl sm:text-3xl font-extrabold"></p></div>
+    </section>
+
+    <!-- Tabs -->
+    <nav class="mt-12 border-b border-sand flex gap-6 sm:gap-10 overflow-x-auto text-sm font-semibold" role="tablist">
+      <button data-tab="policies" role="tab" class="tab-btn pb-3 whitespace-nowrap border-b-2 border-transparent">Policies</button>
+      <button data-tab="quotes" role="tab" class="tab-btn pb-3 whitespace-nowrap border-b-2 border-transparent">Compare Quotes</button>
+      <button data-tab="claims" role="tab" class="tab-btn pb-3 whitespace-nowrap border-b-2 border-transparent">Claims</button>
+      <button data-tab="documents" role="tab" class="tab-btn pb-3 whitespace-nowrap border-b-2 border-transparent">Documents</button>
+    </nav>
+
+    <!-- Policies -->
+    <section id="tab-policies" class="tab-panel mt-8 space-y-4"></section>
+
+    <!-- Quotes -->
+    <section id="tab-quotes" class="tab-panel hidden mt-8">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <h2 class="text-xl font-extrabold">Business Interruption cover — 3 quotes</h2>
+        <label class="flex items-center gap-3 text-sm font-semibold">
+          Sort by
+          <select id="quote-sort" class="bg-cream border border-sand rounded-md px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-brown">
+            <option value="price">Price</option>
+            <option value="ratio">Claim ratio</option>
+            <option value="deductible">Deductible</option>
+          </select>
+        </label>
+      </div>
+      <div id="quote-list" class="mt-6 grid md:grid-cols-3 gap-4"></div>
+      <p id="quote-note" class="hidden mt-6 text-sm font-semibold"></p>
+    </section>
+
+    <!-- Claims -->
+    <section id="tab-claims" class="tab-panel hidden mt-8">
+      <div class="flex items-center justify-between gap-4">
+        <h2 class="text-xl font-extrabold">Your claims</h2>
+        <button id="new-claim-btn" class="px-6 py-3 bg-brown text-white text-sm font-semibold rounded-md hover:bg-brown-soft transition-colors">Report a new claim</button>
+      </div>
+
+      <form id="claim-form" class="hidden mt-6 bg-cream rounded-2xl p-6 sm:p-8 grid sm:grid-cols-2 gap-4" novalidate>
+        <div class="sm:col-span-2">
+          <label for="claim-policy" class="block text-sm font-semibold mb-1.5">Policy</label>
+          <select id="claim-policy" class="w-full bg-white border border-sand rounded-md px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brown"></select>
+        </div>
+        <div class="sm:col-span-2">
+          <label for="claim-what" class="block text-sm font-semibold mb-1.5">What happened?</label>
+          <input id="claim-what" type="text" placeholder="e.g. Fire in storage room" class="w-full bg-white border border-sand rounded-md px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brown">
+        </div>
+        <div>
+          <label for="claim-date" class="block text-sm font-semibold mb-1.5">Date</label>
+          <input id="claim-date" type="date" class="w-full bg-white border border-sand rounded-md px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brown">
+        </div>
+        <div>
+          <label for="claim-amount" class="block text-sm font-semibold mb-1.5">Estimated loss (₹)</label>
+          <input id="claim-amount" type="number" min="1" placeholder="500000" class="w-full bg-white border border-sand rounded-md px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brown">
+        </div>
+        <p id="claim-error" class="hidden sm:col-span-2 text-sm font-medium text-red-600"></p>
+        <div class="sm:col-span-2 flex gap-3">
+          <button type="submit" class="px-6 py-3 bg-brown text-white text-sm font-semibold rounded-md hover:bg-brown-soft transition-colors">Submit claim</button>
+          <button type="button" id="claim-cancel" class="px-6 py-3 text-sm font-semibold rounded-md hover:opacity-70">Cancel</button>
+        </div>
+      </form>
+      <p id="claim-note" class="hidden mt-4 text-sm font-semibold">Claim reported. Your advisor will be in touch.</p>
+
+      <div id="claim-list" class="mt-6 space-y-4"></div>
+    </section>
+
+    <!-- Documents -->
+    <section id="tab-documents" class="tab-panel hidden mt-8">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <h2 class="text-xl font-extrabold">Documents</h2>
+        <input id="doc-search" type="search" placeholder="Search documents" class="w-full sm:max-w-xs bg-cream border border-sand rounded-md px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brown">
+      </div>
+      <p id="doc-note" class="hidden mt-4 text-sm font-semibold bg-cream rounded-md px-4 py-3">Demo: download not available</p>
+      <div id="doc-list" class="mt-6 space-y-3"></div>
+    </section>
+  </main>
+
+  <footer class="border-t border-sand">
+    <p id="help-line" class="max-w-6xl mx-auto px-4 sm:px-6 py-6 text-sm font-medium"></p>
+  </footer>
+
+  <script src="assets/js/data.js"></script>
+  <script>
+    const esc = (s) => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const $ = (id) => document.getElementById(id);
+
+    // ---- User ----
+    let user = null;
+    try { user = JSON.parse(localStorage.getItem('kavach_user')); } catch (e) {}
+    if (!user || !user.name) { user = { name: CLIENT.name, email: CLIENT.email }; $('demo-note').classList.remove('hidden'); }
+    const first = user.name.trim().split(/\s+/)[0] || 'there';
+    const firstName = first.charAt(0).toUpperCase() + first.slice(1);
+    $('user-name').textContent = user.name;
+    $('user-initials').textContent = initials(user.name).slice(0, 2).toUpperCase();
+    $('greeting').textContent = 'Hi, ' + firstName;
+    $('company').textContent = CLIENT.company;
+    $('sign-out').addEventListener('click', () => {
+      try { localStorage.removeItem('kavach_user'); } catch (e) {}
+      window.location.href = 'login.html';
+    });
+
+    // ---- Advisor ----
+    const adv = CLIENT.advisor;
+    const tel = 'tel:' + adv.phone.replace(/\s/g, '');
+    $('advisor-initials').textContent = initials(adv.name);
+    $('advisor-name').textContent = adv.name;
+    $('advisor-phone').textContent = adv.phone; $('advisor-phone').href = tel;
+    $('advisor-email').textContent = adv.email; $('advisor-email').href = 'mailto:' + adv.email;
+    $('help-line').innerHTML = `Need help? Call your advisor on <a href="${tel}" class="font-bold hover:opacity-70">${esc(adv.phone)}</a>`;
+
+    // ---- Stats ----
+    const claims = CLAIMS.slice();
+    function renderStats() {
+      $('stat-active').textContent = POLICIES.filter(p => p.status === 'Active').length;
+      $('stat-sum').textContent = formatShort(POLICIES.reduce((s, p) => s + p.sumInsured, 0));
+      $('stat-premium').textContent = formatINR(POLICIES.reduce((s, p) => s + p.premium, 0));
+      $('stat-claims').textContent = claims.filter(c => c.status !== 'Settled').length;
+    }
+    renderStats();
+
+    // ---- Tabs ----
+    const TABS = ['policies', 'quotes', 'claims', 'documents'];
+    function openTab(name) {
+      if (!TABS.includes(name)) name = 'policies';
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        const on = b.dataset.tab === name;
+        b.classList.toggle('border-brown', on);
+        b.classList.toggle('border-transparent', !on);
+        b.classList.toggle('opacity-50', !on);
+        b.setAttribute('aria-selected', on);
+      });
+      TABS.forEach(t => $('tab-' + t).classList.toggle('hidden', t !== name));
+    }
+    document.querySelectorAll('.tab-btn').forEach(b => b.addEventListener('click', () => {
+      history.replaceState(null, '', '#' + b.dataset.tab);
+      openTab(b.dataset.tab);
+    }));
+    window.addEventListener('hashchange', () => openTab(location.hash.slice(1)));
+    openTab(location.hash.slice(1));
+
+    // ---- Policies ----
+    const pill = (s) => s === 'Active'
+      ? '<span class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700">Active</span>'
+      : `<span class="px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700">${esc(s)}</span>`;
+
+    $('tab-policies').innerHTML = POLICIES.map(p => `
+      <article class="border border-sand rounded-2xl p-6">
+        <div class="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <h3 class="text-lg font-extrabold">${esc(p.type)}</h3>
+            <p class="mt-1 text-sm font-medium opacity-70">${esc(p.insurer)} · ${esc(p.asset)}</p>
+          </div>
+          ${pill(p.status)}
+        </div>
+        <dl class="mt-5 grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
+          <div><dt class="text-xs font-semibold opacity-60">Sum insured</dt><dd class="mt-1 font-bold">${formatShort(p.sumInsured)}</dd></div>
+          <div><dt class="text-xs font-semibold opacity-60">Premium / year</dt><dd class="mt-1 font-bold">${formatINR(p.premium)}</dd></div>
+          <div><dt class="text-xs font-semibold opacity-60">Ends</dt><dd class="mt-1 font-bold">${formatDate(p.end)}</dd></div>
+          <div><dt class="text-xs font-semibold opacity-60">Policy no.</dt><dd class="mt-1 font-bold">${esc(p.id)}</dd></div>
+        </dl>
+        ${p.status === 'Renewal due' ? `
+          <div class="mt-5 flex flex-wrap items-center gap-4">
+            <button data-renew="${esc(p.id)}" class="px-6 py-3 bg-brown text-white text-sm font-semibold rounded-md hover:bg-brown-soft transition-colors">Renew</button>
+            <p class="renew-note hidden text-sm font-semibold">Renewal request sent to your advisor</p>
+          </div>` : ''}
+      </article>`).join('');
+
+    $('tab-policies').addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-renew]');
+      if (!btn) return;
+      btn.disabled = true;
+      btn.classList.add('opacity-50');
+      btn.textContent = 'Requested';
+      btn.parentElement.querySelector('.renew-note').classList.remove('hidden');
+    });
+
+    // ---- Quotes ----
+    const lowest = Math.min(...QUOTES.map(q => q.premium));
+    const bestRatio = Math.max(...QUOTES.map(q => q.claimRatio));
+    let selectedQuote = null;
+    function renderQuotes() {
+      const by = $('quote-sort').value;
+      const list = QUOTES.slice().sort((a, b) =>
+        by === 'ratio' ? b.claimRatio - a.claimRatio :
+        by === 'deductible' ? a.deductible - b.deductible : a.premium - b.premium);
+      $('quote-list').innerHTML = list.map(q => {
+        const sel = selectedQuote === q.insurer;
+        const tags = [
+          q.premium === lowest ? 'Lowest price' : '',
+          q.claimRatio === bestRatio ? 'Best claims record' : ''
+        ].filter(Boolean).map(t => `<span class="px-3 py-1 rounded-full bg-sand text-xs font-semibold">${t}</span>`).join('');
+        return `
+          <article class="rounded-2xl p-6 flex flex-col ${sel ? 'border-2 border-brown bg-cream' : 'border border-sand'}">
+            <div class="min-h-[1.75rem] flex flex-wrap gap-2">${tags}</div>
+            <h3 class="mt-3 text-lg font-extrabold">${esc(q.insurer)}</h3>
+            <p class="mt-4 text-3xl font-extrabold">${formatINR(q.premium)}<span class="text-sm font-semibold opacity-60"> / year</span></p>
+            <dl class="mt-5 space-y-2 text-sm">
+              <div class="flex justify-between"><dt class="font-medium opacity-70">Sum insured</dt><dd class="font-bold">${formatShort(q.sumInsured)}</dd></div>
+              <div class="flex justify-between"><dt class="font-medium opacity-70">Deductible</dt><dd class="font-bold">${formatINR(q.deductible)}</dd></div>
+              <div class="flex justify-between"><dt class="font-medium opacity-70">Claims settled</dt><dd class="font-bold">${q.claimRatio}%</dd></div>
+            </dl>
+            <ul class="mt-5 space-y-1.5 text-sm font-medium flex-1">
+              ${q.extras.map(x => `<li class="flex items-center gap-2"><svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>${esc(x)}</li>`).join('')}
+            </ul>
+            <button data-choose="${esc(q.insurer)}" class="mt-6 w-full px-6 py-3 text-sm font-semibold rounded-md transition-colors ${sel ? 'bg-brown text-white' : 'border border-brown hover:bg-cream'}">${sel ? 'Selected' : 'Choose this quote'}</button>
+          </article>`;
+      }).join('');
+    }
+    $('quote-sort').addEventListener('change', renderQuotes);
+    $('quote-list').addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-choose]');
+      if (!btn) return;
+      selectedQuote = btn.dataset.choose;
+      renderQuotes();
+      const note = $('quote-note');
+      note.textContent = `${adv.name.split(' ')[0]} will contact you to complete the purchase.`;
+      note.classList.remove('hidden');
+    });
+    renderQuotes();
+
+    // ---- Claims ----
+    function tracker(step) {
+      return `<ol class="mt-6 flex">
+        ${CLAIM_STEPS.map((s, i) => {
+          const done = i < step || (i === step && i === CLAIM_STEPS.length - 1);
+          const current = i === step && !done;
+          const circle = done ? 'bg-brown border-brown text-white' : current ? 'bg-white border-brown text-brown' : 'bg-white border-sand text-sand';
+          return `<li class="flex-1 flex flex-col items-center text-center relative">
+            ${i > 0 ? `<span class="absolute top-3.5 right-1/2 w-full h-0.5 ${i <= step ? 'bg-brown' : 'bg-sand'}"></span>` : ''}
+            <span class="relative w-7 h-7 rounded-full border-2 flex items-center justify-center text-xs font-bold ${circle}">
+              ${done ? '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>' : i + 1}
+            </span>
+            <span class="mt-2 px-1 text-[10px] sm:text-xs font-semibold leading-tight ${i > step ? 'opacity-40' : ''}">${esc(s)}</span>
+          </li>`;
+        }).join('')}
+      </ol>`;
+    }
+    function renderClaims() {
+      $('claim-list').innerHTML = claims.map(c => `
+        <article class="border border-sand rounded-2xl p-6">
+          <div class="flex flex-wrap items-start justify-between gap-3">
+            <div>
+              <h3 class="text-lg font-extrabold">${esc(c.title)}</h3>
+              <p class="mt-1 text-sm font-medium opacity-70">${esc(c.id)} · ${esc(c.policyId)} · Filed ${formatDate(c.filed)}</p>
+            </div>
+            <div class="text-right text-sm">
+              <p class="text-xs font-semibold opacity-60">Claimed</p>
+              <p class="font-bold">${formatINR(c.amount)}</p>
+              ${c.status === 'Settled' && c.settled ? `<p class="mt-1 text-xs font-semibold text-emerald-700">Settled ${formatINR(c.settled)}</p>` : ''}
+            </div>
+          </div>
+          ${tracker(c.step)}
+        </article>`).join('');
+    }
+    renderClaims();
+
+    $('claim-policy').innerHTML = POLICIES.map(p => `<option value="${esc(p.id)}">${esc(p.type)} (${esc(p.id)})</option>`).join('');
+    $('claim-date').max = new Date().toISOString().slice(0, 10);
+    const claimForm = $('claim-form');
+    $('new-claim-btn').addEventListener('click', () => {
+      claimForm.classList.toggle('hidden');
+      $('claim-note').classList.add('hidden');
+    });
+    $('claim-cancel').addEventListener('click', () => claimForm.classList.add('hidden'));
+    claimForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const what = $('claim-what').value.trim();
+      const date = $('claim-date').value;
+      const amount = Number($('claim-amount').value);
+      const err = $('claim-error');
+      if (!what || !date || !(amount > 0)) {
+        err.textContent = 'Please fill in what happened, the date and an estimated loss.';
+        err.classList.remove('hidden');
+        return;
+      }
+      err.classList.add('hidden');
+      const id = 'CLM-' + (1103 + claims.length - CLAIMS.length);
+      claims.unshift({ id, policyId: $('claim-policy').value, title: what, filed: date, amount, status: 'Reported', step: 0 });
+      renderClaims();
+      renderStats();
+      claimForm.reset();
+      claimForm.classList.add('hidden');
+      $('claim-note').classList.remove('hidden');
+    });
+
+    // ---- Documents ----
+    function renderDocs() {
+      const q = $('doc-search').value.trim().toLowerCase();
+      const list = DOCUMENTS.filter(d => d.name.toLowerCase().includes(q));
+      $('doc-list').innerHTML = list.length ? list.map(d => `
+        <div class="border border-sand rounded-2xl p-4 sm:p-5 flex items-center gap-4">
+          <span class="w-11 h-11 rounded-xl bg-cream flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M14 3v6h6"/></svg>
+          </span>
+          <div class="flex-1 min-w-0">
+            <p class="font-bold text-sm truncate">${esc(d.name)}</p>
+            <p class="mt-1 text-xs font-medium opacity-60">${esc(d.policyId)} · ${formatDate(d.date)} · ${esc(d.size)}</p>
+          </div>
+          <button class="dl-btn shrink-0 px-4 sm:px-6 py-2.5 border border-brown text-sm font-semibold rounded-md hover:bg-cream transition-colors">Download</button>
+        </div>`).join('')
+        : '<p class="text-sm font-medium opacity-60">No documents match your search.</p>';
+    }
+    $('doc-search').addEventListener('input', renderDocs);
+    let docTimer;
+    $('doc-list').addEventListener('click', (e) => {
+      if (!e.target.closest('.dl-btn')) return;
+      const note = $('doc-note');
+      note.classList.remove('hidden');
+      clearTimeout(docTimer);
+      docTimer = setTimeout(() => note.classList.add('hidden'), 3000);
+    });
+    renderDocs();
+  </script>
+</body>
+</html>

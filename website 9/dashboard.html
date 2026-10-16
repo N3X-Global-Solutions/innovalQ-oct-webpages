@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Dashboard | Hisaab — Bookkeeping & CFO for Small Business</title>
+  <meta name="description" content="Your Hisaab client dashboard: cash flow, monthly statements and messages with your bookkeeping team.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: { DEFAULT: '#12302A', soft: '#1E4A40' },
+            paper: '#FAF7F0',
+            lime: '#D4F57A',
+            mint: '#E6F0E8',
+            coral: '#FF8A5B'
+          },
+          fontFamily: { sans: ['Outfit', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Outfit', sans-serif; color: #12302A; background: #FAF7F0; }
+    .hl { background: linear-gradient(transparent 55%, #D4F57A 55%); padding: 0 .15em; }
+    .sticker { display: inline-block; transform: rotate(-3deg); background: #D4F57A; border: 1.5px solid #12302A; border-radius: 9999px; padding: .25rem .8rem; font-size: .75rem; font-weight: 600; }
+    details summary::-webkit-details-marker { display: none; }
+    details[open] .chev { transform: rotate(45deg); }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { scrollbar-width: none; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body class="antialiased">
+
+  <div class="lg:flex min-h-screen">
+
+    <!-- Sidebar (lg+) -->
+    <aside class="hidden lg:flex lg:flex-col w-60 shrink-0 bg-ink text-paper px-5 py-8 min-h-screen">
+      <a href="index.html" class="flex items-center gap-2 text-xl font-semibold tracking-tight px-2">
+        <span class="w-8 h-8 rounded-lg bg-lime text-ink flex items-center justify-center">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg>
+        </span>
+        hisaab<span class="text-coral">.</span>
+      </a>
+      <nav class="mt-12 space-y-1 text-sm font-medium">
+        <a href="#overview" data-nav="overview" class="side-link flex items-center gap-3 px-4 py-3 rounded-2xl">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19V9M10 19V5M16 19v-7"/></svg>Overview</a>
+        <a href="#statements" data-nav="statements" class="side-link flex items-center gap-3 px-4 py-3 rounded-2xl">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg>Statements</a>
+        <a href="#messages" data-nav="messages" class="side-link flex items-center gap-3 px-4 py-3 rounded-2xl">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>Messages</a>
+      </nav>
+      <div class="mt-auto">
+        <div class="px-4 pb-4 text-xs text-paper/50 user-company"></div>
+        <button type="button" class="sign-out w-full text-left flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-medium text-paper/70 hover:text-paper hover:bg-ink-soft">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"/></svg>Sign out</button>
+      </div>
+    </aside>
+
+    <!-- Top bar (mobile / tablet) -->
+    <header class="lg:hidden relative z-30 bg-ink text-paper">
+      <div class="px-4 sm:px-6 pt-4 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-2 text-lg font-semibold tracking-tight">
+          <span class="w-7 h-7 rounded-lg bg-lime text-ink flex items-center justify-center">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg>
+          </span>
+          hisaab<span class="text-coral">.</span>
+        </a>
+        <button type="button" class="sign-out text-sm font-medium text-paper/70 hover:text-paper">Sign out</button>
+      </div>
+      <nav class="no-scrollbar flex gap-2 overflow-x-auto px-4 sm:px-6 py-4 text-sm font-medium">
+        <a href="#overview" data-nav="overview" class="pill-link shrink-0 px-4 py-2 rounded-full">Overview</a>
+        <a href="#statements" data-nav="statements" class="pill-link shrink-0 px-4 py-2 rounded-full">Statements</a>
+        <a href="#messages" data-nav="messages" class="pill-link shrink-0 px-4 py-2 rounded-full">Messages</a>
+      </nav>
+    </header>
+
+    <main class="flex-1 min-w-0 px-4 sm:px-6 lg:px-12 py-8 lg:py-12">
+      <div class="max-w-6xl mx-auto">
+
+        <!-- ===== OVERVIEW ===== -->
+        <section id="sec-overview" data-section="overview" class="hidden">
+          <div class="flex flex-wrap items-start justify-between gap-4">
+            <div>
+              <p class="text-sm text-ink/60" id="company-line"></p>
+              <h1 class="mt-1 text-3xl sm:text-4xl font-semibold tracking-tight">
+                <span id="greeting">Hello</span>, <span class="hl" id="first-name"></span>
+                <span id="demo-sticker" class="sticker align-middle ml-1 hidden">Demo</span>
+              </h1>
+            </div>
+            <span class="inline-flex items-center gap-2 bg-mint rounded-full px-4 py-2 text-sm font-medium">Books closed for September ✓</span>
+          </div>
+
+          <!-- KPIs -->
+          <div id="kpis" class="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-4"></div>
+
+          <div class="mt-6 grid lg:grid-cols-3 gap-6">
+            <!-- Cash flow -->
+            <div class="lg:col-span-2 bg-white rounded-3xl border border-ink/10 p-6 sm:p-8">
+              <div class="flex items-center justify-between gap-4">
+                <div>
+                  <h2 class="text-lg font-semibold tracking-tight">Cash flow</h2>
+                  <div class="mt-1 flex items-center gap-4 text-xs text-ink/60">
+                    <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-ink"></span>Revenue</span>
+                    <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-lime"></span>Expenses</span>
+                  </div>
+                </div>
+                <div class="flex bg-mint rounded-full p-1 text-xs font-medium" id="period-toggle">
+                  <button type="button" data-period="6" class="px-3 py-1.5 rounded-full">6M</button>
+                  <button type="button" data-period="12" class="px-3 py-1.5 rounded-full">12M</button>
+                </div>
+              </div>
+              <div class="mt-6 h-64"><canvas id="flow-chart" aria-label="Revenue vs expenses bar chart"></canvas></div>
+            </div>
+
+            <!-- Doughnut -->
+            <div class="bg-white rounded-3xl border border-ink/10 p-6 sm:p-8">
+              <h2 class="text-lg font-semibold tracking-tight">Where the money went <span class="text-ink/50 font-normal">(Oct)</span></h2>
+              <div class="mt-6 h-40"><canvas id="split-chart" aria-label="October expense split"></canvas></div>
+              <ul id="split-legend" class="mt-6 space-y-2.5 text-sm"></ul>
+            </div>
+
+            <!-- Cash in bank -->
+            <div class="lg:col-span-2 bg-white rounded-3xl border border-ink/10 p-6 sm:p-8">
+              <div class="flex items-end justify-between gap-4">
+                <h2 class="text-lg font-semibold tracking-tight">Cash in bank</h2>
+                <span class="text-2xl font-semibold tracking-tight" id="cash-now"></span>
+              </div>
+              <div class="mt-6 h-56"><canvas id="cash-chart" aria-label="Cash in bank line chart"></canvas></div>
+            </div>
+
+            <!-- Runway -->
+            <div class="bg-ink text-paper rounded-3xl p-6 sm:p-8 flex flex-col">
+              <div class="flex items-center justify-between">
+                <h2 class="text-lg font-semibold tracking-tight">Runway</h2>
+                <span class="sticker text-ink">CFO view</span>
+              </div>
+              <div class="mt-auto pt-10">
+                <div id="runway-value" class="text-3xl sm:text-4xl font-semibold tracking-tight text-lime"></div>
+                <p id="runway-note" class="mt-2 text-sm text-paper/60"></p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== STATEMENTS ===== -->
+        <section id="sec-statements" data-section="statements" class="hidden">
+          <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight">Statements</h1>
+          <p class="mt-2 text-ink/60">Your monthly books, ready to share.</p>
+
+          <div class="mt-10 grid lg:grid-cols-3 gap-6 items-start">
+            <div id="statement-list" class="lg:col-span-2 space-y-4"></div>
+
+            <div class="bg-white rounded-3xl border border-ink/10 p-6 sm:p-8">
+              <h2 class="text-lg font-semibold tracking-tight">Send us documents</h2>
+              <label for="file-input" class="mt-5 flex flex-col items-center justify-center text-center gap-3 border-2 border-dashed border-ink/20 rounded-3xl px-6 py-10 cursor-pointer hover:border-ink hover:bg-mint transition-colors">
+                <span class="w-12 h-12 rounded-2xl bg-lime flex items-center justify-center">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></svg>
+                </span>
+                <span class="font-medium">Upload receipts / bank statement</span>
+                <span class="text-xs text-ink/50">PDF, JPG, PNG or CSV</span>
+                <input id="file-input" type="file" multiple class="hidden">
+              </label>
+              <div id="file-out" class="hidden mt-5">
+                <ul id="file-list" class="space-y-2 text-sm"></ul>
+                <p class="mt-3 text-sm font-medium"><span class="hl">Sent to Rohan ✓</span></p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== MESSAGES ===== -->
+        <section id="sec-messages" data-section="messages" class="hidden">
+          <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight">Messages</h1>
+          <p class="mt-2 text-ink/60">Chat with your Hisaab team.</p>
+
+          <div class="mt-10 bg-mint rounded-3xl overflow-hidden max-w-3xl">
+            <div id="team" class="flex flex-wrap gap-x-8 gap-y-4 px-6 sm:px-8 py-5 border-b border-ink/10 bg-white/60"></div>
+
+            <div id="chat" class="h-[26rem] overflow-y-auto px-4 sm:px-8 py-6 space-y-5"></div>
+
+            <div class="px-4 sm:px-8 pb-6">
+              <div id="quick-replies" class="no-scrollbar flex gap-2 overflow-x-auto pb-3"></div>
+              <form id="chat-form" class="flex gap-2">
+                <input id="chat-input" type="text" placeholder="Write a message…" autocomplete="off"
+                  class="w-full bg-white border border-ink/15 rounded-xl px-4 py-3 text-sm outline-none focus:border-ink focus:ring-2 focus:ring-lime">
+                <button type="submit" class="shrink-0 px-6 py-3 rounded-full bg-ink text-paper text-sm font-medium hover:bg-ink-soft transition-colors">Send</button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/js/data.js"></script>
+  <script>
+    (function () {
+      /* ---------- User ---------- */
+      let user = null;
+      try { user = JSON.parse(localStorage.getItem('hisaab_user')); } catch (e) { user = null; }
+      const isDemo = !user || !user.name;
+      if (isDemo) user = { name: CLIENT.name, email: CLIENT.email };
+      let first = String(user.name).trim().split(/[\s._-]+/)[0] || 'there';
+      first = first.charAt(0).toUpperCase() + first.slice(1);
+
+      document.getElementById('first-name').textContent = first;
+      document.getElementById('company-line').textContent = CLIENT.company;
+      document.querySelectorAll('.user-company').forEach(el => el.textContent = CLIENT.company);
+      if (isDemo) document.getElementById('demo-sticker').classList.remove('hidden');
+      const h = new Date().getHours();
+      document.getElementById('greeting').textContent = h < 12 ? 'Good morning' : h < 17 ? 'Good afternoon' : 'Good evening';
+
+      document.querySelectorAll('.sign-out').forEach(b => b.addEventListener('click', () => {
+        try { localStorage.removeItem('hisaab_user'); } catch (e) {}
+        window.location.href = 'login.html';
+      }));
+
+      /* ---------- KPIs ---------- */
+      const L = MONTHS.length - 1;
+      const lastM = MONTHS[L];
+      const profit = REVENUE.map((r, i) => r - EXPENSES[i]);
+      function pct(cur, prev) { return prev ? ((cur - prev) / Math.abs(prev)) * 100 : 0; }
+      const kpis = [
+        { label: `Revenue (${lastM})`, value: REVENUE[L], change: pct(REVENUE[L], REVENUE[L - 1]), upGood: true },
+        { label: `Expenses (${lastM})`, value: EXPENSES[L], change: pct(EXPENSES[L], EXPENSES[L - 1]), upGood: false },
+        { label: `Net profit (${lastM})`, value: profit[L], change: pct(profit[L], profit[L - 1]), upGood: true,
+          extra: `${Math.round(profit[L] / REVENUE[L] * 100)}% margin` },
+        { label: 'Cash in bank', value: CASH_BALANCE[L], change: pct(CASH_BALANCE[L], CASH_BALANCE[L - 1]), upGood: true }
+      ];
+      document.getElementById('kpis').innerHTML = kpis.map(k => {
+        const up = k.change >= 0;
+        const good = up === k.upGood;
+        return `
+          <div class="bg-white rounded-3xl border border-ink/10 p-5 sm:p-6">
+            <div class="text-xs sm:text-sm text-ink/60">${k.label}</div>
+            <div class="mt-3 text-2xl sm:text-3xl font-semibold tracking-tight">${formatShort(k.value)}</div>
+            <div class="mt-3 flex flex-wrap items-center gap-2">
+              <span class="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold ${good ? 'bg-lime' : 'bg-coral text-white'}">
+                ${up ? '↑' : '↓'} ${Math.abs(k.change).toFixed(1)}%
+              </span>
+              ${k.extra ? `<span class="text-xs text-ink/60">${k.extra}</span>` : '<span class="text-xs text-ink/50">vs last month</span>'}
+            </div>
+          </div>`;
+      }).join('');
+
+      /* ---------- Runway ---------- */
+      const burns = REVENUE.map((r, i) => Math.max(0, EXPENSES[i] - r));
+      const avgBurn = burns.reduce((a, b) => a + b, 0) / burns.length;
+      const runwayEl = document.getElementById('runway-value');
+      const runwayNote = document.getElementById('runway-note');
+      if (avgBurn === 0) {
+        runwayEl.textContent = 'Profitable — no burn 🎉';
+        runwayNote.textContent = 'Every month this year, revenue beat expenses.';
+      } else {
+        runwayEl.textContent = `${(CASH_BALANCE[L] / avgBurn).toFixed(1)} months`;
+        runwayNote.textContent = `Average burn ${formatShort(avgBurn)} / month.`;
+      }
+      document.getElementById('cash-now').textContent = formatShort(CASH_BALANCE[L]);
+
+      /* ---------- Doughnut legend ---------- */
+      const SPLIT_COLORS = ['#12302A', '#D4F57A', '#E6F0E8', '#FF8A5B', '#9BB5A8', '#C9C2B0'];
+      document.getElementById('split-legend').innerHTML = EXPENSE_SPLIT.map((s, i) => `
+        <li class="flex items-center justify-between gap-3">
+          <span class="flex items-center gap-2.5"><span class="w-3 h-3 rounded-full border border-ink/15" style="background:${SPLIT_COLORS[i % SPLIT_COLORS.length]}"></span>${escapeHTML(s.label)}</span>
+          <span class="font-medium">${formatShort(s.amount)}</span>
+        </li>`).join('');
+
+      /* ---------- Charts (created lazily once Overview is visible) ---------- */
+      let charts = null, flowChart = null, period = 6;
+      function setPeriodButtons() {
+        document.querySelectorAll('#period-toggle button').forEach(b => {
+          const on = Number(b.dataset.period) === period;
+          b.classList.toggle('bg-ink', on);
+          b.classList.toggle('text-paper', on);
+        });
+      }
+      setPeriodButtons();
+
+      function initCharts() {
+        if (charts || typeof Chart === 'undefined') return;
+        Chart.defaults.font.family = 'Outfit, sans-serif';
+        Chart.defaults.color = 'rgba(18,48,42,0.6)';
+        const grid = { color: 'rgba(18,48,42,0.06)', drawTicks: false };
+        const tooltip = {
+          backgroundColor: '#12302A', titleColor: '#FAF7F0', bodyColor: '#FAF7F0', padding: 10, cornerRadius: 10,
+          callbacks: { label: c => ` ${c.dataset.label ? c.dataset.label + ': ' : ''}${formatShort(c.parsed.y ?? c.parsed)}` }
+        };
+        const yAxis = { border: { display: false }, grid, ticks: { padding: 8, maxTicksLimit: 5, callback: v => formatShort(v) } };
+        const xAxis = { border: { display: false }, grid: { display: false } };
+
+        flowChart = new Chart(document.getElementById('flow-chart'), {
+          type: 'bar',
+          data: {
+            labels: MONTHS.slice(-period),
+            datasets: [
+              { label: 'Revenue', data: REVENUE.slice(-period), backgroundColor: '#12302A', borderRadius: 6, maxBarThickness: 18 },
+              { label: 'Expenses', data: EXPENSES.slice(-period), backgroundColor: '#D4F57A', borderRadius: 6, maxBarThickness: 18 }
+            ]
+          },
+          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip }, scales: { x: xAxis, y: { ...yAxis, beginAtZero: true } } }
+        });
+
+        new Chart(document.getElementById('cash-chart'), {
+          type: 'line',
+          data: {
+            labels: MONTHS,
+            datasets: [{ label: 'Cash', data: CASH_BALANCE, borderColor: '#12302A', borderWidth: 2.5, tension: 0.35,
+              fill: true, backgroundColor: 'rgba(212,245,122,0.35)', pointRadius: 0, pointHoverRadius: 5, pointBackgroundColor: '#12302A' }]
+          },
+          options: { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false },
+            plugins: { legend: { display: false }, tooltip }, scales: { x: xAxis, y: yAxis } }
+        });
+
+        new Chart(document.getElementById('split-chart'), {
+          type: 'doughnut',
+          data: {
+            labels: EXPENSE_SPLIT.map(s => s.label),
+            datasets: [{ data: EXPENSE_SPLIT.map(s => s.amount), backgroundColor: SPLIT_COLORS, borderColor: '#ffffff', borderWidth: 3, hoverOffset: 4 }]
+          },
+          options: { responsive: true, maintainAspectRatio: false, cutout: '68%',
+            plugins: { legend: { display: false }, tooltip: { ...tooltip, callbacks: { label: c => ` ${c.label}: ${formatShort(c.parsed)}` } } } }
+        });
+        charts = true;
+      }
+
+      document.querySelectorAll('#period-toggle button').forEach(b => b.addEventListener('click', () => {
+        period = Number(b.dataset.period);
+        setPeriodButtons();
+        if (flowChart) {
+          flowChart.data.labels = MONTHS.slice(-period);
+          flowChart.data.datasets[0].data = REVENUE.slice(-period);
+          flowChart.data.datasets[1].data = EXPENSES.slice(-period);
+          flowChart.update();
+        }
+      }));
+
+      /* ---------- Statements ---------- */
+      document.getElementById('statement-list').innerHTML = STATEMENTS.map((s, idx) => {
+        const ready = s.status === 'Ready';
+        const pill = ready
+          ? '<span class="rounded-full bg-lime px-3 py-1 text-xs font-semibold">Ready</span>'
+          : `<span class="rounded-full bg-mint px-3 py-1 text-xs font-semibold">In progress · Ready by ${escapeHTML(s.ready)}</span>`;
+        const files = ready && s.files.length ? `
+          <div class="mt-5 flex flex-wrap gap-2">
+            ${s.files.map(f => `<button type="button" class="file-chip inline-flex items-center gap-1.5 rounded-full border border-ink/15 px-3.5 py-2 text-xs font-medium hover:border-ink hover:bg-mint transition-colors" data-card="${idx}">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M7 11l5 5 5-5M4 20h16"/></svg>${escapeHTML(f)}</button>`).join('')}
+          </div>
+          <p class="toast hidden mt-3 text-xs font-medium text-ink/70" data-toast="${idx}">Demo: download not available</p>` : '';
+        return `
+          <div class="bg-white rounded-3xl border border-ink/10 p-6">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <h3 class="text-lg font-semibold tracking-tight">${escapeHTML(s.month)}</h3>
+              ${pill}
+            </div>
+            ${files}
+          </div>`;
+      }).join('');
+
+      const toastTimers = {};
+      document.getElementById('statement-list').addEventListener('click', e => {
+        const chip = e.target.closest('.file-chip');
+        if (!chip) return;
+        const id = chip.dataset.card;
+        const t = document.querySelector(`[data-toast="${id}"]`);
+        t.classList.remove('hidden');
+        clearTimeout(toastTimers[id]);
+        toastTimers[id] = setTimeout(() => t.classList.add('hidden'), 2200);
+      });
+
+      document.getElementById('file-input').addEventListener('change', e => {
+        const files = Array.from(e.target.files || []);
+        if (!files.length) return;
+        document.getElementById('file-list').innerHTML = files.map(f => `
+          <li class="flex items-center gap-2 bg-paper rounded-xl px-3 py-2">
+            <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/></svg>
+            <span class="truncate">${escapeHTML(f.name)}</span>
+          </li>`).join('');
+        document.getElementById('file-out').classList.remove('hidden');
+      });
+
+      /* ---------- Messages ---------- */
+      const avatar = (name, dark) =>
+        `<span class="w-9 h-9 shrink-0 rounded-full ${dark ? 'bg-ink text-lime' : 'bg-lime text-ink'} flex items-center justify-center text-xs font-semibold">${escapeHTML(initials(name))}</span>`;
+
+      document.getElementById('team').innerHTML = CLIENT.team.map((p, i) => `
+        <div class="flex items-center gap-3">
+          ${avatar(p.name, i === 0)}
+          <div class="leading-tight">
+            <div class="text-sm font-semibold">${escapeHTML(p.name)}</div>
+            <div class="text-xs text-ink/60">${escapeHTML(p.role)}</div>
+          </div>
+        </div>`).join('');
+
+      const chat = document.getElementById('chat');
+      function bubble(m) {
+        const name = m.mine ? 'You' : m.from;
+        if (m.mine) {
+          return `<div class="flex flex-col items-end">
+            <div class="text-[11px] text-ink/50 mb-1">${escapeHTML(name)} · ${escapeHTML(m.time)}</div>
+            <div class="max-w-[85%] sm:max-w-[75%] bg-ink text-paper rounded-2xl rounded-br-md px-4 py-3 text-sm leading-relaxed">${escapeHTML(m.text)}</div>
+          </div>`;
+        }
+        return `<div class="flex flex-col items-start">
+          <div class="text-[11px] text-ink/50 mb-1">${escapeHTML(name)} · ${escapeHTML(m.time)}</div>
+          <div class="max-w-[85%] sm:max-w-[75%] bg-white rounded-2xl rounded-bl-md px-4 py-3 text-sm leading-relaxed">${escapeHTML(m.text)}</div>
+        </div>`;
+      }
+      function addMessage(m) {
+        chat.insertAdjacentHTML('beforeend', bubble(m));
+        chat.scrollTop = chat.scrollHeight;
+      }
+      MESSAGES.forEach(addMessage);
+
+      const input = document.getElementById('chat-input');
+      const quick = ['Upload done', 'Can we schedule a call?', "When will this month's books close?"];
+      document.getElementById('quick-replies').innerHTML = quick.map(q =>
+        `<button type="button" class="qr shrink-0 rounded-full bg-white border border-ink/10 px-3.5 py-2 text-xs font-medium hover:border-ink">${escapeHTML(q)}</button>`).join('');
+      document.querySelectorAll('.qr').forEach(b => b.addEventListener('click', () => { input.value = b.textContent; input.focus(); }));
+
+      document.getElementById('chat-form').addEventListener('submit', e => {
+        e.preventDefault();
+        const text = input.value.trim();
+        if (!text) return;
+        addMessage({ from: user.name, mine: true, time: 'Just now', text });
+        input.value = '';
+        setTimeout(() => addMessage({
+          from: 'Rohan Das', mine: false, time: 'Just now',
+          text: `Thanks ${first}! Got it — we'll get back to you within a few hours.`
+        }), 1200);
+      });
+
+      /* ---------- Hash routing ---------- */
+      const SECTIONS = ['overview', 'statements', 'messages'];
+      function route() {
+        const key = (location.hash || '').replace('#', '');
+        const current = SECTIONS.includes(key) ? key : 'overview';
+        document.querySelectorAll('[data-section]').forEach(s => s.classList.toggle('hidden', s.dataset.section !== current));
+        document.querySelectorAll('.side-link').forEach(a => {
+          const on = a.dataset.nav === current;
+          a.classList.toggle('bg-lime', on);
+          a.classList.toggle('text-ink', on);
+          a.classList.toggle('text-paper/70', !on);
+          a.classList.toggle('hover:text-paper', !on);
+          a.classList.toggle('hover:bg-ink-soft', !on);
+        });
+        document.querySelectorAll('.pill-link').forEach(a => {
+          const on = a.dataset.nav === current;
+          a.classList.toggle('bg-lime', on);
+          a.classList.toggle('text-ink', on);
+          a.classList.toggle('bg-ink-soft', !on);
+          a.classList.toggle('text-paper', !on);
+        });
+        if (current === 'overview') initCharts();
+        if (current === 'messages') chat.scrollTop = chat.scrollHeight;
+        window.scrollTo(0, 0);
+      }
+      document.querySelectorAll('[data-nav]').forEach(a => a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = '#' + a.dataset.nav;
+        if (location.hash !== target) history.pushState(null, '', target);
+        route();
+      }));
+      window.addEventListener('hashchange', route);
+      window.addEventListener('popstate', route);
+      route();
+    })();
+  </script>
+</body>
+</html>

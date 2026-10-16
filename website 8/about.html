@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Kavach Insurance Brokers</title>
+  <meta name="description" content="Kavach is a licensed insurance broker founded in Mumbai in 2012. We work for Indian businesses, not insurers, comparing 15+ insurers and standing by you at claim time.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brown: { DEFAULT: '#2B1B12', soft: '#4A3328' },
+            sand: { DEFAULT: '#DCC5B8', light: '#EBDDD4' },
+            cream: '#FFF6F0'
+          },
+          fontFamily: { sans: ['Montserrat', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Montserrat', sans-serif; color: #2B1B12; }
+    img { background: #EBDDD4; }
+    details summary::-webkit-details-marker { display: none; }
+    details[open] .chev { transform: rotate(180deg); }
+  </style>
+</head>
+<body class="bg-white antialiased">
+
+  <header class="bg-cream">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 text-xl font-extrabold tracking-tight">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2l8 3v6c0 5-3.5 9.5-8 11-4.5-1.5-8-6-8-11V5z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
+        Kavach
+      </a>
+
+      <nav class="hidden md:flex items-center gap-10 text-sm font-semibold">
+        <a href="index.html" class="hover:opacity-70">Home</a>
+        <a href="services.html" class="hover:opacity-70">Services</a>
+        <a href="about.html" class="hover:opacity-70 underline underline-offset-8 decoration-2">About</a>
+        <a href="contact.html" class="hover:opacity-70">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-5">
+        <a href="login.html" class="hidden sm:inline text-sm font-semibold hover:opacity-70">Client Login</a>
+        <a href="contact.html#quote" class="px-6 py-2.5 bg-brown text-white text-sm font-semibold rounded-md hover:bg-brown-soft transition-colors">Get a Quote</a>
+        <button id="menu-btn" aria-label="Menu" class="md:hidden">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav id="mobile-menu" class="hidden md:hidden px-4 pb-4 space-y-3 text-sm font-semibold">
+      <a href="index.html" class="block">Home</a>
+      <a href="services.html" class="block">Services</a>
+      <a href="about.html" class="block underline underline-offset-8 decoration-2">About</a>
+      <a href="contact.html" class="block">Contact</a>
+      <a href="login.html" class="block">Client Login</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="bg-cream">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-10 pb-16 md:pt-16 md:pb-24 text-center">
+      <p class="text-xs font-bold uppercase tracking-widest">About Kavach</p>
+      <h1 class="mt-4 text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1]">Your Advocate,<br class="hidden sm:block"> Not the Insurer's</h1>
+      <p class="mt-6 text-sm sm:text-base font-medium max-w-xl mx-auto leading-relaxed">An insurer's agent sells you that insurer's policy. As a broker, we represent you: we compare the market, negotiate terms and fight your corner when you claim.</p>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24 grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80" alt="Office towers in a business district" class="w-full h-72 md:h-[28rem] object-cover rounded-2xl shadow-md" loading="lazy">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest">Our Story</p>
+        <h2 class="mt-3 text-3xl sm:text-4xl font-extrabold leading-tight">Started in Mumbai in 2012, after a claim that should have been paid</h2>
+        <p class="mt-5 text-sm sm:text-base font-medium leading-relaxed">Our founder spent a decade on the insurer side and watched too many small manufacturers lose claims over a missed clause or an under-declared sum insured. Kavach was set up as a licensed insurance broker to fix that, by sitting on the business owner's side of the table.</p>
+        <p class="mt-4 text-sm sm:text-base font-medium leading-relaxed">Today we place commercial property, liability and business interruption cover for factories, warehouses, retailers, offices and hotels across India, from four offices and a team of risk and claims specialists.</p>
+        <a href="contact.html#quote" class="mt-7 inline-block px-6 py-3 bg-brown text-white text-sm font-semibold rounded-md hover:bg-brown-soft transition-colors">Talk to an advisor</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="bg-sand">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div><p class="text-3xl sm:text-4xl font-extrabold">2012</p><p class="mt-1 text-sm font-semibold">Founded in Mumbai</p></div>
+      <div><p class="text-3xl sm:text-4xl font-extrabold">1,800+</p><p class="mt-1 text-sm font-semibold">Businesses protected</p></div>
+      <div><p id="stat-sum" class="text-3xl sm:text-4xl font-extrabold">₹2,400 Cr+</p><p class="mt-1 text-sm font-semibold">Sum insured placed</p></div>
+      <div><p class="text-3xl sm:text-4xl font-extrabold">15+</p><p class="mt-1 text-sm font-semibold">Insurers compared</p></div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24">
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="text-3xl sm:text-4xl font-extrabold">What We Stand For</h2>
+        <p class="mt-4 text-sm sm:text-base font-medium">Three principles guide every policy we place.</p>
+      </div>
+      <div class="mt-12 grid md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-2xl shadow-md p-7">
+          <div class="w-12 h-12 bg-cream rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3v18M5 7h14M5 7l-3 7a3 3 0 006 0zM19 7l-3 7a3 3 0 006 0zM8 21h8"/></svg>
+          </div>
+          <h3 class="mt-5 text-lg font-extrabold">Independence</h3>
+          <p class="mt-2 text-sm font-medium leading-relaxed">We are not tied to any insurer. Our recommendation is the policy that best fits your risk, not the one that pays us most.</p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-md p-7">
+          <div class="w-12 h-12 bg-cream rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h3 class="mt-5 text-lg font-extrabold">Transparency</h3>
+          <p class="mt-2 text-sm font-medium leading-relaxed">Side-by-side quotes, plain-language summaries of exclusions, and clear disclosure of how we are paid.</p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-md p-7">
+          <div class="w-12 h-12 bg-cream rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2l8 3v6c0 5-3.5 9.5-8 11-4.5-1.5-8-6-8-11V5z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
+          </div>
+          <h3 class="mt-5 text-lg font-extrabold">Claims First</h3>
+          <p class="mt-2 text-sm font-medium leading-relaxed">A policy is only worth what it pays. Our dedicated claims team handles surveyors, paperwork and follow-ups for you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section id="team" class="bg-cream scroll-mt-6">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24">
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="text-3xl sm:text-4xl font-extrabold">Meet the Team</h2>
+        <p class="mt-4 text-sm sm:text-base font-medium">Specialists in commercial risk, underwriting and claims.</p>
+      </div>
+      <div id="team-grid" class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+    </div>
+  </section>
+
+  <!-- Partners -->
+  <section id="partners" class="scroll-mt-6">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-24 text-center">
+      <h2 class="text-3xl sm:text-4xl font-extrabold">Our Insurer Partners</h2>
+      <p class="mt-4 text-sm sm:text-base font-medium max-w-xl mx-auto leading-relaxed">Kavach compares 15+ general insurers for every placement. A few of the partners we work with most often:</p>
+      <div id="insurers" class="mt-10 flex flex-wrap justify-center gap-3"></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="px-4 sm:px-6 pb-16 md:pb-24">
+    <div class="max-w-6xl mx-auto bg-brown text-white rounded-2xl px-6 sm:px-12 py-12 md:py-16 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold">Put a broker on your side</h2>
+        <p class="mt-3 text-sm sm:text-base font-medium text-sand max-w-lg">Get a free review of your current cover and quotes from multiple insurers.</p>
+      </div>
+      <a href="contact.html#quote" class="shrink-0 px-6 py-3 bg-cream text-brown text-sm font-semibold rounded-md hover:bg-sand transition-colors text-center">Get a quote</a>
+    </div>
+  </section>
+
+  <footer class="bg-sand">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-14 grid grid-cols-2 md:grid-cols-6 gap-10 text-sm">
+      <div class="col-span-2">
+        <a href="index.html" class="flex items-center gap-2 text-xl font-extrabold">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2l8 3v6c0 5-3.5 9.5-8 11-4.5-1.5-8-6-8-11V5z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
+          Kavach
+        </a>
+        <p class="mt-4 font-semibold leading-relaxed max-w-[15rem]">Protecting the buildings, stock and people your business depends on.</p>
+      </div>
+      <div>
+        <h4 class="font-bold text-base mb-4">Company</h4>
+        <ul class="space-y-3 font-medium">
+          <li><a href="about.html" class="hover:opacity-70">Our Story</a></li>
+          <li><a href="about.html#team" class="hover:opacity-70">Our Team</a></li>
+          <li><a href="about.html#partners" class="hover:opacity-70">Insurer Partners</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-base mb-4">Insurance</h4>
+        <ul class="space-y-3 font-medium">
+          <li><a href="services.html#property" class="hover:opacity-70">Property</a></li>
+          <li><a href="services.html#liability" class="hover:opacity-70">Liability</a></li>
+          <li><a href="services.html#business-interruption" class="hover:opacity-70">Business Interruption</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-base mb-4">Support</h4>
+        <ul class="space-y-3 font-medium">
+          <li><a href="contact.html#faq" class="hover:opacity-70">FAQ</a></li>
+          <li><a href="contact.html" class="hover:opacity-70">Contact Us</a></li>
+          <li><a href="dashboard.html#claims" class="hover:opacity-70">Report a Claim</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-base mb-4">Reach Us</h4>
+        <ul class="space-y-3 font-medium">
+          <li>+91 98765 43210</li>
+          <li>help@kavach.in</li>
+          <li>Mumbai, India</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-brown/10 py-5 text-center text-xs font-medium">&copy; 2026 Kavach Insurance Brokers Pvt. Ltd. All rights reserved.</div>
+  </footer>
+
+  <script src="assets/js/data.js"></script>
+  <script>
+    const TEAM = [
+      { name: 'Arvind Mehta', role: 'Founder & Principal Officer', bio: '20+ years in commercial underwriting before founding Kavach in 2012.' },
+      { name: 'Priya Iyer', role: 'Head of Property Risk', bio: 'Leads risk surveys and SFSP placements for factories and warehouses.' },
+      { name: 'Sameer Khan', role: 'Head of Claims', bio: 'Manages surveyors and settlements so clients get paid fully and fast.' },
+      { name: 'Neha Joshi', role: 'Client Advisor', bio: 'Your day-to-day contact for renewals, endorsements and new covers.' }
+    ];
+    document.getElementById('team-grid').innerHTML = TEAM.map(p => `
+      <div class="bg-white rounded-2xl shadow-md p-7 text-center">
+        <div class="w-20 h-20 mx-auto rounded-full bg-brown text-white flex items-center justify-center text-2xl font-extrabold">${initials(p.name)}</div>
+        <h3 class="mt-5 text-lg font-extrabold">${p.name}</h3>
+        <p class="mt-1 text-sm font-semibold">${p.role}</p>
+        <p class="mt-3 text-sm font-medium leading-relaxed">${p.bio}</p>
+      </div>`).join('');
+
+    document.getElementById('insurers').innerHTML = INSURERS.map(n =>
+      `<span class="px-5 py-2.5 bg-cream border border-sand rounded-full text-sm font-semibold">${n}</span>`
+    ).join('') + '<span class="px-5 py-2.5 bg-cream border border-sand rounded-full text-sm font-semibold">+ 10 more</span>';
+  </script>
+  <script src="assets/js/animations.js" data-accent="#2B1B12"></script>
+</body>
+</html>

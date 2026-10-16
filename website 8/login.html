@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Login | Kavach Insurance Brokers</title>
+  <meta name="description" content="Sign in to view your commercial property policies, compare quotes and track claims with Kavach Insurance Brokers.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brown: { DEFAULT: '#2B1B12', soft: '#4A3328' },
+            sand: { DEFAULT: '#DCC5B8', light: '#EBDDD4' },
+            cream: '#FFF6F0'
+          },
+          fontFamily: { sans: ['Montserrat', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Montserrat', sans-serif; color: #2B1B12; }
+    img { background: #EBDDD4; }
+    details summary::-webkit-details-marker { display: none; }
+    details[open] .chev { transform: rotate(180deg); }
+  </style>
+</head>
+<body class="bg-white antialiased">
+
+  <div class="min-h-screen md:grid md:grid-cols-2">
+
+    <!-- Image side (md+) -->
+    <aside class="hidden md:block relative min-h-screen">
+      <img id="side-img" src="" alt="Modern office towers" class="absolute inset-0 w-full h-full object-cover">
+      <div class="absolute inset-0 bg-brown/70"></div>
+      <div class="relative h-full flex flex-col justify-between p-10 text-white">
+        <a href="index.html" class="flex items-center gap-2 text-xl font-extrabold tracking-tight">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2l8 3v6c0 5-3.5 9.5-8 11-4.5-1.5-8-6-8-11V5z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
+          Kavach
+        </a>
+        <p class="text-2xl lg:text-3xl font-extrabold leading-snug max-w-md">Your policies, quotes and claims — in one secure place.</p>
+      </div>
+    </aside>
+
+    <!-- Form side -->
+    <main class="min-h-screen flex flex-col px-4 sm:px-6 py-8">
+      <div class="flex items-center justify-between">
+        <a href="index.html" class="md:hidden flex items-center gap-2 text-xl font-extrabold tracking-tight">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2l8 3v6c0 5-3.5 9.5-8 11-4.5-1.5-8-6-8-11V5z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
+          Kavach
+        </a>
+        <a href="index.html" class="ml-auto text-sm font-semibold hover:opacity-70">&larr; Back to website</a>
+      </div>
+
+      <div class="flex-1 flex items-center justify-center py-10">
+        <div class="w-full max-w-sm">
+          <h1 class="text-3xl font-extrabold">Client Login</h1>
+          <p class="mt-2 text-sm font-medium">Sign in to manage your business cover.</p>
+
+          <form id="login-form" class="mt-8 space-y-4" novalidate>
+            <div>
+              <label for="email" class="block text-sm font-semibold mb-1.5">Email</label>
+              <input id="email" type="email" required autocomplete="email" placeholder="you@company.in" class="w-full bg-cream border border-sand rounded-md px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brown">
+              <p id="email-error" class="hidden mt-1.5 text-xs font-medium text-red-600"></p>
+            </div>
+            <div>
+              <label for="password" class="block text-sm font-semibold mb-1.5">Password</label>
+              <div class="relative">
+                <input id="password" type="password" required autocomplete="current-password" placeholder="Your password" class="w-full bg-cream border border-sand rounded-md px-4 py-3 pr-16 text-sm outline-none focus:ring-2 focus:ring-brown">
+                <button type="button" id="toggle-pw" aria-label="Show password" class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-semibold hover:opacity-70">Show</button>
+              </div>
+              <p id="pw-error" class="hidden mt-1.5 text-xs font-medium text-red-600"></p>
+            </div>
+            <div class="text-right text-sm">
+              <a href="#" id="forgot" class="font-semibold hover:opacity-70">Forgot password?</a>
+            </div>
+            <p id="reset-note" class="hidden text-sm font-semibold">Reset link sent to your email</p>
+            <button type="submit" class="w-full px-6 py-3 bg-brown text-white text-sm font-semibold rounded-md hover:bg-brown-soft transition-colors">Sign in</button>
+          </form>
+
+          <div class="my-6 flex items-center gap-3 text-xs font-semibold">
+            <span class="flex-1 h-px bg-sand"></span>or<span class="flex-1 h-px bg-sand"></span>
+          </div>
+
+          <button type="button" id="quick-login" class="w-full px-6 py-3 border border-brown text-brown text-sm font-semibold rounded-md hover:bg-cream transition-colors">Quick login (demo account)</button>
+
+          <p class="mt-8 text-sm font-medium text-center">New business? <a href="contact.html#quote" class="font-bold underline underline-offset-2">Get a quote</a></p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/js/data.js"></script>
+  <script>
+    document.getElementById('side-img').src = photo(PHOTOS.offices, 1200);
+
+    function saveUser(user) {
+      try { localStorage.setItem('kavach_user', JSON.stringify(user)); } catch (e) {}
+      window.location.href = 'dashboard.html';
+    }
+
+    const emailInput = document.getElementById('email');
+    const pw = document.getElementById('password');
+    const toggle = document.getElementById('toggle-pw');
+    toggle.addEventListener('click', () => {
+      const show = pw.type === 'password';
+      pw.type = show ? 'text' : 'password';
+      toggle.textContent = show ? 'Hide' : 'Show';
+      toggle.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
+    });
+
+    document.getElementById('forgot').addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById('reset-note').classList.remove('hidden');
+    });
+
+    function setError(id, msg) {
+      const el = document.getElementById(id);
+      el.textContent = msg;
+      el.classList.toggle('hidden', !msg);
+    }
+
+    document.getElementById('login-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = emailInput.value.trim();
+      let ok = true;
+      if (!email) { setError('email-error', 'Email is required.'); ok = false; }
+      else if (!/^\S+@\S+\.\S+$/.test(email)) { setError('email-error', 'Please enter a valid email address.'); ok = false; }
+      else setError('email-error', '');
+      if (!pw.value) { setError('pw-error', 'Password is required.'); ok = false; }
+      else setError('pw-error', '');
+      if (!ok) return;
+      saveUser({ name: email.split('@')[0], email });
+    });
+
+    document.getElementById('quick-login').addEventListener('click', () => {
+      saveUser({ name: CLIENT.name, email: CLIENT.email });
+    });
+  </script>
+</body>
+</html>

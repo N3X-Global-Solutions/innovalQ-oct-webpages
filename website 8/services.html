@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services | Kavach Insurance Brokers</title>
+  <meta name="description" content="Property, liability and business interruption insurance for Indian businesses, explained simply. Compare covers and add-ons with Kavach Insurance Brokers.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brown: { DEFAULT: '#2B1B12', soft: '#4A3328' },
+            sand: { DEFAULT: '#DCC5B8', light: '#EBDDD4' },
+            cream: '#FFF6F0'
+          },
+          fontFamily: { sans: ['Montserrat', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Montserrat', sans-serif; color: #2B1B12; }
+    img { background: #EBDDD4; }
+    details summary::-webkit-details-marker { display: none; }
+    details[open] .chev { transform: rotate(180deg); }
+  </style>
+</head>
+<body class="bg-white antialiased">
+
+  <header class="bg-cream">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 text-xl font-extrabold tracking-tight">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2l8 3v6c0 5-3.5 9.5-8 11-4.5-1.5-8-6-8-11V5z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
+        Kavach
+      </a>
+
+      <nav class="hidden md:flex items-center gap-10 text-sm font-semibold">
+        <a href="index.html" class="hover:opacity-70">Home</a>
+        <a href="services.html" class="hover:opacity-70 underline underline-offset-8 decoration-2">Services</a>
+        <a href="about.html" class="hover:opacity-70">About</a>
+        <a href="contact.html" class="hover:opacity-70">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-5">
+        <a href="login.html" class="hidden sm:inline text-sm font-semibold hover:opacity-70">Client Login</a>
+        <a href="contact.html#quote" class="px-6 py-2.5 bg-brown text-white text-sm font-semibold rounded-md hover:bg-brown-soft transition-colors">Get a Quote</a>
+        <button id="menu-btn" aria-label="Menu" class="md:hidden">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav id="mobile-menu" class="hidden md:hidden px-4 pb-4 space-y-3 text-sm font-semibold">
+      <a href="index.html" class="block">Home</a>
+      <a href="services.html" class="block underline underline-offset-8 decoration-2">Services</a>
+      <a href="about.html" class="block">About</a>
+      <a href="contact.html" class="block">Contact</a>
+      <a href="login.html" class="block">Client Login</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="bg-cream">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-10 pb-16 md:pt-16 md:pb-24 text-center">
+      <p class="text-xs font-bold uppercase tracking-widest">Our Services</p>
+      <h1 class="mt-4 text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1]">Commercial Insurance,<br class="hidden sm:block"> Explained Simply</h1>
+      <p class="mt-6 text-sm sm:text-base font-medium max-w-xl mx-auto leading-relaxed">Three core covers protect most Indian businesses: your property, your legal liability and your income. We explain what each one does, then compare 15+ insurers to find the right fit.</p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3 text-sm font-semibold">
+        <a href="#property" class="px-5 py-2.5 bg-white rounded-md shadow-sm hover:bg-sand-light">Property</a>
+        <a href="#liability" class="px-5 py-2.5 bg-white rounded-md shadow-sm hover:bg-sand-light">Liability</a>
+        <a href="#business-interruption" class="px-5 py-2.5 bg-white rounded-md shadow-sm hover:bg-sand-light">Business Interruption</a>
+        <a href="#compare" class="px-5 py-2.5 bg-brown text-white rounded-md hover:bg-brown-soft">Which cover do I need?</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Property -->
+  <section id="property" class="scroll-mt-6">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24 grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1000&q=80" alt="Warehouse racks stocked with goods" class="w-full h-72 md:h-[28rem] object-cover rounded-2xl shadow-md" loading="lazy">
+      <div>
+        <div class="w-12 h-12 bg-cream rounded-lg flex items-center justify-center">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg>
+        </div>
+        <h2 class="mt-5 text-3xl sm:text-4xl font-extrabold leading-tight">Property Insurance</h2>
+        <p class="mt-4 text-sm sm:text-base font-medium leading-relaxed">Fire &amp; allied perils cover under the Standard Fire &amp; Special Perils (SFSP) policy. It pays to repair or replace your building, plant &amp; machinery and stock when they are damaged by an insured event.</p>
+        <h3 class="mt-6 font-bold text-sm uppercase tracking-wider">What's covered</h3>
+        <ul class="mt-3 grid sm:grid-cols-2 gap-x-6 gap-y-2.5 text-sm font-medium">
+          <li class="flex gap-2"><svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Fire, lightning &amp; explosion</li>
+          <li class="flex gap-2"><svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Storm, flood &amp; inundation</li>
+          <li class="flex gap-2"><svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Earthquake (as add-on)</li>
+          <li class="flex gap-2"><svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Riot, strike &amp; malicious damage</li>
+          <li class="flex gap-2"><svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Building &amp; interiors</li>
+          <li class="flex gap-2"><svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Plant, machinery &amp; stock</li>
+        </ul>
+        <p class="mt-6 text-sm font-medium"><span class="font-bold">Typical for:</span> factories, warehouses, showrooms and owned or leased offices.</p>
+        <a href="contact.html?cover=Property#quote" class="mt-7 inline-block px-6 py-3 bg-brown text-white text-sm font-semibold rounded-md hover:bg-brown-soft transition-colors">Get a quote</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Liability -->
+  <section id="liability" class="bg-cream scroll-mt-6">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24 grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1000&q=80" alt="Modern office interior" class="w-full h-72 md:h-[28rem] object-cover rounded-2xl shadow-md md:order-2" loading="lazy">
+      <div class="md:order-1">
+        <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3v18M5 7h14M5 7l-3 7a3 3 0 006 0zM19 7l-3 7a3 3 0 006 0zM8 21h8"/></svg>
+        </div>
+        <h2 class="mt-5 text-3xl sm:text-4xl font-extrabold leading-tight">Liability Insurance</h2>
+        <p class="mt-4 text-sm sm:text-base font-medium leading-relaxed">When a customer, visitor or third party holds your business responsible for injury, damage or financial loss, liability cover pays legal defence costs and compensation awarded against you.</p>
+        <h3 class="mt-6 font-bold text-sm uppercase tracking-wider">What's covered</h3>
+        <ul class="mt-3 grid sm:grid-cols-2 gap-x-6 gap-y-2.5 text-sm font-medium">
+          <li class="flex gap-2"><svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Public liability</li>
+          <li class="flex gap-2"><svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Product liability</li>
+          <li class="flex gap-2"><svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Directors &amp; Officers (D&amp;O)</li>
+          <li class="flex gap-2"><svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Professional indemnity</li>
+          <li class="flex gap-2"><svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Legal defence costs</li>
+          <li class="flex gap-2"><svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Third-party property damage</li>
+        </ul>
+        <p class="mt-6 text-sm font-medium"><span class="font-bold">Typical for:</span> retailers, hotels and restaurants, manufacturers, consultants and company boards.</p>
+        <a href="contact.html?cover=Liability#quote" class="mt-7 inline-block px-6 py-3 bg-brown text-white text-sm font-semibold rounded-md hover:bg-brown-soft transition-colors">Get a quote</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Business Interruption -->
+  <section id="business-interruption" class="scroll-mt-6">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24 grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <img src="https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?auto=format&fit=crop&w=1000&q=80" alt="City skyline with commercial buildings" class="w-full h-72 md:h-[28rem] object-cover rounded-2xl shadow-md" loading="lazy">
+      <div>
+        <div class="w-12 h-12 bg-cream rounded-lg flex items-center justify-center">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
+        </div>
+        <h2 class="mt-5 text-3xl sm:text-4xl font-extrabold leading-tight">Business Interruption / Loss of Profits</h2>
+        <p class="mt-4 text-sm sm:text-base font-medium leading-relaxed">A fire can shut your doors for months. Business interruption (also called Fire Loss of Profits) replaces the gross profit you lose and keeps paying fixed costs like salaries and rent while you rebuild.</p>
+        <h3 class="mt-6 font-bold text-sm uppercase tracking-wider">What's covered</h3>
+        <ul class="mt-3 grid sm:grid-cols-2 gap-x-6 gap-y-2.5 text-sm font-medium">
+          <li class="flex gap-2"><svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Loss of gross profit</li>
+          <li class="flex gap-2"><svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Standing charges &amp; wages</li>
+          <li class="flex gap-2"><svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Increased cost of working</li>
+          <li class="flex gap-2"><svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Loss of rent</li>
+          <li class="flex gap-2"><svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Indemnity period of 3–24 months</li>
+          <li class="flex gap-2"><svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Key supplier / customer extension</li>
+        </ul>
+        <p class="mt-6 text-sm font-medium"><span class="font-bold">Typical for:</span> manufacturers, logistics hubs and hospitality businesses with high fixed costs.</p>
+        <a href="contact.html#quote" class="mt-7 inline-block px-6 py-3 bg-brown text-white text-sm font-semibold rounded-md hover:bg-brown-soft transition-colors">Get a quote</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Add-on covers -->
+  <section class="bg-cream">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24">
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="text-3xl sm:text-4xl font-extrabold">Add-on Covers</h2>
+        <p class="mt-4 text-sm sm:text-base font-medium leading-relaxed">Close the gaps a standard policy leaves open. We recommend only what your risk profile actually needs.</p>
+      </div>
+      <div id="addons" class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </div>
+  </section>
+
+  <!-- Comparison -->
+  <section id="compare" class="scroll-mt-6">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-24">
+      <div class="text-center">
+        <h2 class="text-3xl sm:text-4xl font-extrabold">Which cover do I need?</h2>
+        <p class="mt-4 text-sm sm:text-base font-medium">Match the risk that worries you to the cover that pays for it.</p>
+      </div>
+      <div class="mt-10 overflow-x-auto rounded-2xl shadow-md" data-no-lift>
+        <table class="w-full min-w-[34rem] text-sm text-left">
+          <thead class="bg-brown text-white">
+            <tr>
+              <th class="px-5 py-4 font-bold">Risk</th>
+              <th class="px-5 py-4 font-bold text-center">Property</th>
+              <th class="px-5 py-4 font-bold text-center">Liability</th>
+              <th class="px-5 py-4 font-bold text-center">Business Interruption</th>
+            </tr>
+          </thead>
+          <tbody id="compare-body" class="font-medium"></tbody>
+        </table>
+      </div>
+      <p class="mt-4 text-xs font-medium text-center">Flood and theft cover depend on the policy wording and add-ons chosen. Your advisor will confirm exact terms.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="px-4 sm:px-6 pb-16 md:pb-24">
+    <div class="max-w-6xl mx-auto bg-brown text-white rounded-2xl px-6 sm:px-12 py-12 md:py-16 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold">Not sure where to start?</h2>
+        <p class="mt-3 text-sm sm:text-base font-medium text-sand max-w-lg">Tell us about your business. A risk advisor will recommend covers and bring back quotes from multiple insurers, free of charge.</p>
+      </div>
+      <a href="contact.html#quote" class="shrink-0 px-6 py-3 bg-cream text-brown text-sm font-semibold rounded-md hover:bg-sand transition-colors text-center">Request a free quote</a>
+    </div>
+  </section>
+
+  <footer class="bg-sand">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-14 grid grid-cols-2 md:grid-cols-6 gap-10 text-sm">
+      <div class="col-span-2">
+        <a href="index.html" class="flex items-center gap-2 text-xl font-extrabold">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2l8 3v6c0 5-3.5 9.5-8 11-4.5-1.5-8-6-8-11V5z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
+          Kavach
+        </a>
+        <p class="mt-4 font-semibold leading-relaxed max-w-[15rem]">Protecting the buildings, stock and people your business depends on.</p>
+      </div>
+      <div>
+        <h4 class="font-bold text-base mb-4">Company</h4>
+        <ul class="space-y-3 font-medium">
+          <li><a href="about.html" class="hover:opacity-70">Our Story</a></li>
+          <li><a href="about.html#team" class="hover:opacity-70">Our Team</a></li>
+          <li><a href="about.html#partners" class="hover:opacity-70">Insurer Partners</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-base mb-4">Insurance</h4>
+        <ul class="space-y-3 font-medium">
+          <li><a href="services.html#property" class="hover:opacity-70">Property</a></li>
+          <li><a href="services.html#liability" class="hover:opacity-70">Liability</a></li>
+          <li><a href="services.html#business-interruption" class="hover:opacity-70">Business Interruption</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-base mb-4">Support</h4>
+        <ul class="space-y-3 font-medium">
+          <li><a href="contact.html#faq" class="hover:opacity-70">FAQ</a></li>
+          <li><a href="contact.html" class="hover:opacity-70">Contact Us</a></li>
+          <li><a href="dashboard.html#claims" class="hover:opacity-70">Report a Claim</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-base mb-4">Reach Us</h4>
+        <ul class="space-y-3 font-medium">
+          <li>+91 98765 43210</li>
+          <li>help@kavach.in</li>
+          <li>Mumbai, India</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-brown/10 py-5 text-center text-xs font-medium">&copy; 2026 Kavach Insurance Brokers Pvt. Ltd. All rights reserved.</div>
+  </footer>
+
+  <script src="assets/js/data.js"></script>
+  <script>
+    const ADDONS = [
+      { title: 'Burglary & Theft', text: 'Forcible break-ins and theft of stock, fittings and contents from your premises.', icon: '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/>' },
+      { title: 'Machinery Breakdown', text: 'Sudden mechanical or electrical failure of plant and machinery, including repair costs.', icon: '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/>' },
+      { title: 'Electronic Equipment', text: 'Servers, computers, CNC controllers and other electronics against accidental damage.', icon: '<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/>' },
+      { title: 'Money in Transit', text: 'Cash and cheques while being carried to the bank, and money held in your safe.', icon: '<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 10v4M18 10v4"/>' },
+      { title: 'Marine Cargo', text: 'Goods in transit by road, rail, sea or air, from supplier to your gate and on to customers.', icon: '<path d="M3 17l2 4h14l2-4M5 17V9h14v8M9 9V5h6v4"/>' },
+      { title: 'Terrorism', text: 'Damage to property caused by acts of terrorism, under the Indian Market Terrorism Risk Insurance Pool.', icon: '<path d="M12 2l8 3v6c0 5-3.5 9.5-8 11-4.5-1.5-8-6-8-11V5z"/><path d="M12 8v5M12 16h.01"/>' }
+    ];
+    document.getElementById('addons').innerHTML = ADDONS.map(a => `
+      <div class="bg-white rounded-2xl shadow-md p-7">
+        <div class="w-12 h-12 bg-cream rounded-lg flex items-center justify-center">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">${a.icon}</svg>
+        </div>
+        <h3 class="mt-5 text-lg font-extrabold">${a.title}</h3>
+        <p class="mt-2 text-sm font-medium leading-relaxed">${a.text}</p>
+      </div>`).join('');
+
+    // [risk, property, liability, business interruption]
+    const RISKS = [
+      ['Fire damages your building or stock', 1, 0, 0],
+      ['Flood or storm damages your premises', 1, 0, 0],
+      ['Theft or burglary (with add-on)', 1, 0, 0],
+      ['A customer is injured on your premises', 0, 1, 0],
+      ['A faulty product harms a buyer', 0, 1, 0],
+      ['You lose income while closed for repairs', 0, 0, 1],
+      ['Fixed costs continue after a fire', 0, 0, 1]
+    ];
+    const mark = on => on
+      ? '<span class="inline-flex w-7 h-7 rounded-full bg-brown text-white items-center justify-center font-bold" aria-label="Covered">✓</span>'
+      : '<span class="text-brown/40 font-bold" aria-label="Not covered">–</span>';
+    document.getElementById('compare-body').innerHTML = RISKS.map((r, i) => `
+      <tr class="${i % 2 ? 'bg-cream' : 'bg-white'}">
+        <td class="px-5 py-4 font-semibold">${r[0]}</td>
+        <td class="px-5 py-4 text-center">${mark(r[1])}</td>
+        <td class="px-5 py-4 text-center">${mark(r[2])}</td>
+        <td class="px-5 py-4 text-center">${mark(r[3])}</td>
+      </tr>`).join('');
+  </script>
+  <script src="assets/js/animations.js" data-accent="#2B1B12"></script>
+</body>
+</html>

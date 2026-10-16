@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Kavach Insurance Brokers</title>
+  <meta name="description" content="Request a commercial insurance quote or talk to a Kavach risk advisor. Offices in Mumbai, Delhi, Bengaluru and Chennai.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brown: { DEFAULT: '#2B1B12', soft: '#4A3328' },
+            sand: { DEFAULT: '#DCC5B8', light: '#EBDDD4' },
+            cream: '#FFF6F0'
+          },
+          fontFamily: { sans: ['Montserrat', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Montserrat', sans-serif; color: #2B1B12; }
+    img { background: #EBDDD4; }
+    details summary::-webkit-details-marker { display: none; }
+    details[open] .chev { transform: rotate(180deg); }
+  </style>
+</head>
+<body class="bg-white antialiased">
+
+  <header class="bg-cream">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 text-xl font-extrabold tracking-tight">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2l8 3v6c0 5-3.5 9.5-8 11-4.5-1.5-8-6-8-11V5z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
+        Kavach
+      </a>
+
+      <nav class="hidden md:flex items-center gap-10 text-sm font-semibold">
+        <a href="index.html" class="hover:opacity-70">Home</a>
+        <a href="services.html" class="hover:opacity-70">Services</a>
+        <a href="about.html" class="hover:opacity-70">About</a>
+        <a href="contact.html" class="hover:opacity-70 underline underline-offset-8 decoration-2">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-5">
+        <a href="login.html" class="hidden sm:inline text-sm font-semibold hover:opacity-70">Client Login</a>
+        <a href="contact.html#quote" class="px-6 py-2.5 bg-brown text-white text-sm font-semibold rounded-md hover:bg-brown-soft transition-colors">Get a Quote</a>
+        <button id="menu-btn" aria-label="Menu" class="md:hidden">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav id="mobile-menu" class="hidden md:hidden px-4 pb-4 space-y-3 text-sm font-semibold">
+      <a href="index.html" class="block">Home</a>
+      <a href="services.html" class="block">Services</a>
+      <a href="about.html" class="block">About</a>
+      <a href="contact.html" class="block underline underline-offset-8 decoration-2">Contact</a>
+      <a href="login.html" class="block">Client Login</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="bg-cream">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-10 pb-16 md:pt-16 md:pb-24 text-center">
+      <p class="text-xs font-bold uppercase tracking-widest">Contact</p>
+      <h1 class="mt-4 text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1]">Talk to a Risk Advisor</h1>
+      <p class="mt-6 text-sm sm:text-base font-medium max-w-xl mx-auto leading-relaxed">Share a few details about your business and we will come back with recommended covers and quotes from multiple insurers. No cost, no obligation.</p>
+    </div>
+  </section>
+
+  <!-- Quote form -->
+  <section id="quote" class="scroll-mt-6">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24 grid lg:grid-cols-3 gap-8">
+      <div class="lg:col-span-2 bg-white rounded-2xl shadow-md p-6 sm:p-10">
+        <h2 class="text-2xl sm:text-3xl font-extrabold">Request a Quote</h2>
+        <p class="mt-2 text-sm font-medium">Fields marked * are required.</p>
+
+        <div id="success" data-no-lift class="hidden mt-6 bg-cream border border-sand rounded-xl p-5 flex gap-4 items-start" role="status">
+          <div class="w-12 h-12 shrink-0 bg-white rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>
+          </div>
+          <div>
+            <p class="font-extrabold">Thank you, <span id="success-name"></span>.</p>
+            <p class="mt-1 text-sm font-medium">We have received your request. An advisor will call you within 1 working day.</p>
+          </div>
+        </div>
+
+        <form id="quote-form" class="mt-8 grid sm:grid-cols-2 gap-5" novalidate>
+          <div>
+            <label for="business-name" class="block text-sm font-bold mb-2">Business name *</label>
+            <input id="business-name" name="businessName" type="text" autocomplete="organization" class="w-full bg-cream border border-sand rounded-md px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brown" placeholder="Shankar Textiles Pvt. Ltd.">
+            <p class="err hidden mt-1.5 text-xs font-semibold text-red-600"></p>
+          </div>
+          <div>
+            <label for="contact-name" class="block text-sm font-bold mb-2">Contact name *</label>
+            <input id="contact-name" name="contactName" type="text" autocomplete="name" class="w-full bg-cream border border-sand rounded-md px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brown" placeholder="Your full name">
+            <p class="err hidden mt-1.5 text-xs font-semibold text-red-600"></p>
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-bold mb-2">Email *</label>
+            <input id="email" name="email" type="email" autocomplete="email" class="w-full bg-cream border border-sand rounded-md px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brown" placeholder="you@company.in">
+            <p class="err hidden mt-1.5 text-xs font-semibold text-red-600"></p>
+          </div>
+          <div>
+            <label for="phone" class="block text-sm font-bold mb-2">Phone *</label>
+            <div class="flex">
+              <span class="px-4 py-3 bg-sand-light border border-r-0 border-sand rounded-l-md text-sm font-semibold">+91</span>
+              <input id="phone" name="phone" type="tel" inputmode="numeric" maxlength="11" autocomplete="tel-national" class="w-full min-w-0 bg-cream border border-sand rounded-r-md px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brown" placeholder="98765 43210">
+            </div>
+            <p class="err hidden mt-1.5 text-xs font-semibold text-red-600"></p>
+          </div>
+          <div>
+            <label for="business" class="block text-sm font-bold mb-2">Business type *</label>
+            <select id="business" name="business" class="w-full bg-cream border border-sand rounded-md px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brown">
+              <option value="">Select type</option>
+              <option value="Manufacturing">Manufacturing</option>
+              <option value="Warehouse &amp; Logistics">Warehouse &amp; Logistics</option>
+              <option value="Retail">Retail</option>
+              <option value="Office">Office</option>
+              <option value="Hospitality">Hospitality</option>
+            </select>
+            <p class="err hidden mt-1.5 text-xs font-semibold text-red-600"></p>
+          </div>
+          <div>
+            <label for="value" class="block text-sm font-bold mb-2">Property value *</label>
+            <select id="value" name="value" class="w-full bg-cream border border-sand rounded-md px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brown">
+              <option value="">Select range</option>
+              <option value="&lt;₹1 Cr">&lt;₹1 Cr</option>
+              <option value="₹1–5 Cr">₹1–5 Cr</option>
+              <option value="₹5–25 Cr">₹5–25 Cr</option>
+              <option value="₹25 Cr+">₹25 Cr+</option>
+            </select>
+            <p class="err hidden mt-1.5 text-xs font-semibold text-red-600"></p>
+          </div>
+          <div>
+            <label for="cover" class="block text-sm font-bold mb-2">Cover needed *</label>
+            <select id="cover" name="cover" class="w-full bg-cream border border-sand rounded-md px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brown">
+              <option value="">Select cover</option>
+              <option value="Property">Property</option>
+              <option value="Liability">Liability</option>
+              <option value="Both">Both</option>
+            </select>
+            <p class="err hidden mt-1.5 text-xs font-semibold text-red-600"></p>
+          </div>
+          <div>
+            <label for="city" class="block text-sm font-bold mb-2">City *</label>
+            <input id="city" name="city" type="text" autocomplete="address-level2" class="w-full bg-cream border border-sand rounded-md px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brown" placeholder="e.g. Pune">
+            <p class="err hidden mt-1.5 text-xs font-semibold text-red-600"></p>
+          </div>
+          <div class="sm:col-span-2">
+            <label for="message" class="block text-sm font-bold mb-2">Message</label>
+            <textarea id="message" name="message" rows="4" class="w-full bg-cream border border-sand rounded-md px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brown resize-y" placeholder="Anything we should know: current insurer, renewal date, past claims..."></textarea>
+          </div>
+          <div class="sm:col-span-2 flex flex-col sm:flex-row sm:items-center gap-4">
+            <button type="submit" class="px-6 py-3 bg-brown text-white text-sm font-semibold rounded-md hover:bg-brown-soft transition-colors">Request my quote</button>
+            <p class="text-xs font-medium">Free and no obligation. We never share your details without consent.</p>
+          </div>
+        </form>
+      </div>
+
+      <!-- Side card -->
+      <aside class="bg-cream rounded-2xl shadow-md p-6 sm:p-8 h-fit">
+        <h2 class="text-xl font-extrabold">Reach Us Directly</h2>
+        <ul class="mt-6 space-y-5 text-sm font-medium">
+          <li class="flex gap-4">
+            <div class="w-12 h-12 shrink-0 bg-white rounded-lg flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2"/></svg>
+            </div>
+            <div><p class="font-bold">Phone</p><a href="tel:+919876543210" class="hover:opacity-70">+91 98765 43210</a></div>
+          </li>
+          <li class="flex gap-4">
+            <div class="w-12 h-12 shrink-0 bg-white rounded-lg flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+            </div>
+            <div><p class="font-bold">Email</p><a href="mailto:help@kavach.in" class="hover:opacity-70">help@kavach.in</a></div>
+          </li>
+          <li class="flex gap-4">
+            <div class="w-12 h-12 shrink-0 bg-white rounded-lg flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </div>
+            <div><p class="font-bold">Office hours</p><p>Mon–Fri, 9:30 am – 6:30 pm</p><p>Sat, 10 am – 2 pm</p></div>
+          </li>
+          <li class="flex gap-4">
+            <div class="w-12 h-12 shrink-0 bg-white rounded-lg flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-12a7 7 0 0114 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            </div>
+            <div><p class="font-bold">Head office</p><p>4th Floor, Kalpataru Court, Bandra Kurla Complex, Mumbai 400051</p></div>
+          </li>
+        </ul>
+        <div class="mt-8 pt-6 border-t border-sand">
+          <p class="text-sm font-bold">Existing client?</p>
+          <p class="mt-1 text-sm font-medium">View policies, documents and claims in your client portal.</p>
+          <a href="login.html" class="mt-4 inline-block px-6 py-3 bg-brown text-white text-sm font-semibold rounded-md hover:bg-brown-soft transition-colors">Log in</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Offices -->
+  <section class="bg-cream">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-center">Our Offices</h2>
+      <div id="offices" class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="scroll-mt-6">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 py-16 md:py-24">
+      <div class="text-center">
+        <h2 class="text-3xl sm:text-4xl font-extrabold">Frequently Asked Questions</h2>
+        <p class="mt-4 text-sm sm:text-base font-medium">Straight answers about working with a broker.</p>
+      </div>
+      <div id="faq-list" class="mt-10 space-y-4"></div>
+    </div>
+  </section>
+
+  <footer class="bg-sand">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-14 grid grid-cols-2 md:grid-cols-6 gap-10 text-sm">
+      <div class="col-span-2">
+        <a href="index.html" class="flex items-center gap-2 text-xl font-extrabold">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2l8 3v6c0 5-3.5 9.5-8 11-4.5-1.5-8-6-8-11V5z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
+          Kavach
+        </a>
+        <p class="mt-4 font-semibold leading-relaxed max-w-[15rem]">Protecting the buildings, stock and people your business depends on.</p>
+      </div>
+      <div>
+        <h4 class="font-bold text-base mb-4">Company</h4>
+        <ul class="space-y-3 font-medium">
+          <li><a href="about.html" class="hover:opacity-70">Our Story</a></li>
+          <li><a href="about.html#team" class="hover:opacity-70">Our Team</a></li>
+          <li><a href="about.html#partners" class="hover:opacity-70">Insurer Partners</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-base mb-4">Insurance</h4>
+        <ul class="space-y-3 font-medium">
+          <li><a href="services.html#property" class="hover:opacity-70">Property</a></li>
+          <li><a href="services.html#liability" class="hover:opacity-70">Liability</a></li>
+          <li><a href="services.html#business-interruption" class="hover:opacity-70">Business Interruption</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-base mb-4">Support</h4>
+        <ul class="space-y-3 font-medium">
+          <li><a href="contact.html#faq" class="hover:opacity-70">FAQ</a></li>
+          <li><a href="contact.html" class="hover:opacity-70">Contact Us</a></li>
+          <li><a href="dashboard.html#claims" class="hover:opacity-70">Report a Claim</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-base mb-4">Reach Us</h4>
+        <ul class="space-y-3 font-medium">
+          <li>+91 98765 43210</li>
+          <li>help@kavach.in</li>
+          <li>Mumbai, India</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-brown/10 py-5 text-center text-xs font-medium">&copy; 2026 Kavach Insurance Brokers Pvt. Ltd. All rights reserved.</div>
+  </footer>
+
+  <script src="assets/js/data.js"></script>
+  <script>
+    // Offices
+    const OFFICES = [
+      { city: 'Mumbai', tag: 'Head office', address: '4th Floor, Kalpataru Court, Bandra Kurla Complex, Mumbai 400051' },
+      { city: 'Delhi', tag: 'North India', address: '7th Floor, Ashoka Estate, Barakhamba Road, Connaught Place, New Delhi 110001' },
+      { city: 'Bengaluru', tag: 'South India', address: '3rd Floor, Prestige Meridian II, MG Road, Bengaluru 560001' },
+      { city: 'Chennai', tag: 'South India', address: '2nd Floor, Temple Towers, Anna Salai, Nandanam, Chennai 600035' }
+    ];
+    document.getElementById('offices').innerHTML = OFFICES.map(o => `
+      <div class="bg-white rounded-2xl shadow-md p-6">
+        <p class="text-xs font-bold uppercase tracking-wider">${o.tag}</p>
+        <h3 class="mt-2 text-lg font-extrabold">${o.city}</h3>
+        <p class="mt-2 text-sm font-medium leading-relaxed">${o.address}</p>
+      </div>`).join('');
+
+    // FAQ
+    const FAQS = [
+      ['What is the difference between a broker and an insurer?', 'An insurer carries the risk and pays claims. A broker like Kavach represents you, the buyer: we assess your risks, compare policies from many insurers, negotiate terms and help you through claims. An insurer\'s agent can only offer that one company\'s products.'],
+      ['Does using a broker cost more?', 'No. Our brokerage is paid by the insurer out of the premium, within limits set by the regulator, so you pay the same premium you would pay going direct. Because we compare the market, clients often end up paying less for better cover.'],
+      ['How do you help when I make a claim?', 'Call your advisor or log the claim in your client portal. Our claims team notifies the insurer, briefs the surveyor, tells you exactly which documents are needed and follows up until the settlement is paid. If an offer looks low, we challenge it on your behalf.'],
+      ['What is sum insured?', 'Sum insured is the maximum the insurer will pay for a loss. It should reflect the full reinstatement or replacement value of your building, machinery and stock. If it is too low, the insurer can apply "average" and reduce your claim proportionately, so we help you set it correctly.'],
+      ['How fast can cover start?', 'For standard property and liability risks, cover can often start within 24 to 48 hours of you accepting a quote and paying the premium. Large or high-hazard risks may need a site survey first, which usually takes a few working days.'],
+      ['What documents do I need for a quote?', 'Usually your company PAN and GST details, the address and construction details of each location, a breakdown of values (building, plant & machinery, stock), your current policy schedule if any, and a summary of claims from the last three years. Your advisor will share a simple checklist.']
+    ];
+    document.getElementById('faq-list').innerHTML = FAQS.map(([q, a]) => `
+      <details class="bg-cream rounded-xl px-6 py-4">
+        <summary class="flex justify-between items-center gap-4 font-bold text-sm cursor-pointer list-none">
+          ${q}
+          <svg class="chev w-5 h-5 shrink-0 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <p class="mt-3 text-sm font-medium leading-relaxed">${a}</p>
+      </details>`).join('');
+
+    // Quote form
+    const form = document.getElementById('quote-form');
+    const $ = id => document.getElementById(id);
+
+    // Pre-fill from URL params sent by the home page
+    const params = new URLSearchParams(location.search);
+    [['business', 'business'], ['value', 'value'], ['cover', 'cover']].forEach(([param, id]) => {
+      const v = params.get(param);
+      const el = $(id);
+      if (v && [...el.options].some(o => o.value === v)) el.value = v;
+    });
+
+    function setError(el, msg) {
+      const wrap = el.closest('div.flex') ? el.closest('div.flex').parentElement : el.parentElement;
+      const err = wrap.querySelector('.err');
+      err.textContent = msg || '';
+      err.classList.toggle('hidden', !msg);
+      el.classList.toggle('border-red-500', !!msg);
+      el.setAttribute('aria-invalid', msg ? 'true' : 'false');
+    }
+
+    const RULES = {
+      'business-name': v => v ? '' : 'Please enter your business name.',
+      'contact-name': v => v.length >= 2 ? '' : 'Please enter your name.',
+      'email': v => !v ? 'Please enter your email.' : /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v) ? '' : 'Please enter a valid email address.',
+      'phone': v => {
+        const d = v.replace(/\s+/g, '');
+        if (!d) return 'Please enter your phone number.';
+        return /^[6-9]\d{9}$/.test(d) ? '' : 'Enter a 10-digit mobile number starting with 6, 7, 8 or 9.';
+      },
+      'business': v => v ? '' : 'Please select your business type.',
+      'value': v => v ? '' : 'Please select a property value range.',
+      'cover': v => v ? '' : 'Please select the cover you need.',
+      'city': v => v ? '' : 'Please enter your city.'
+    };
+
+    function validateField(id) {
+      const el = $(id);
+      const msg = RULES[id](el.value.trim());
+      setError(el, msg);
+      return !msg;
+    }
+
+    Object.keys(RULES).forEach(id => {
+      const el = $(id);
+      const evt = el.tagName === 'SELECT' ? 'change' : 'input';
+      el.addEventListener(evt, () => { if (el.getAttribute('aria-invalid') === 'true') validateField(id); });
+      el.addEventListener('blur', () => { if (el.value.trim()) validateField(id); });
+    });
+
+    $('phone').addEventListener('input', e => {
+      e.target.value = e.target.value.replace(/[^\d\s]/g, '');
+    });
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const results = Object.keys(RULES).map(validateField);
+      if (results.includes(false)) {
+        const first = Object.keys(RULES).find(id => $(id).getAttribute('aria-invalid') === 'true');
+        $(first).focus();
+        $('success').classList.add('hidden');
+        return;
+      }
+      $('success-name').textContent = $('contact-name').value.trim().split(' ')[0];
+      $('success').classList.remove('hidden');
+      form.reset();
+      Object.keys(RULES).forEach(id => setError($(id), ''));
+      $('success').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  </script>
+  <script src="assets/js/animations.js" data-accent="#2B1B12"></script>
+</body>
+</html>

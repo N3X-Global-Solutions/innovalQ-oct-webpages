@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Login | Hisaab — Bookkeeping & CFO for Small Business</title>
+  <meta name="description" content="Sign in to your Hisaab client dashboard to see your cash flow, monthly statements and chat with your bookkeeping team.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: { DEFAULT: '#12302A', soft: '#1E4A40' },
+            paper: '#FAF7F0',
+            lime: '#D4F57A',
+            mint: '#E6F0E8',
+            coral: '#FF8A5B'
+          },
+          fontFamily: { sans: ['Outfit', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Outfit', sans-serif; color: #12302A; background: #FAF7F0; }
+    .hl { background: linear-gradient(transparent 55%, #D4F57A 55%); padding: 0 .15em; }
+    .sticker { display: inline-block; transform: rotate(-3deg); background: #D4F57A; border: 1.5px solid #12302A; border-radius: 9999px; padding: .25rem .8rem; font-size: .75rem; font-weight: 600; }
+    details summary::-webkit-details-marker { display: none; }
+    details[open] .chev { transform: rotate(45deg); }
+  </style>
+</head>
+<body class="antialiased">
+
+  <main class="min-h-screen grid md:grid-cols-2">
+
+    <!-- Left: brand panel -->
+    <section class="relative bg-ink text-paper overflow-hidden px-6 sm:px-10 lg:px-16 py-10 md:py-14 flex flex-col">
+      <a href="index.html" class="flex items-center gap-2 text-xl font-semibold tracking-tight">
+        <span class="w-8 h-8 rounded-lg bg-lime text-ink flex items-center justify-center">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg>
+        </span>
+        hisaab<span class="text-coral">.</span>
+      </a>
+
+      <h1 class="mt-10 md:mt-20 text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight max-w-md">
+        Your books, <span class="text-lime">always up to date</span>.
+      </h1>
+
+      <!-- Floating mock cards (hidden on small phones to keep it calm) -->
+      <div class="hidden sm:block relative mt-12 md:mt-auto h-72 max-w-md">
+        <!-- P&L ready -->
+        <div class="absolute left-0 top-0 -rotate-3 bg-paper text-ink rounded-3xl px-5 py-4 shadow-xl flex items-center gap-3">
+          <span class="w-9 h-9 rounded-full bg-lime flex items-center justify-center">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>
+          </span>
+          <div>
+            <div class="text-xs text-ink/60">Statements</div>
+            <div class="font-semibold">September P&amp;L ready ✓</div>
+          </div>
+        </div>
+
+        <!-- Cash in bank -->
+        <div class="absolute right-0 top-20 rotate-2 bg-lime text-ink rounded-3xl px-5 py-4 shadow-xl">
+          <div class="text-xs text-ink/70">Cash in bank</div>
+          <div class="text-2xl font-semibold tracking-tight">₹16.9 L</div>
+          <div class="text-xs font-medium mt-1">+10% this month</div>
+        </div>
+
+        <!-- Tiny bar chart -->
+        <div class="absolute left-8 bottom-0 -rotate-1 bg-mint text-ink rounded-3xl px-5 py-4 shadow-xl w-56">
+          <div class="flex items-center justify-between text-xs">
+            <span class="text-ink/60">Revenue</span>
+            <span class="font-semibold">6 months</span>
+          </div>
+          <div class="mt-3 flex items-end gap-2 h-16">
+            <span class="flex-1 rounded-md bg-ink/25" style="height:55%"></span>
+            <span class="flex-1 rounded-md bg-ink/25" style="height:68%"></span>
+            <span class="flex-1 rounded-md bg-ink/25" style="height:60%"></span>
+            <span class="flex-1 rounded-md bg-ink/25" style="height:78%"></span>
+            <span class="flex-1 rounded-md bg-ink/25" style="height:74%"></span>
+            <span class="flex-1 rounded-md bg-ink" style="height:100%"></span>
+          </div>
+        </div>
+      </div>
+
+      <p class="mt-10 text-sm text-paper/60">Made for small businesses in India.</p>
+    </section>
+
+    <!-- Right: form -->
+    <section class="flex flex-col px-6 sm:px-10 py-10">
+      <a href="index.html" class="self-start text-sm font-medium text-ink/70 hover:text-ink">← Back to website</a>
+
+      <div class="flex-1 flex items-center justify-center py-12">
+        <div class="w-full max-w-sm">
+          <span class="sticker">Client area</span>
+          <h2 class="mt-4 text-3xl sm:text-4xl font-semibold tracking-tight">Welcome back</h2>
+          <p class="mt-2 text-ink/60">Sign in to see your numbers.</p>
+
+          <form id="login-form" class="mt-8 space-y-5" novalidate>
+            <div>
+              <label for="email" class="block text-sm font-medium mb-2">Email</label>
+              <input id="email" type="email" autocomplete="email" placeholder="you@business.in"
+                class="w-full bg-white border border-ink/15 rounded-xl px-4 py-3 text-sm outline-none focus:border-ink focus:ring-2 focus:ring-lime">
+              <p id="email-err" class="hidden mt-1.5 text-xs text-red-600"></p>
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <label for="password" class="block text-sm font-medium">Password</label>
+                <button type="button" id="forgot" class="text-xs font-medium text-ink/60 hover:text-ink hover:underline">Forgot password?</button>
+              </div>
+              <div class="relative">
+                <input id="password" type="password" autocomplete="current-password" placeholder="••••••••"
+                  class="w-full bg-white border border-ink/15 rounded-xl px-4 py-3 pr-16 text-sm outline-none focus:border-ink focus:ring-2 focus:ring-lime">
+                <button type="button" id="toggle-pw" class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-medium text-ink/60 hover:text-ink px-2 py-1">Show</button>
+              </div>
+              <p id="pw-err" class="hidden mt-1.5 text-xs text-red-600"></p>
+              <p id="forgot-note" class="hidden mt-2 text-xs font-medium bg-mint rounded-lg px-3 py-2">Reset link sent to your email</p>
+            </div>
+
+            <button type="submit" class="w-full px-6 py-3 rounded-full bg-ink text-paper text-sm font-medium hover:bg-ink-soft transition-colors">Sign in</button>
+          </form>
+
+          <div class="my-6 flex items-center gap-3 text-xs text-ink/50">
+            <span class="flex-1 h-px bg-ink/15"></span>or<span class="flex-1 h-px bg-ink/15"></span>
+          </div>
+
+          <button type="button" id="quick-login" class="w-full px-6 py-3 rounded-full border border-ink text-sm font-medium hover:bg-ink hover:text-paper transition-colors">Quick login (demo account)</button>
+
+          <p class="mt-10 text-sm text-center text-ink/60">
+            Not a client yet? <a href="contact.html#book" class="font-medium text-ink hl">Book a free call</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/data.js"></script>
+  <script>
+    (function () {
+      const form = document.getElementById('login-form');
+      const email = document.getElementById('email');
+      const pw = document.getElementById('password');
+      const emailErr = document.getElementById('email-err');
+      const pwErr = document.getElementById('pw-err');
+
+      function saveAndGo(user) {
+        try { localStorage.setItem('hisaab_user', JSON.stringify(user)); } catch (e) {}
+        window.location.href = 'dashboard.html';
+      }
+
+      function setErr(input, el, msg) {
+        if (msg) {
+          el.textContent = msg;
+          el.classList.remove('hidden');
+          input.classList.add('border-red-500');
+        } else {
+          el.classList.add('hidden');
+          input.classList.remove('border-red-500');
+        }
+      }
+
+      document.getElementById('toggle-pw').addEventListener('click', function () {
+        const show = pw.type === 'password';
+        pw.type = show ? 'text' : 'password';
+        this.textContent = show ? 'Hide' : 'Show';
+      });
+
+      document.getElementById('forgot').addEventListener('click', function () {
+        document.getElementById('forgot-note').classList.remove('hidden');
+      });
+
+      email.addEventListener('input', () => setErr(email, emailErr, ''));
+      pw.addEventListener('input', () => setErr(pw, pwErr, ''));
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const em = email.value.trim();
+        let ok = true;
+        if (!em) { setErr(email, emailErr, 'Please enter your email.'); ok = false; }
+        else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) { setErr(email, emailErr, 'That email doesn’t look right.'); ok = false; }
+        else setErr(email, emailErr, '');
+        if (!pw.value) { setErr(pw, pwErr, 'Please enter your password.'); ok = false; }
+        else setErr(pw, pwErr, '');
+        if (!ok) return;
+        saveAndGo({ name: em.split('@')[0], email: em });
+      });
+
+      document.getElementById('quick-login').addEventListener('click', function () {
+        const demo = typeof CLIENT !== 'undefined' ? CLIENT : { name: 'Kavya Rao', email: 'kavya@brewtheory.in' };
+        saveAndGo({ name: demo.name, email: demo.email });
+      });
+    })();
+  </script>
+</body>
+</html>

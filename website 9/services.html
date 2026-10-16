@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services & Pricing | Hisaab — Bookkeeping & CFO for Small Business</title>
+  <meta name="description" content="Monthly bookkeeping, fractional CFO advisory and GST & TDS compliance for Indian small businesses. Works with Tally, Zoho Books and QuickBooks. Simple monthly plans from ₹6,999.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: { DEFAULT: '#12302A', soft: '#1E4A40' },
+            paper: '#FAF7F0',
+            lime: '#D4F57A',
+            mint: '#E6F0E8',
+            coral: '#FF8A5B'
+          },
+          fontFamily: { sans: ['Outfit', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Outfit', sans-serif; color: #12302A; background: #FAF7F0; }
+    .hl { background: linear-gradient(transparent 55%, #D4F57A 55%); padding: 0 .15em; }
+    .sticker { display: inline-block; transform: rotate(-3deg); background: #D4F57A; border: 1.5px solid #12302A; border-radius: 9999px; padding: .25rem .8rem; font-size: .75rem; font-weight: 600; }
+    details summary::-webkit-details-marker { display: none; }
+    details[open] .chev { transform: rotate(45deg); }
+  </style>
+</head>
+<body class="antialiased">
+
+  <header class="relative z-40 bg-paper border-b border-ink/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-18 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 text-xl font-semibold tracking-tight">
+        <span class="w-8 h-8 rounded-lg bg-ink text-lime flex items-center justify-center">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg>
+        </span>
+        hisaab<span class="text-coral">.</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-2 text-sm font-medium">
+        <a href="index.html" class="px-4 py-2 rounded-full hover:bg-mint">Home</a>
+        <a href="services.html" class="px-4 py-2 rounded-full bg-ink text-paper">Services</a>
+        <a href="services.html#pricing" class="px-4 py-2 rounded-full hover:bg-mint">Pricing</a>
+        <a href="contact.html" class="px-4 py-2 rounded-full hover:bg-mint">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="login.html" class="hidden sm:inline text-sm font-medium hover:underline">Client login</a>
+        <a href="contact.html#book" class="px-5 py-2.5 rounded-full bg-ink text-paper text-sm font-medium hover:bg-ink-soft transition-colors">Book a free call</a>
+        <button id="menu-btn" aria-label="Menu" class="md:hidden">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav id="mobile-menu" class="hidden md:hidden px-4 pb-4 space-y-3 text-sm font-medium">
+      <a href="index.html" class="block">Home</a>
+      <a href="services.html" class="block font-semibold underline">Services</a>
+      <a href="services.html#pricing" class="block">Pricing</a>
+      <a href="contact.html" class="block">Contact</a>
+      <a href="login.html" class="block">Client login</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 pt-16 sm:pt-24 pb-12 relative">
+      <span class="sticker mb-6">Our services</span>
+      <h1 class="text-4xl sm:text-6xl font-semibold tracking-tight leading-[1.05] max-w-3xl">
+        Books, <span class="hl">sorted</span>.<br>Strategy, <span class="hl">sorted</span>.
+      </h1>
+      <p class="mt-6 text-lg text-ink/70 max-w-xl">Clean monthly books, on-time GST and a part-time CFO who helps you plan the next big move. One team, one monthly fee.</p>
+      <div class="mt-8 flex flex-wrap gap-3 text-sm font-medium">
+        <a href="#bookkeeping" class="px-5 py-2.5 rounded-full border border-ink/20 bg-white hover:border-ink">Bookkeeping ↓</a>
+        <a href="#cfo" class="px-5 py-2.5 rounded-full border border-ink/20 bg-white hover:border-ink">Fractional CFO ↓</a>
+        <a href="#compliance" class="px-5 py-2.5 rounded-full border border-ink/20 bg-white hover:border-ink">GST & Compliance ↓</a>
+        <a href="#pricing" class="px-5 py-2.5 rounded-full bg-lime border border-ink hover:bg-ink hover:text-paper">Pricing ↓</a>
+      </div>
+      <!-- doodle: receipt -->
+      <svg class="hidden lg:block absolute right-6 top-20 w-56 h-56" viewBox="0 0 200 200" fill="none" stroke="#12302A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M55 30h90v140l-12-8-11 8-11-8-11 8-11-8-11 8-12-8-11 8z" fill="#fff"/>
+        <path d="M72 58h56M72 78h40M72 98h50"/>
+        <path d="M72 128h22" />
+        <rect x="104" y="118" width="26" height="18" rx="4" fill="#D4F57A"/>
+        <path d="M150 52l18-10M154 70h20" stroke="#FF8A5B"/>
+      </svg>
+    </section>
+
+    <!-- BOOKKEEPING -->
+    <section id="bookkeeping" class="scroll-mt-24 max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="text-sm font-medium text-ink/60 mb-3">01 — Bookkeeping</div>
+          <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">Every rupee in the <span class="hl">right place</span>, every month.</h2>
+          <p class="mt-4 text-ink/70 max-w-lg">Send us your bank statements and bills. We reconcile, categorise and close your books by the 7th, so you always know where you stand.</p>
+          <ul class="mt-8 space-y-3">
+            <li class="flex gap-3"><span class="mt-0.5 w-6 h-6 shrink-0 rounded-full bg-lime border border-ink flex items-center justify-center"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>Bank & credit card reconciliation</li>
+            <li class="flex gap-3"><span class="mt-0.5 w-6 h-6 shrink-0 rounded-full bg-lime border border-ink flex items-center justify-center"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>Sales & expense categorisation</li>
+            <li class="flex gap-3"><span class="mt-0.5 w-6 h-6 shrink-0 rounded-full bg-lime border border-ink flex items-center justify-center"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>Accounts payable & receivable tracking</li>
+            <li class="flex gap-3"><span class="mt-0.5 w-6 h-6 shrink-0 rounded-full bg-lime border border-ink flex items-center justify-center"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>Monthly P&L, Balance Sheet & Cash Flow</li>
+            <li class="flex gap-3"><span class="mt-0.5 w-6 h-6 shrink-0 rounded-full bg-lime border border-ink flex items-center justify-center"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>Payroll entries (salaries, PF, ESI)</li>
+            <li class="flex gap-3"><span class="mt-0.5 w-6 h-6 shrink-0 rounded-full bg-lime border border-ink flex items-center justify-center"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>Works with your software</li>
+          </ul>
+          <div class="mt-6 flex flex-wrap gap-2 text-xs font-medium">
+            <span class="px-3 py-1.5 rounded-full bg-mint">Tally</span>
+            <span class="px-3 py-1.5 rounded-full bg-mint">Zoho Books</span>
+            <span class="px-3 py-1.5 rounded-full bg-mint">QuickBooks</span>
+          </div>
+        </div>
+
+        <!-- Month close mockup -->
+        <div class="relative">
+          <div class="absolute -inset-3 sm:-inset-5 bg-mint rounded-[2rem] rotate-2" aria-hidden="true"></div>
+          <div class="relative bg-white rounded-3xl border border-ink/10 p-6 sm:p-8 shadow-sm">
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="text-xs text-ink/50">September 2026</div>
+                <div class="text-lg font-semibold">Month close checklist</div>
+              </div>
+              <span class="sticker">Closed on the 6th</span>
+            </div>
+            <div class="mt-5 h-2 rounded-full bg-mint overflow-hidden"><div class="h-full w-full bg-ink rounded-full"></div></div>
+            <div class="mt-1 text-xs text-ink/50 text-right">6 of 6 done</div>
+            <ul class="mt-4 divide-y divide-ink/10 text-sm">
+              <li class="py-3 flex items-center gap-3"><span class="w-5 h-5 rounded-md bg-ink text-lime flex items-center justify-center"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span><span class="line-through text-ink/50">HDFC current account reconciled</span><span class="ml-auto text-xs text-ink/50">412 txns</span></li>
+              <li class="py-3 flex items-center gap-3"><span class="w-5 h-5 rounded-md bg-ink text-lime flex items-center justify-center"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span><span class="line-through text-ink/50">Card & UPI payments matched</span></li>
+              <li class="py-3 flex items-center gap-3"><span class="w-5 h-5 rounded-md bg-ink text-lime flex items-center justify-center"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span><span class="line-through text-ink/50">Vendor bills entered</span><span class="ml-auto text-xs text-ink/50">38 bills</span></li>
+              <li class="py-3 flex items-center gap-3"><span class="w-5 h-5 rounded-md bg-ink text-lime flex items-center justify-center"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span><span class="line-through text-ink/50">Payroll & TDS booked</span></li>
+              <li class="py-3 flex items-center gap-3"><span class="w-5 h-5 rounded-md bg-ink text-lime flex items-center justify-center"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span><span class="line-through text-ink/50">GST input credit checked</span></li>
+              <li class="py-3 flex items-center gap-3"><span class="w-5 h-5 rounded-md bg-ink text-lime flex items-center justify-center"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span><span class="font-medium">P&L + Balance Sheet sent</span><span class="ml-auto text-xs px-2 py-0.5 rounded-full bg-lime">Net profit ↑ 12%</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CFO -->
+    <section id="cfo" class="scroll-mt-24 px-4 sm:px-6">
+      <div class="max-w-6xl mx-auto bg-ink text-paper rounded-3xl px-6 sm:px-12 py-14 sm:py-16">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <div class="text-sm font-medium text-paper/60 mb-3">02 — Fractional CFO</div>
+            <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">A CFO in your corner, <span class="text-lime">without the full-time salary.</span></h2>
+            <p class="mt-4 text-paper/70 max-w-lg">Books tell you what happened. A CFO helps you decide what happens next: when to hire, what to charge, how long your cash lasts.</p>
+            <div class="mt-8 grid sm:grid-cols-2 gap-3 text-sm">
+              <div class="rounded-2xl bg-paper/5 border border-paper/10 p-4"><div class="font-medium">Budgets & forecasts</div><div class="text-paper/60 text-xs mt-1">12-month plan you can actually use</div></div>
+              <div class="rounded-2xl bg-paper/5 border border-paper/10 p-4"><div class="font-medium">Cash flow & runway</div><div class="text-paper/60 text-xs mt-1">Know your months of cash, always</div></div>
+              <div class="rounded-2xl bg-paper/5 border border-paper/10 p-4"><div class="font-medium">Pricing & margins</div><div class="text-paper/60 text-xs mt-1">Find which products really earn</div></div>
+              <div class="rounded-2xl bg-paper/5 border border-paper/10 p-4"><div class="font-medium">Funding & loan readiness</div><div class="text-paper/60 text-xs mt-1">Investor decks, bank CMA data</div></div>
+              <div class="rounded-2xl bg-paper/5 border border-paper/10 p-4"><div class="font-medium">Investor reports & MIS</div><div class="text-paper/60 text-xs mt-1">Clean monthly updates</div></div>
+              <div class="rounded-2xl bg-paper/5 border border-paper/10 p-4"><div class="font-medium">Monthly strategy meeting</div><div class="text-paper/60 text-xs mt-1">One hour, clear next steps</div></div>
+            </div>
+          </div>
+
+          <!-- Forecast chart -->
+          <div class="bg-paper text-ink rounded-3xl p-6 sm:p-8 relative">
+            <span class="sticker absolute -top-3 right-6">Runway: 14 months</span>
+            <div class="text-xs text-ink/50">Monthly revenue, ₹ lakh</div>
+            <div class="text-lg font-semibold">Actual vs forecast</div>
+            <svg class="mt-4 w-full h-auto" viewBox="0 0 320 180" fill="none" role="img" aria-label="Revenue chart: actual rising from 18 to 27 lakh, forecast continuing to 34 lakh">
+              <g stroke="#12302A" stroke-opacity=".08">
+                <path d="M20 30h290M20 70h290M20 110h290M20 150h290"/>
+              </g>
+              <rect x="180" y="18" width="130" height="136" rx="10" fill="#E6F0E8"/>
+              <text x="245" y="34" text-anchor="middle" font-size="10" fill="#12302A" fill-opacity=".6" font-family="Outfit">forecast</text>
+              <path d="M180 150V18" stroke="#12302A" stroke-opacity=".25" stroke-dasharray="3 4"/>
+              <path d="M20 132 L52 120 L84 126 L116 104 L148 98 L180 82" stroke="#12302A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M180 82 L212 72 L244 60 L276 50 L308 40" stroke="#12302A" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 6"/>
+              <path d="M180 82 L212 64 L244 46 L276 36 L308 26 L308 54 L276 64 L244 74 L212 80 Z" fill="#D4F57A" fill-opacity=".6"/>
+              <circle cx="180" cy="82" r="6" fill="#D4F57A" stroke="#12302A" stroke-width="2.5"/>
+              <circle cx="308" cy="40" r="4" fill="#FF8A5B"/>
+              <g font-size="10" fill="#12302A" fill-opacity=".5" font-family="Outfit">
+                <text x="20" y="170">May</text><text x="116" y="170">Aug</text><text x="172" y="170">Oct</text><text x="290" y="170">Mar</text>
+              </g>
+            </svg>
+            <div class="mt-4 flex flex-wrap gap-4 text-xs">
+              <span class="flex items-center gap-2"><span class="w-6 h-0.5 bg-ink"></span>Actual</span>
+              <span class="flex items-center gap-2"><span class="w-6 border-t-2 border-dashed border-ink"></span>Forecast</span>
+              <span class="flex items-center gap-2"><span class="w-4 h-3 rounded bg-lime"></span>Best / base range</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPLIANCE -->
+    <section id="compliance" class="scroll-mt-24 max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="order-2 lg:order-1">
+          <div class="bg-white rounded-3xl border border-ink/10 p-6 sm:p-8">
+            <div class="flex items-center justify-between">
+              <div class="text-lg font-semibold">Coming up this month</div>
+              <svg class="w-8 h-8" viewBox="0 0 32 32" fill="none" stroke="#12302A" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="7" width="22" height="20" rx="4"/><path d="M5 13h22M11 4v6M21 4v6"/></svg>
+            </div>
+            <ul class="mt-6 space-y-3">
+              <li class="flex items-center gap-4 rounded-2xl bg-paper p-3">
+                <div class="w-14 h-14 shrink-0 rounded-xl bg-ink text-paper flex flex-col items-center justify-center leading-none"><span class="text-[10px] uppercase text-lime">Due</span><span class="text-xl font-semibold">7</span></div>
+                <div><div class="font-medium">TDS payment</div><div class="text-xs text-ink/60">Deducted last month, deposited on time</div></div>
+                <span class="ml-auto text-xs px-2 py-1 rounded-full bg-lime border border-ink/20">Paid</span>
+              </li>
+              <li class="flex items-center gap-4 rounded-2xl bg-paper p-3">
+                <div class="w-14 h-14 shrink-0 rounded-xl bg-ink text-paper flex flex-col items-center justify-center leading-none"><span class="text-[10px] uppercase text-lime">Due</span><span class="text-xl font-semibold">11</span></div>
+                <div><div class="font-medium">GSTR-1</div><div class="text-xs text-ink/60">Outward supplies return</div></div>
+                <span class="ml-auto text-xs px-2 py-1 rounded-full bg-lime border border-ink/20">Filed</span>
+              </li>
+              <li class="flex items-center gap-4 rounded-2xl bg-paper p-3">
+                <div class="w-14 h-14 shrink-0 rounded-xl bg-coral text-ink flex flex-col items-center justify-center leading-none"><span class="text-[10px] uppercase">Due</span><span class="text-xl font-semibold">20</span></div>
+                <div><div class="font-medium">GSTR-3B</div><div class="text-xs text-ink/60">Summary return + tax payment</div></div>
+                <span class="ml-auto text-xs px-2 py-1 rounded-full border border-ink/20">Drafted</span>
+              </li>
+            </ul>
+            <p class="mt-5 text-xs text-ink/50">Dates are monthly filers' due dates. We remind you 3 days before anything needs your sign-off.</p>
+          </div>
+        </div>
+        <div class="order-1 lg:order-2">
+          <div class="text-sm font-medium text-ink/60 mb-3">03 — GST & Compliance</div>
+          <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">No more <span class="hl">late fees</span> or last-minute panic.</h2>
+          <p class="mt-4 text-ink/70 max-w-lg">Your filings come straight out of clean books, so they are right the first time.</p>
+          <ul class="mt-8 grid sm:grid-cols-2 gap-4 text-sm">
+            <li class="rounded-2xl border border-ink/10 bg-white p-4"><div class="font-medium">GST returns</div><div class="text-ink/60 text-xs mt-1">GSTR-1, GSTR-3B, ITC reconciliation with 2B</div></li>
+            <li class="rounded-2xl border border-ink/10 bg-white p-4"><div class="font-medium">TDS</div><div class="text-ink/60 text-xs mt-1">Monthly deposits & quarterly returns</div></li>
+            <li class="rounded-2xl border border-ink/10 bg-white p-4"><div class="font-medium">Advance tax reminders</div><div class="text-ink/60 text-xs mt-1">Estimates before 15 Jun, Sep, Dec, Mar</div></li>
+            <li class="rounded-2xl border border-ink/10 bg-white p-4"><div class="font-medium">Year-end handover</div><div class="text-ink/60 text-xs mt-1">Audit-ready files for your CA</div></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPARISON -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 pb-16 sm:pb-20">
+      <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-center">Bookkeeper vs Fractional CFO — <span class="hl">which do I need?</span></h2>
+      <p class="mt-3 text-center text-ink/70">Most businesses start with books and add a CFO when they grow.</p>
+      <div class="mt-10 grid md:grid-cols-2 gap-6">
+        <div class="bg-mint rounded-3xl p-6 sm:p-8">
+          <div class="flex items-center gap-3">
+            <svg class="w-10 h-10" viewBox="0 0 40 40" fill="none" stroke="#12302A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="5" width="24" height="30" rx="4" fill="#fff"/><path d="M14 13h12M14 19h12M14 25h7"/></svg>
+            <div>
+              <div class="text-xl font-semibold">Bookkeeper</div>
+              <div class="text-sm text-ink/60">Looks back: "What happened?"</div>
+            </div>
+          </div>
+          <ul class="mt-6 space-y-3 text-sm">
+            <li class="flex gap-2"><span class="text-ink/40">→</span>You are spending weekends on receipts</li>
+            <li class="flex gap-2"><span class="text-ink/40">→</span>GST filings feel stressful every month</li>
+            <li class="flex gap-2"><span class="text-ink/40">→</span>You don't know last month's real profit</li>
+            <li class="flex gap-2"><span class="text-ink/40">→</span>Revenue under ~₹25 L a month</li>
+          </ul>
+          <div class="mt-6 text-sm font-medium">Try: <span class="sticker ml-1">Starter or Growth</span></div>
+        </div>
+        <div class="bg-white border border-ink/10 rounded-3xl p-6 sm:p-8">
+          <div class="flex items-center gap-3">
+            <svg class="w-10 h-10" viewBox="0 0 40 40" fill="none" stroke="#12302A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="20" cy="20" r="15" fill="#D4F57A"/><path d="M11 25l6-6 4 4 8-9M24 14h5v5"/></svg>
+            <div>
+              <div class="text-xl font-semibold">Fractional CFO</div>
+              <div class="text-sm text-ink/60">Looks ahead: "What should we do next?"</div>
+            </div>
+          </div>
+          <ul class="mt-6 space-y-3 text-sm">
+            <li class="flex gap-2"><span class="text-ink/40">→</span>Planning a new outlet, product or city</li>
+            <li class="flex gap-2"><span class="text-ink/40">→</span>Raising funds or applying for a bank loan</li>
+            <li class="flex gap-2"><span class="text-ink/40">→</span>Growing sales but cash still feels tight</li>
+            <li class="flex gap-2"><span class="text-ink/40">→</span>Investors or partners want monthly MIS</li>
+          </ul>
+          <div class="mt-6 text-sm font-medium">Try: <span class="sticker ml-1">CFO Plus</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="scroll-mt-24 max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20 border-t border-ink/10">
+      <div class="text-center">
+        <span class="sticker">Simple pricing</span>
+        <h2 class="mt-4 text-3xl sm:text-5xl font-semibold tracking-tight">One flat fee. <span class="hl">No surprises.</span></h2>
+        <p class="mt-3 text-ink/70">Pick a plan now, change it any month.</p>
+        <div class="mt-8 inline-flex items-center gap-1 p-1 rounded-full bg-white border border-ink/15 text-sm font-medium" role="group" aria-label="Billing period">
+          <button type="button" data-billing="monthly" class="billing-btn px-5 py-2 rounded-full bg-ink text-paper" aria-pressed="true">Monthly</button>
+          <button type="button" data-billing="yearly" class="billing-btn px-5 py-2 rounded-full" aria-pressed="false">Yearly</button>
+        </div>
+        <span class="sticker ml-2 align-middle" style="transform: rotate(4deg)">2 months free</span>
+      </div>
+      <div id="plans" class="mt-12 grid md:grid-cols-3 gap-6 items-stretch"></div>
+      <p class="mt-8 text-center text-sm text-ink/60">All prices exclude GST. Cancel anytime.</p>
+    </section>
+  </main>
+
+  <footer class="bg-ink text-paper mt-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-10">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12 border-b border-paper/15">
+        <h2 class="text-3xl sm:text-5xl font-semibold tracking-tight max-w-xl">Know your numbers.<br><span class="text-lime">Grow with confidence.</span></h2>
+        <a href="contact.html#book" class="self-start md:self-auto px-6 py-3 rounded-full bg-lime text-ink text-sm font-semibold hover:bg-paper transition-colors">Book a free call →</a>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-10 text-sm">
+        <div>
+          <div class="font-semibold mb-3">Services</div>
+          <ul class="space-y-2 text-paper/70">
+            <li><a href="services.html#bookkeeping" class="hover:text-lime">Bookkeeping</a></li>
+            <li><a href="services.html#cfo" class="hover:text-lime">Fractional CFO</a></li>
+            <li><a href="services.html#compliance" class="hover:text-lime">GST & Compliance</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-semibold mb-3">Company</div>
+          <ul class="space-y-2 text-paper/70">
+            <li><a href="services.html#pricing" class="hover:text-lime">Pricing</a></li>
+            <li><a href="contact.html" class="hover:text-lime">Contact</a></li>
+            <li><a href="contact.html#faq" class="hover:text-lime">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-semibold mb-3">Clients</div>
+          <ul class="space-y-2 text-paper/70">
+            <li><a href="login.html" class="hover:text-lime">Client login</a></li>
+            <li><a href="dashboard.html" class="hover:text-lime">Dashboard</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-semibold mb-3">Say hello</div>
+          <ul class="space-y-2 text-paper/70">
+            <li>hello@hisaab.in</li>
+            <li>+91 98765 12345</li>
+            <li>Bengaluru, India</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pt-10 text-xs text-paper/50">&copy; 2026 Hisaab Advisory LLP. Made for small businesses.</div>
+    </div>
+  </footer>
+
+  <script src="assets/js/data.js"></script>
+  <script>
+    (function () {
+      const plansEl = document.getElementById('plans');
+      const buttons = document.querySelectorAll('.billing-btn');
+      const tick = '<svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>';
+      let billing = 'monthly';
+
+      function render() {
+        const yearly = billing === 'yearly';
+        plansEl.innerHTML = PLANS.map(p => {
+          const pop = !!p.popular;
+          const price = yearly ? p.price * 10 : p.price;
+          const per = yearly ? '/year' : '/month';
+          const name = escapeHTML(p.name);
+          const href = 'contact.html?plan=' + encodeURIComponent(p.name) + '#book';
+          const card = pop ? 'bg-ink text-paper md:-translate-y-3 shadow-xl' : 'bg-white border border-ink/10';
+          const muted = pop ? 'text-paper/60' : 'text-ink/60';
+          const tickBg = pop ? 'bg-lime text-ink' : 'bg-mint text-ink';
+          const btn = pop
+            ? 'bg-lime text-ink hover:bg-paper'
+            : 'border border-ink hover:bg-ink hover:text-paper';
+          return `
+            <div class="relative rounded-3xl p-7 sm:p-8 flex flex-col ${card}">
+              ${pop ? '<span class="sticker absolute -top-3 right-6 text-ink">Most popular</span>' : ''}
+              <div class="text-lg font-semibold">${name}</div>
+              <div class="text-sm ${muted}">${escapeHTML(p.for)}</div>
+              <div class="mt-6 flex items-end gap-1">
+                <span class="text-4xl font-semibold tracking-tight">${formatINR(price)}</span>
+                <span class="text-sm ${muted} mb-1">${per}</span>
+              </div>
+              <div class="text-xs ${muted} mt-1 h-4">${yearly ? 'That is ' + formatINR(p.price * 10 / 12) + '/month, billed yearly' : ''}</div>
+              <ul class="mt-6 space-y-3 text-sm flex-1">
+                ${p.features.map(f => `<li class="flex gap-3"><span class="mt-0.5 w-5 h-5 shrink-0 rounded-full ${tickBg} flex items-center justify-center">${tick}</span>${escapeHTML(f)}</li>`).join('')}
+              </ul>
+              <a href="${href}" class="mt-8 text-center px-6 py-3 rounded-full text-sm font-medium transition-colors ${btn}">Start with ${name}</a>
+            </div>`;
+        }).join('');
+      }
+
+      buttons.forEach(b => b.addEventListener('click', () => {
+        billing = b.dataset.billing;
+        buttons.forEach(x => {
+          const on = x === b;
+          x.classList.toggle('bg-ink', on);
+          x.classList.toggle('text-paper', on);
+          x.setAttribute('aria-pressed', on);
+        });
+        render();
+      }));
+
+      render();
+    })();
+  </script>
+  <script src="assets/js/animations.js" data-accent="#12302A"></script>
+</body>
+</html>
