@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth scroll-pt-24">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,7 +41,7 @@
   <div class="lg:flex min-h-screen">
 
     <!-- Sidebar (lg+) -->
-    <aside class="hidden lg:flex lg:flex-col w-60 shrink-0 bg-ink text-paper px-5 py-8 min-h-screen">
+    <aside class="hidden lg:flex lg:flex-col w-60 shrink-0 bg-ink text-paper px-5 py-8 sticky top-0 h-screen">
       <a href="index.html" class="flex items-center gap-2 text-xl font-semibold tracking-tight px-2">
         <span class="w-8 h-8 rounded-lg bg-lime text-ink flex items-center justify-center">
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg>
@@ -64,7 +64,7 @@
     </aside>
 
     <!-- Top bar (mobile / tablet) -->
-    <header class="lg:hidden relative z-30 bg-ink text-paper">
+    <header class="lg:hidden sticky top-0 z-30 bg-ink text-paper">
       <div class="px-4 sm:px-6 pt-4 flex items-center justify-between">
         <a href="index.html" class="flex items-center gap-2 text-lg font-semibold tracking-tight">
           <span class="w-7 h-7 rounded-lg bg-lime text-ink flex items-center justify-center">
