@@ -1,0 +1,78 @@
+/* Hisaab shared styles: brand helpers, buttons, nav controls, form states, dark-mode and RTL fixes. */
+
+body { font-family: 'Outfit', sans-serif; }
+
+/* ---------- Brand helpers ---------- */
+.hl {
+  background: linear-gradient(transparent 55%, #D4F57A 55%); padding: 0 .1em; margin: 0 -.05em;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+.dark .hl { background: linear-gradient(transparent 62%, rgba(212, 245, 122, .38) 62%); }
+.sticker {
+  display: inline-block; transform: rotate(-3deg); background: #D4F57A; color: #12302A;
+  border: 1.5px solid #12302A; border-radius: 9999px; padding: .25rem .8rem; font-size: .75rem; font-weight: 600;
+}
+[dir="rtl"] .sticker { transform: rotate(3deg); }
+details summary::-webkit-details-marker { display: none; }
+details summary { list-style: none; }
+details[open] .chev { transform: rotate(45deg); }
+
+/* ---------- Buttons (one primary style site-wide) ---------- */
+.btn-primary,
+.btn-secondary {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  padding: .75rem 1.5rem; border-radius: 9999px; font-size: .875rem; font-weight: 600; line-height: 1.25;
+  text-align: center; white-space: nowrap; cursor: pointer;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
+}
+.btn-primary { background: #D4F57A; color: #12302A; border: 1.5px solid #12302A; }
+.btn-primary:hover { background: #C3EA5C; }
+.btn-primary:active { transform: translateY(1px); }
+.dark .btn-primary { border-color: #D4F57A; }
+.dark .btn-primary:hover { background: #E2FA9C; }
+.btn-secondary { background: transparent; color: inherit; border: 1.5px solid currentColor; }
+.btn-secondary:hover { background: rgba(127, 127, 127, .14); }
+.btn-primary:focus-visible, .btn-secondary:focus-visible, .nav-ctl:focus-visible,
+a:focus-visible, button:focus-visible, summary:focus-visible {
+  outline: 2px solid #FF8A5B; outline-offset: 2px;
+}
+
+/* ---------- Header controls: identical height and radius ---------- */
+.nav-ctl {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 2.5rem; min-width: 2.5rem; border-radius: 9999px; padding-top: 0; padding-bottom: 0;
+}
+.nav-ctl.btn-primary { padding-left: 1.1rem; padding-right: 1.1rem; }
+.nav-icon { width: 2.5rem; padding: 0; border: 1px solid rgba(18, 48, 42, .18); background: transparent; color: inherit; }
+.nav-icon:hover { background: #E6F0E8; }
+.dark .nav-icon { border-color: rgba(250, 247, 240, .22); }
+.dark .nav-icon:hover { background: #1E4A40; }
+
+/* ---------- Forms ---------- */
+.field-error { margin-top: .375rem; font-size: .75rem; font-weight: 500; color: #B42318; }
+.dark .field-error { color: #FDA29B; }
+[aria-invalid="true"] { border-color: #D92D20 !important; }
+.dark [aria-invalid="true"] { border-color: #F97066 !important; }
+.form-success {
+  margin-top: .75rem; padding: .625rem .875rem; border-radius: .75rem; font-size: .875rem; font-weight: 500;
+  background: #E6F0E8; color: #12302A;
+}
+.dark .form-success { background: #1E4A40; color: #FAF7F0; }
+.dark input, .dark select, .dark textarea { color-scheme: dark; }
+.dark ::placeholder { color: rgba(250, 247, 240, .45); }
+
+/* ---------- RTL fixes ---------- */
+[dir="rtl"] .flip-rtl { transform: scaleX(-1); }
+[dir="rtl"] .mq { direction: ltr; }
+/* Brand name is a Latin word mark: keep "hisaab." reading left-to-right inside an RTL layout. */
+[data-logo] > span { direction: ltr; unicode-bidi: isolate; }
+
+/* ---------- Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+
+/* ---------- Dashboard helpers ---------- */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }

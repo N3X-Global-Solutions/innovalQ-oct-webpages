@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Kavach">
+  <rect x="1" y="1" width="46" height="46" rx="12" fill="#2B1B12"/>
+  <rect x="1.5" y="1.5" width="45" height="45" rx="11.5" fill="none" stroke="#DCC5B8" stroke-opacity=".35"/>
+  <path d="M24 9.5l12 4.4v9.2c0 7.7-5.1 13.6-12 15.9-6.9-2.3-12-8.2-12-15.9v-9.2z" fill="none" stroke="#FFF6F0" stroke-width="2.6" stroke-linejoin="round"/>
+  <path d="M24 14.6l7.4 2.7v5.9c0 4.9-3.1 8.8-7.4 10.4z" fill="#DCC5B8"/>
+  <path d="M18.6 23.6l3.8 3.8 7-7.4" fill="none" stroke="#FFF6F0" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

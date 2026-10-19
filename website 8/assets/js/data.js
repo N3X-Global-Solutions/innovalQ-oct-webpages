@@ -1,15 +1,4 @@
-// Kavach shared data: photos, insurers, client policies, quotes, claims and documents.
-
-const photo = (id, w = 1000) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
-
-// Only these photo IDs are used across the site
-const PHOTOS = {
-  offices: 'photo-1486406146926-c627a92ad1ab',
-  officeInterior: 'photo-1497366216548-37526070297c',
-  warehouse: 'photo-1553413077-190dd305871c',
-  construction: 'photo-1504307651254-35680f356dfd',
-  city: 'photo-1449157291145-7efd050a4d0e'
-};
+// Kavach shared data: insurers, client policies, quotes, claims and documents.
 
 // Fictional insurer partners
 const INSURERS = ['Suraksha General', 'Bharat Shield Insurance', 'Sahyadri Assurance', 'Tricolor General', 'Ganga Mutual'];
@@ -65,9 +54,3 @@ function initials(name) {
   return name.split(' ').map(p => p[0]).join('');
 }
 
-// Mobile menu toggle shared by every page
-document.addEventListener('DOMContentLoaded', () => {
-  const btn = document.getElementById('menu-btn');
-  const menu = document.getElementById('mobile-menu');
-  if (btn && menu) btn.addEventListener('click', () => menu.classList.toggle('hidden'));
-});

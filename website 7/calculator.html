@@ -1,429 +1,327 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth scroll-pt-24">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Equipment Financing & Loan Calculator | ApexVanguard Capital</title>
-  <meta name="description" content="Calculate monthly equipment financing payments, compare ₹1 buyout vs FMV lease, estimate Section 179 tax deductions, and export amortization schedules.">
-  
+  <title>Equipment Loan EMI &amp; Depreciation Calculator | ApexVanguard Capital</title>
+  <meta name="description" content="Calculate your equipment loan EMI, compare loans with operating leases, estimate your Section 32 depreciation tax shield and download an amortisation schedule.">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <script>(function(){try{var d=document.documentElement,t=localStorage.getItem('av-theme'),r=localStorage.getItem('av-dir');if(t==='dark'||(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches))d.classList.add('dark');if(r==='rtl')d.setAttribute('dir','rtl');}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              50: '#ecfdf5',
-              100: '#d1fae5',
-              500: '#10b981',
-              600: '#059669',
-              700: '#047857',
-              800: '#065f46',
-              900: '#064e3b',
-            },
-            slate: {
-              850: '#151f32',
-              900: '#0f172a',
-              950: '#020617',
-            }
-          },
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            mono: ['Inter', 'sans-serif'],
-          }
-        }
-      }
-    }
-  </script>
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{slate:{850:'#151f32'}},fontFamily:{sans:['Inter','ui-sans-serif','system-ui','sans-serif']}}}};</script>
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/validation.js" defer></script>
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/calculator.js" defer></script>
+  <script src="assets/js/animations.js" defer></script>
 </head>
-<body class="bg-slate-50 text-slate-900 flex flex-col min-h-screen">
+<body class="flex min-h-screen flex-col bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100">
 
-  <!-- Primary Navigation -->
-  <header class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-slate-200 shadow-xs">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      <!-- Brand Logo -->
-      <a href="index.html" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 rounded-lg bg-slate-900 flex items-center justify-center text-white font-bold text-lg border border-slate-700 shadow-sm group-hover:bg-slate-800 transition-colors">
-          <span class="text-emerald-400 font-mono">AV</span>
-        </div>
-        <div>
-          <div class="text-lg font-bold tracking-tight text-slate-900 flex items-center gap-1.5">
-            ApexVanguard <span class="text-xs px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200 uppercase font-mono font-bold tracking-wider">Capital</span>
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:start-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-slate-900 focus:shadow">Skip to content</a>
+  <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/95 text-slate-900 backdrop-blur supports-[backdrop-filter]:bg-white/85 dark:border-slate-800 dark:bg-slate-950/95 dark:text-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between gap-3 lg:h-20">
+      <a href="index.html" data-logo class="inline-flex shrink-0 items-center gap-2.5" aria-label="ApexVanguard Capital home"><img src="assets/img/logo.svg" alt="ApexVanguard Capital logo" width="40" height="40" class="h-10 w-10"><span class="text-lg font-extrabold leading-none tracking-tight">ApexVanguard <span class="logo-accent">Capital</span></span></a>
+
+      <nav class="hidden items-center gap-1 lg:flex" aria-label="Primary">
+        <div class="relative" data-home-dropdown>
+          <button type="button" data-dropdown-trigger aria-haspopup="true" aria-expanded="false" aria-controls="home-menu" class="rounded-lg px-3 py-2 text-sm font-semibold transition-colors text-slate-700 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white inline-flex items-center gap-1">
+            Home
+            <svg data-dropdown-chevron class="h-4 w-4 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m19 9-7 7-7-7"/></svg>
+          </button>
+          <div id="home-menu" data-dropdown-menu class="absolute start-0 top-full z-50 mt-2 hidden w-72 rounded-2xl border border-slate-200 bg-white p-2 shadow-xl dark:border-slate-700 dark:bg-slate-900">
+            <a href="index.html" class="block rounded-xl px-3 py-2.5 transition-colors hover:bg-slate-50 dark:hover:bg-slate-800 "><span class="block text-sm font-semibold text-slate-900 dark:text-white">Home 1</span><span class="block text-xs text-slate-500 dark:text-slate-400">Equipment finance &amp; loan broker</span></a>
+            <a href="home-2.html" class="block rounded-xl px-3 py-2.5 transition-colors hover:bg-slate-50 dark:hover:bg-slate-800 "><span class="block text-sm font-semibold text-slate-900 dark:text-white">Home 2</span><span class="block text-xs text-slate-500 dark:text-slate-400">Fleet, construction &amp; industry funding</span></a>
           </div>
-          <div class="text-[11px] text-slate-500 font-medium">Commercial Equipment & Loan Brokerage</div>
         </div>
-      </a>
-
-      <!-- Desktop Links -->
-      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-700">
-        <a href="index.html" class="hover:text-slate-900 transition-colors">Home</a>
-        <a href="services.html" class="hover:text-slate-900 transition-colors">Loan Programs</a>
-        <a href="calculator.html" class="text-emerald-700 font-bold border-b-2 border-emerald-600 pb-0.5">Loan Calculator</a>
-        <a href="index.html#how-it-works" class="hover:text-slate-900 transition-colors">How It Works</a>
-        <a href="index.html#compare" class="hover:text-slate-900 transition-colors">Broker vs Bank</a>
+        <a href="about.html" class="rounded-lg px-3 py-2 text-sm font-semibold transition-colors text-slate-700 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white">About</a>
+        <a href="services.html" class="rounded-lg px-3 py-2 text-sm font-semibold transition-colors text-slate-700 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white">Services</a>
+        <a href="calculator.html" class="rounded-lg px-3 py-2 text-sm font-semibold transition-colors bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300" aria-current="page">Calculator</a>
+        <a href="blog.html" class="rounded-lg px-3 py-2 text-sm font-semibold transition-colors text-slate-700 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white">Blog</a>
+        <a href="contact.html" class="rounded-lg px-3 py-2 text-sm font-semibold transition-colors text-slate-700 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white">Contact</a>
       </nav>
 
-      <!-- CTA & Portal Access -->
-      <div class="hidden sm:flex items-center gap-3">
-        <a href="login.html" class="px-4 py-2.5 text-xs font-bold text-slate-700 hover:text-slate-900 border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors flex items-center gap-2">
-          <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-          Client Portal Login
-        </a>
-        <a href="dashboard.html?tab=new-app" class="px-5 py-2.5 text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg shadow-sm hover:shadow transition-all flex items-center gap-1.5">
-          <span>Apply in 2 Minutes</span>
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-        </a>
+      <div class="flex items-center gap-2">
+        <div class="hidden items-center gap-2 sm:flex">
+          <button type="button" data-theme-toggle class="nav-ctl" aria-label="Switch to dark theme" title="Dark theme"><svg class="h-5 w-5 dark:hidden" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="hidden h-5 w-5 dark:block" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path stroke-linecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button>
+          <button type="button" data-rtl-toggle class="nav-ctl" aria-label="Switch to right-to-left layout" title="Right-to-left"><svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M16 4h-6.5a3.5 3.5 0 0 0 0 7h.5M14 15V4M10 15V4M5 19h14m-2-2 2 2-2 2"/></svg></button>
+          <a href="contact.html" data-nav-cta class="btn-primary nav-ctl">Get Funded</a>
+        </div>
+        <div class="lg:hidden">
+          <button type="button" data-menu-toggle class="nav-ctl" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><svg data-icon-open class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg><svg data-icon-close class="hidden h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></svg></button>
+        </div>
       </div>
-
-      <!-- Mobile Button -->
-      <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-600 hover:text-slate-900" aria-label="Toggle Navigation">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-      </button>
     </div>
 
-    <!-- Mobile Drawer -->
-    <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 bg-white px-4 py-4 space-y-3">
-      <a href="index.html" class="block font-medium text-slate-700">Home</a>
-      <a href="services.html" class="block font-medium text-slate-700">Loan Programs</a>
-      <a href="calculator.html" class="block font-semibold text-emerald-700">Loan Calculator</a>
-      <a href="index.html#how-it-works" class="block font-medium text-slate-700">How It Works</a>
-      <a href="index.html#compare" class="block font-medium text-slate-700">Broker vs Bank</a>
-      <div class="pt-3 border-t border-slate-100 flex flex-col gap-2">
-        <a href="login.html" class="text-center py-2 text-sm font-bold border border-slate-300 rounded-lg text-slate-800">Client Portal Login</a>
-        <a href="dashboard.html?tab=new-app" class="text-center py-2 text-sm font-bold bg-emerald-600 text-white rounded-lg">Apply in 2 Minutes</a>
-      </div>
+    <div id="mobile-menu" data-mobile-menu class="hidden max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-slate-200 bg-white lg:hidden dark:border-slate-800 dark:bg-slate-950">
+      <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-1 py-4" aria-label="Mobile">
+        <a href="index.html" class="block rounded-lg px-3 py-2.5 text-base font-semibold text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800">Home 1</a>
+        <a href="home-2.html" class="block rounded-lg px-3 py-2.5 text-base font-semibold text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800">Home 2</a>
+        <a href="about.html" class="block rounded-lg px-3 py-2.5 text-base font-semibold text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800">About</a>
+        <a href="services.html" class="block rounded-lg px-3 py-2.5 text-base font-semibold text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800">Services</a>
+        <a href="calculator.html" class="block rounded-lg px-3 py-2.5 text-base font-semibold bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300" aria-current="page">Calculator</a>
+        <a href="blog.html" class="block rounded-lg px-3 py-2.5 text-base font-semibold text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800">Blog</a>
+        <a href="contact.html" class="block rounded-lg px-3 py-2.5 text-base font-semibold text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800">Contact</a>
+        <div class="mt-3 grid grid-cols-2 gap-2 border-t border-slate-200 pt-4 dark:border-slate-800">
+          <button type="button" data-theme-toggle class="nav-ctl gap-2 px-3 text-sm font-semibold" aria-label="Switch to dark theme"><svg class="h-5 w-5 dark:hidden" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="hidden h-5 w-5 dark:block" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path stroke-linecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg><span>Theme</span></button>
+          <button type="button" data-rtl-toggle class="nav-ctl gap-2 px-3 text-sm font-semibold" aria-label="Switch to right-to-left layout"><svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M16 4h-6.5a3.5 3.5 0 0 0 0 7h.5M14 15V4M10 15V4M5 19h14m-2-2 2 2-2 2"/></svg><span>LTR / RTL</span></button>
+        </div>
+        <a href="contact.html" class="btn-primary mt-3 w-full">Get Funded</a>
+      </nav>
     </div>
   </header>
+  <main id="main" class="flex-1">
 
-  <!-- Page Header -->
-  <section class="bg-slate-900 text-white py-12 border-b border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest bg-slate-800 px-3 py-1 rounded-full border border-slate-700">
-        Commercial Financial Engineering
-      </span>
-      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight mt-3">
-        Commercial Equipment Financing & Section 179 Calculator
-      </h1>
-      <p class="text-sm sm:text-base text-slate-300 mt-2 max-w-2xl">
-        Estimate monthly debt service, compare ₹1 Buyout versus FMV Lease structures, calculate first-year tax write-offs, and export bank-ready amortization schedules.
-      </p>
+  <section class="relative overflow-hidden bg-slate-900 text-white">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.22),transparent_60%)]"></div>
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 text-center sm:py-20 lg:py-24">
+      <div class="mx-auto max-w-3xl">
+        <span class="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-emerald-300">EMI &amp; tax calculator</span>
+        <h1 class="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">Equipment finance calculator</h1>
+        <p class="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">Estimate your monthly EMI, compare an equipment loan with an operating lease, see your first-year depreciation tax shield and download a bank-ready amortisation schedule.</p>
+        
+      </div>
     </div>
   </section>
 
-  <!-- Calculator Workspace -->
-  <main class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-no-count>
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-      
-      <!-- Left Column: Controls & Sliders (7 cols) -->
-      <div class="lg:col-span-7 bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
-        <div class="flex items-center justify-between border-b border-slate-100 pb-4">
-          <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-            <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
-            Financing Parameters
-          </h2>
-          <span class="text-xs text-slate-400">Live Mathematical Model</span>
-        </div>
+  <section class="py-16 sm:py-20 lg:py-24 bg-slate-50 dark:bg-slate-900/60" data-no-count>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 items-start gap-8 lg:grid-cols-12">
+        <!-- Inputs -->
+        <div class="rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 space-y-6 p-6 sm:p-8 lg:col-span-7">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-4 dark:border-slate-800">
+            <h2 class="text-lg font-bold text-slate-900 dark:text-white">Financing parameters</h2>
+            <span class="text-xs text-slate-500 dark:text-slate-400">Updates as you type</span>
+          </div>
 
-        <!-- 1. Equipment Cost / Loan Amount -->
-        <div class="space-y-2">
-          <div class="flex items-center justify-between">
-            <label class="text-xs font-bold text-slate-700 uppercase tracking-wider">Equipment Cost / Invoice Total</label>
-            <div class="relative w-40">
-              <span class="absolute left-3 top-2 text-slate-400 font-bold text-sm">₹</span>
-              <input type="number" id="calc-cost-input" value="150000" min="10000" max="5000000" step="5000" class="w-full pl-7 pr-3 py-1.5 border border-slate-300 rounded-lg text-sm font-bold font-mono-numbers text-slate-900 focus:ring-2 focus:ring-emerald-500 outline-none">
-            </div>
-          </div>
-          <input type="range" id="calc-cost-slider" min="10000" max="2000000" step="5000" value="150000" class="w-full">
-          <div class="flex justify-between text-[11px] text-slate-400 font-mono-numbers">
-            <span>₹10,000</span>
-            <span>₹5,00,000</span>
-            <span>₹10,00,000</span>
-            <span>₹20,00,000+</span>
-          </div>
-        </div>
-
-        <!-- 2. Financing Structure -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Facility Type</label>
-            <select id="calc-type-select" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-xs font-semibold text-slate-800 bg-white focus:ring-2 focus:ring-emerald-500 outline-none">
-              <option value="equipment_loan" selected>Equipment Loan (₹1 Buyout)</option>
-              <option value="fmv_lease">FMV Operating Lease (Lowest Pmt)</option>
-              <option value="working_capital">Working Capital Line</option>
-            </select>
-          </div>
-          <div>
-            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Term Length</label>
-            <select id="calc-term-select" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-xs font-semibold text-slate-800 bg-white focus:ring-2 focus:ring-emerald-500 outline-none">
-              <option value="24">24 Months (2 Years)</option>
-              <option value="36">36 Months (3 Years)</option>
-              <option value="48">48 Months (4 Years)</option>
-              <option value="60" selected>60 Months (5 Years)</option>
-              <option value="72">72 Months (6 Years)</option>
-              <option value="84">84 Months (7 Years)</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- 3. Down Payment -->
-        <div class="space-y-2 pt-2 border-t border-slate-100">
-          <div class="flex items-center justify-between">
-            <div>
-              <label class="text-xs font-bold text-slate-700 uppercase tracking-wider">Down Payment %</label>
-              <p class="text-[11px] text-slate-500">Qualified commercial equipment supports 0% down</p>
-            </div>
-            <div class="relative w-24">
-              <input type="number" id="calc-down-input" value="0" min="0" max="40" step="1" class="w-full pr-7 pl-3 py-1.5 border border-slate-300 rounded-lg text-sm font-bold font-mono-numbers text-slate-900 focus:ring-2 focus:ring-emerald-500 outline-none text-right">
-              <span class="absolute right-3 top-2 text-slate-400 font-bold text-xs">%</span>
-            </div>
-          </div>
-          <input type="range" id="calc-down-slider" min="0" max="30" step="5" value="0" class="w-full">
-          <div class="flex items-center gap-2 pt-1">
-            <button type="button" data-down-quick="0" class="px-2.5 py-1 text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200 rounded hover:bg-emerald-100 transition-colors">
-              ₹0 Down (100% Financed)
-            </button>
-            <button type="button" data-down-quick="10" class="px-2.5 py-1 text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200 rounded hover:bg-slate-200 transition-colors">
-              10% Down
-            </button>
-            <button type="button" data-down-quick="20" class="px-2.5 py-1 text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200 rounded hover:bg-slate-200 transition-colors">
-              20% Down
-            </button>
-          </div>
-        </div>
-
-        <!-- 4. Estimated Interest Rate / Factor Rate -->
-        <div class="space-y-2 pt-2 border-t border-slate-100">
-          <div class="flex items-center justify-between">
-            <div>
-              <label class="text-xs font-bold text-slate-700 uppercase tracking-wider">Estimated APR</label>
-              <p class="text-[11px] text-slate-500">Subject to underwriter review of commercial profile</p>
-            </div>
-            <div class="relative w-24">
-              <input type="number" id="calc-rate-input" value="6.5" min="4.5" max="22" step="0.1" class="w-full pr-7 pl-3 py-1.5 border border-slate-300 rounded-lg text-sm font-bold font-mono-numbers text-slate-900 focus:ring-2 focus:ring-emerald-500 outline-none text-right">
-              <span class="absolute right-3 top-2 text-slate-400 font-bold text-xs">%</span>
-            </div>
-          </div>
-          <input type="range" id="calc-rate-slider" min="4.9" max="18" step="0.1" value="6.5" class="w-full">
-          <div class="flex items-center gap-2 pt-1">
-            <button type="button" data-rate-quick="5.99" class="px-2.5 py-1 text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200 rounded hover:bg-slate-200 transition-colors">
-              Prime Tier (5.99%)
-            </button>
-            <button type="button" data-rate-quick="7.49" class="px-2.5 py-1 text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200 rounded hover:bg-slate-200 transition-colors">
-              Good Tier (7.49%)
-            </button>
-            <button type="button" data-rate-quick="9.89" class="px-2.5 py-1 text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200 rounded hover:bg-slate-200 transition-colors">
-              Fair Tier (9.89%)
-            </button>
-          </div>
-        </div>
-
-        <!-- 5. Tax Bracket for Section 179 Estimation -->
-        <div class="pt-2 border-t border-slate-100">
-          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Corporate Tax Bracket (For Sec 179 Calculation)</label>
-          <select id="calc-tax-bracket" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-xs font-semibold text-slate-800 bg-white">
-            <option value="21">21% (Standard C-Corp Federal Flat Rate)</option>
-            <option value="25" selected>25% (Blended Federal + State Estimate)</option>
-            <option value="35">35% (Pass-through S-Corp / High Bracket LLC)</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- Right Column: Results & Section 179 Summary (5 cols) -->
-      <div class="lg:col-span-5 space-y-6">
-        <!-- Main Payment Output Card -->
-        <div class="bg-slate-900 text-white rounded-2xl p-7 shadow-xl border border-slate-800 space-y-6">
-          <div class="flex items-center justify-between border-b border-slate-800 pb-4">
-            <div>
-              <span class="text-xs uppercase tracking-wider text-slate-400 font-bold">Estimated Monthly Payment</span>
-              <div id="out-monthly-payment" class="text-4xl font-bold text-emerald-400 font-mono-numbers mt-1">
-                ₹2,935
+          <div class="space-y-2">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <label for="calc-cost-input" class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-200">Equipment cost / invoice total</label>
+              <div class="relative w-44">
+                <span class="pointer-events-none absolute inset-y-0 start-3 flex items-center text-sm font-bold text-slate-500 dark:text-slate-400">&#8377;</span>
+                <input type="number" id="calc-cost-input" inputmode="numeric" value="1500000" min="25000" max="5000000" step="5000" class="w-full rounded-lg border border-slate-300 bg-white py-1.5 text-sm font-bold text-slate-900 outline-none focus:ring-2 focus:ring-emerald-500 dark:border-slate-700 dark:bg-slate-950 dark:text-white font-mono-numbers pe-3 ps-7">
               </div>
             </div>
-            <span class="px-2.5 py-1 bg-slate-800 text-slate-300 rounded text-xs font-mono">
-              Fixed Schedule
-            </span>
+            <input type="range" id="calc-cost-slider" min="25000" max="5000000" step="5000" value="1500000" class="w-full" aria-label="Equipment cost">
+            <div class="flex justify-between text-[11px] text-slate-500 dark:text-slate-400 font-mono-numbers"><span>&#8377;25K</span><span>&#8377;10 L</span><span>&#8377;25 L</span><span>&#8377;50 L</span></div>
           </div>
 
-          <div class="grid grid-cols-2 gap-4 text-xs">
-            <div class="p-3 bg-slate-850 rounded-lg border border-slate-800">
-              <span class="text-slate-400">Net Loan Principal</span>
-              <div id="out-loan-principal" class="text-base font-bold text-white font-mono-numbers mt-0.5">₹1,50,000</div>
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div>
+              <label for="calc-type-select" class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-200">Facility type</label>
+              <select id="calc-type-select" class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-semibold text-slate-800 outline-none focus:ring-2 focus:ring-emerald-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100">
+                <option value="equipment_loan" selected>Equipment loan (ownership)</option>
+                <option value="fmv_lease">Operating lease (lowest rental)</option>
+                <option value="working_capital">Working capital term loan</option>
+              </select>
             </div>
-            <div class="p-3 bg-slate-850 rounded-lg border border-slate-800">
-              <span class="text-slate-400">Total Interest Paid</span>
-              <div id="out-total-interest" class="text-base font-bold text-white font-mono-numbers mt-0.5">₹26,094</div>
-            </div>
-            <div class="p-3 bg-slate-850 rounded-lg border border-slate-800">
-              <span class="text-slate-400">Total Payments</span>
-              <div id="out-total-paid" class="text-base font-bold text-white font-mono-numbers mt-0.5">₹1,76,094</div>
-            </div>
-            <div class="p-3 bg-slate-850 rounded-lg border border-slate-800">
-              <span class="text-slate-400">Prepayment Penalty</span>
-              <div class="text-base font-bold text-emerald-400 mt-0.5">None (₹0)</div>
-            </div>
-          </div>
-
-          <!-- Section 179 Callout Inside Results -->
-          <div class="p-4 bg-emerald-950/60 rounded-xl border border-emerald-800/80 space-y-2">
-            <div class="flex items-center justify-between text-xs">
-              <span class="font-bold text-emerald-300 uppercase tracking-wide">Section 179 First-Year Tax Savings</span>
-              <span class="text-[10px] bg-emerald-900 text-emerald-200 px-1.5 py-0.5 rounded">IRS 2026</span>
-            </div>
-            <div class="flex items-center justify-between">
-              <span class="text-xs text-slate-300">Estimated Cash Tax Savings:</span>
-              <span id="out-tax-savings" class="text-lg font-bold text-white font-mono-numbers">₹37,500</span>
-            </div>
-            <div class="flex items-center justify-between border-t border-emerald-900/80 pt-2">
-              <span class="text-xs text-slate-300">Net Realized Equipment Cost:</span>
-              <span id="out-net-equipment-cost" class="text-sm font-bold text-emerald-300 font-mono-numbers">₹1,12,500</span>
+            <div>
+              <label for="calc-term-select" class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-200">Tenure</label>
+              <select id="calc-term-select" class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-semibold text-slate-800 outline-none focus:ring-2 focus:ring-emerald-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100">
+                <option value="24">24 months (2 years)</option>
+                <option value="36">36 months (3 years)</option>
+                <option value="48">48 months (4 years)</option>
+                <option value="60" selected>60 months (5 years)</option>
+                <option value="72">72 months (6 years)</option>
+                <option value="84">84 months (7 years)</option>
+              </select>
             </div>
           </div>
 
-          <!-- Action Buttons -->
-          <div class="space-y-3 pt-2">
-            <button id="btn-save-quote" type="button" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm rounded-lg shadow-md transition-all flex items-center justify-center gap-2">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg>
-              <span>Lock In Quote & Start Application</span>
-            </button>
-            <button id="btn-export-csv" type="button" class="w-full py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-xs rounded-lg border border-slate-700 transition-colors flex items-center justify-center gap-2">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-              <span>Download Complete Amortization CSV</span>
-            </button>
+          <div class="space-y-2 border-t border-slate-100 pt-5 dark:border-slate-800">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <label for="calc-down-input" class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-200">Down payment %</label>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400">Qualified equipment supports 0% down</p>
+              </div>
+              <div class="relative w-24">
+                <input type="number" id="calc-down-input" inputmode="numeric" value="0" min="0" max="30" step="1" class="w-full rounded-lg border border-slate-300 bg-white py-1.5 text-sm font-bold text-slate-900 outline-none focus:ring-2 focus:ring-emerald-500 dark:border-slate-700 dark:bg-slate-950 dark:text-white font-mono-numbers pe-7 ps-3 text-end">
+                <span class="pointer-events-none absolute inset-y-0 end-3 flex items-center text-xs font-bold text-slate-500 dark:text-slate-400">%</span>
+              </div>
+            </div>
+            <input type="range" id="calc-down-slider" min="0" max="30" step="1" value="0" class="w-full" aria-label="Down payment percentage">
+            <div class="flex flex-wrap gap-2 pt-1">
+              <button type="button" data-down-quick="0" class="rounded-lg border border-slate-200 bg-slate-100 px-2.5 py-1.5 text-xs font-semibold text-slate-700 transition-colors hover:bg-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700">&#8377;0 down (100% funded)</button>
+              <button type="button" data-down-quick="10" class="rounded-lg border border-slate-200 bg-slate-100 px-2.5 py-1.5 text-xs font-semibold text-slate-700 transition-colors hover:bg-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700">10% down</button>
+              <button type="button" data-down-quick="20" class="rounded-lg border border-slate-200 bg-slate-100 px-2.5 py-1.5 text-xs font-semibold text-slate-700 transition-colors hover:bg-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700">20% down</button>
+            </div>
+          </div>
+
+          <div class="space-y-2 border-t border-slate-100 pt-5 dark:border-slate-800">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <label for="calc-rate-input" class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-200">Interest rate (p.a.)</label>
+                <p class="text-[11px] text-slate-500 dark:text-slate-400">Final rate depends on lender credit review</p>
+              </div>
+              <div class="relative w-24">
+                <input type="number" id="calc-rate-input" inputmode="decimal" value="10.5" min="8" max="24" step="0.1" class="w-full rounded-lg border border-slate-300 bg-white py-1.5 text-sm font-bold text-slate-900 outline-none focus:ring-2 focus:ring-emerald-500 dark:border-slate-700 dark:bg-slate-950 dark:text-white font-mono-numbers pe-7 ps-3 text-end">
+                <span class="pointer-events-none absolute inset-y-0 end-3 flex items-center text-xs font-bold text-slate-500 dark:text-slate-400">%</span>
+              </div>
+            </div>
+            <input type="range" id="calc-rate-slider" min="8" max="24" step="0.1" value="10.5" class="w-full" aria-label="Interest rate">
+            <div class="flex flex-wrap gap-2 pt-1">
+              <button type="button" data-rate-quick="9.5" class="rounded-lg border border-slate-200 bg-slate-100 px-2.5 py-1.5 text-xs font-semibold text-slate-700 transition-colors hover:bg-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700">Prime, CIBIL 750+ (9.5%)</button>
+              <button type="button" data-rate-quick="11.5" class="rounded-lg border border-slate-200 bg-slate-100 px-2.5 py-1.5 text-xs font-semibold text-slate-700 transition-colors hover:bg-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700">Good, 700+ (11.5%)</button>
+              <button type="button" data-rate-quick="14" class="rounded-lg border border-slate-200 bg-slate-100 px-2.5 py-1.5 text-xs font-semibold text-slate-700 transition-colors hover:bg-slate-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700">Fair, 650+ (14%)</button>
+            </div>
+          </div>
+
+          <div class="border-t border-slate-100 pt-5 dark:border-slate-800">
+            <label for="calc-tax-bracket" class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-200">Your tax rate (for the depreciation estimate)</label>
+            <select id="calc-tax-bracket" class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-semibold text-slate-800 outline-none focus:ring-2 focus:ring-emerald-500 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100">
+              <option value="25.17">25.17% (company under Section 115BAA)</option>
+              <option value="31.2" selected>31.2% (partnership firm or LLP)</option>
+              <option value="34.94">34.94% (company, regular regime)</option>
+            </select>
           </div>
         </div>
 
-        <!-- Broker Guarantee Note -->
-        <div class="bg-white rounded-xl border border-slate-200 p-5 text-xs text-slate-600 space-y-2">
-          <div class="font-bold text-slate-900 flex items-center gap-1.5">
-            <svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-            ApexVanguard Rate Match Assurance
+        <!-- Results -->
+        <div class="space-y-6 lg:sticky lg:top-24 lg:col-span-5">
+          <div class="space-y-6 rounded-2xl border border-slate-800 bg-slate-900 p-6 text-white shadow-xl sm:p-7">
+            <div class="flex items-start justify-between gap-3 border-b border-slate-800 pb-4">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Estimated monthly EMI</span>
+                <div id="out-monthly-payment" class="mt-1 text-4xl font-bold text-emerald-400 font-mono-numbers" aria-live="polite">&#8377;32,241</div>
+              </div>
+              <span class="shrink-0 rounded bg-slate-800 px-2.5 py-1 text-xs text-slate-300">Fixed</span>
+            </div>
+            <div class="grid grid-cols-2 gap-3 text-xs">
+              <div class="rounded-lg border border-slate-800 bg-slate-850 p-3"><span class="text-slate-400">Loan amount</span><div id="out-loan-principal" class="mt-0.5 text-base font-bold font-mono-numbers">&#8377;15,00,000</div></div>
+              <div class="rounded-lg border border-slate-800 bg-slate-850 p-3"><span class="text-slate-400">Total interest</span><div id="out-total-interest" class="mt-0.5 text-base font-bold font-mono-numbers">&#8377;4,34,446</div></div>
+              <div class="rounded-lg border border-slate-800 bg-slate-850 p-3"><span class="text-slate-400">Total payable</span><div id="out-total-paid" class="mt-0.5 text-base font-bold font-mono-numbers">&#8377;19,34,446</div></div>
+              <div class="rounded-lg border border-slate-800 bg-slate-850 p-3"><span class="text-slate-400">Foreclosure charge</span><div class="mt-0.5 text-base font-bold text-emerald-400">Nil after 6 EMIs</div></div>
+            </div>
+            <div id="tax" class="scroll-mt-28 space-y-2 rounded-xl border border-emerald-800/80 bg-emerald-950/60 p-4">
+              <div class="flex flex-wrap items-center justify-between gap-2 text-xs">
+                <span class="font-bold uppercase tracking-wide text-emerald-300">First-year tax shield</span>
+                <span class="rounded bg-emerald-900 px-1.5 py-0.5 text-[10px] text-emerald-200">Section 32</span>
+              </div>
+              <div class="flex items-center justify-between gap-3"><span class="text-xs text-slate-300">Depreciation claimed in year 1</span><span id="out-sec179-deduction" class="text-sm font-bold font-mono-numbers">&#8377;5,25,000</span></div>
+              <div class="flex items-center justify-between gap-3"><span class="text-xs text-slate-300">Estimated tax saved</span><span id="out-tax-savings" class="text-lg font-bold font-mono-numbers">&#8377;1,63,800</span></div>
+              <div class="flex items-center justify-between gap-3 border-t border-emerald-900/80 pt-2"><span class="text-xs text-slate-300">Effective cost after year-1 saving</span><span id="out-net-equipment-cost" class="text-sm font-bold text-emerald-300 font-mono-numbers">&#8377;13,36,200</span></div>
+            </div>
+            <div class="space-y-3 pt-1">
+              <button id="btn-save-quote" type="button" class="btn-primary w-full">Lock in quote &amp; start application</button>
+              <button id="btn-export-csv" type="button" class="btn-secondary btn-on-dark w-full">Download amortisation CSV</button>
+            </div>
           </div>
-          <p>
-            Our syndication desk matches verified formal written term sheets from any commercial bank or competing equipment lessor nationwide.
-          </p>
+
+          <div class="rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 flex items-center gap-4 p-4">
+            <div class="h-20 w-24 shrink-0 overflow-hidden rounded-xl"><img src="assets/img/calc-side.jpg" alt="Laptop showing a loan analytics dashboard" width="192" height="160" loading="lazy" class="h-full w-full object-cover"></div>
+            <div>
+              <p class="text-sm font-bold text-slate-900 dark:text-white">Rate match assurance</p>
+              <p class="mt-1 text-xs leading-relaxed text-slate-600 dark:text-slate-300">Show us a written sanction from any bank or NBFC and our syndication desk will try to beat it. <a href="contact.html" class="font-semibold text-emerald-700 hover:text-emerald-800 hover:underline dark:text-emerald-400 dark:hover:text-emerald-300">Talk to us</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tax explainer -->
+      <div class="rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 mt-10 p-6 sm:p-8">
+        <div class="max-w-3xl">
+          <h2 class="text-xl font-bold text-slate-900 dark:text-white">How depreciation lowers the real cost of equipment</h2>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">As the owner under an equipment loan you claim depreciation from the year the machine is put to use, even when it is 100% financed. The estimate above assumes the asset is used for more than 180 days in year one. Confirm your position with your chartered accountant.</p>
+        </div>
+        <div class="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
+          <div class="rounded-xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-800/50"><p class="text-sm font-bold text-slate-900 dark:text-white">1. Normal depreciation</p><p class="mt-1 text-2xl font-bold text-emerald-700 dark:text-emerald-400">15% WDV</p><p class="mt-2 text-xs text-slate-600 dark:text-slate-300">Standard rate for most plant and machinery on the written-down value.</p></div>
+          <div class="rounded-xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-800/50"><p class="text-sm font-bold text-slate-900 dark:text-white">2. Additional depreciation</p><p class="mt-1 text-2xl font-bold text-slate-900 dark:text-white">+20%</p><p class="mt-2 text-xs text-slate-600 dark:text-slate-300">For new machinery bought by manufacturers under Section 32(1)(iia). Not available under Section 115BAA.</p></div>
+          <div class="rounded-xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-800/50"><p class="text-sm font-bold text-slate-900 dark:text-white">3. Interest is deductible</p><p class="mt-1 text-2xl font-bold text-emerald-700 dark:text-emerald-400">Every EMI</p><p class="mt-2 text-xs text-slate-600 dark:text-slate-300">The interest component of each EMI is a business expense, on top of depreciation.</p></div>
+        </div>
+      </div>
+
+      <!-- Schedule -->
+      <div class="rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 mt-10 overflow-hidden">
+        <div class="flex flex-col justify-between gap-4 border-b border-slate-100 p-6 sm:flex-row sm:items-center dark:border-slate-800">
+          <div>
+            <h2 class="text-lg font-bold text-slate-900 dark:text-white">Amortisation schedule preview</h2>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Principal and interest split for each EMI</p>
+          </div>
+          <button type="button" data-export-proxy class="btn-secondary">Export full schedule (.csv)</button>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full min-w-[560px] border-collapse text-start">
+            <thead>
+              <tr class="border-b border-slate-200 bg-slate-50 text-xs font-bold uppercase tracking-wider text-slate-600 dark:border-slate-800 dark:bg-slate-800/60 dark:text-slate-300">
+                <th scope="col" class="px-4 py-3 text-start">Month</th>
+                <th scope="col" class="px-4 py-3 text-start">EMI</th>
+                <th scope="col" class="px-4 py-3 text-start">Principal</th>
+                <th scope="col" class="px-4 py-3 text-start">Interest</th>
+                <th scope="col" class="px-4 py-3 text-start">Balance</th>
+              </tr>
+            </thead>
+            <tbody id="schedule-table-body"></tbody>
+          </table>
         </div>
       </div>
     </div>
-
-    <!-- Section 179 Deep-Dive Explainer -->
-    <div class="mt-12 bg-white rounded-2xl border border-slate-200 p-8 shadow-sm">
-      <div class="max-w-3xl mb-6">
-        <h3 class="text-xl font-bold text-slate-900">How Section 179 Supercharges Equipment Acquisitions</h3>
-        <p class="text-xs sm:text-sm text-slate-600 mt-1">
-          The U.S. government encourages capital investment in productive machinery. Instead of writing off equipment over standard 7 or 10-year MACRS depreciation curves, Section 179 allows your business to write off the entire purchase price immediately.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
-        <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
-          <div class="font-bold text-slate-900 text-sm mb-1">1. Deduction Cap</div>
-          <div class="text-emerald-700 font-bold text-xl font-mono-numbers mb-2">₹12,20,000</div>
-          <p class="text-slate-600">The maximum deduction allowed under IRS guidelines for equipment placed in service in 2026.</p>
-        </div>
-        <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
-          <div class="font-bold text-slate-900 text-sm mb-1">2. Equipment Spending Cap</div>
-          <div class="text-slate-900 font-bold text-xl font-mono-numbers mb-2">₹30,50,000</div>
-          <p class="text-slate-600">The phase-out threshold where deduction is reduced dollar-for-dollar for large enterprise capital expenditures.</p>
-        </div>
-        <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
-          <div class="font-bold text-slate-900 text-sm mb-1">3. Cash Flow Positive Year 1</div>
-          <div class="text-emerald-700 font-bold text-xl font-mono-numbers mb-2">Immediate ROI</div>
-          <p class="text-slate-600">Your total first-year tax savings often substantially exceed your first-year monthly equipment finance installments.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Amortization Schedule Table Preview -->
-    <div class="mt-12 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-      <div class="p-6 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <h3 class="text-lg font-bold text-slate-900">Live Amortization Schedule Preview</h3>
-          <p class="text-xs text-slate-500">Principal and interest reduction breakdown per installment cycle</p>
-        </div>
-        <button onclick="document.getElementById('btn-export-csv').click()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold rounded-lg border border-slate-200 transition-colors flex items-center gap-1.5">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-          Export Full Schedule (.CSV)
-        </button>
-      </div>
-
-      <div class="overflow-x-auto">
-        <table class="w-full text-left border-collapse">
-          <thead>
-            <tr class="bg-slate-50 border-b border-slate-200 text-xs font-bold text-slate-600 uppercase tracking-wider">
-              <th class="py-3 px-4">Period</th>
-              <th class="py-3 px-4">Payment</th>
-              <th class="py-3 px-4">Principal Component</th>
-              <th class="py-3 px-4">Interest Component</th>
-              <th class="py-3 px-4">Ending Balance</th>
-            </tr>
-          </thead>
-          <tbody id="schedule-table-body">
-            <!-- Dynamically populated by assets/js/calculator.js -->
-          </tbody>
-        </table>
-      </div>
-    </div>
+  </section>
   </main>
 
-  <!-- Comprehensive Professional Footer -->
-  <footer class="bg-slate-950 text-slate-400 text-xs border-t border-slate-800 pt-16 pb-12 mt-auto">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-12 border-b border-slate-800">
-        <div class="lg:col-span-2 space-y-4">
-          <div class="flex items-center gap-3">
-            <div class="w-8 h-8 rounded bg-emerald-600 text-white flex items-center justify-center font-mono font-bold text-sm">
-              AV
-            </div>
-            <span class="text-base font-bold text-white tracking-tight">ApexVanguard Capital</span>
+  <footer class="border-t border-slate-800 bg-slate-950 text-slate-400">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 lg:py-16">
+      <div class="grid grid-cols-1 items-start gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
+        <div class="text-white sm:col-span-2 lg:col-span-4">
+          <a href="index.html" data-logo class="inline-flex shrink-0 items-center gap-2.5" aria-label="ApexVanguard Capital home"><img src="assets/img/logo.svg" alt="ApexVanguard Capital logo" width="40" height="40" class="h-10 w-10"><span class="text-lg font-extrabold leading-none tracking-tight">ApexVanguard <span class="logo-accent">Capital</span></span></a>
+          <p class="mt-4 max-w-sm text-sm leading-relaxed text-slate-400">ApexVanguard Capital is an independent equipment finance and business loan broker. We match Indian MSMEs, contractors and manufacturers with 75+ banks and RBI-registered NBFCs, and negotiate the structure for you.</p>
+          <div data-social class="mt-6 flex flex-wrap gap-2.5">
+            <a aria-label="LinkedIn" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 bg-slate-900 text-slate-300 transition-colors hover:border-emerald-500 hover:text-emerald-400"><svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+            <a aria-label="X" href="https://x.com/" target="_blank" rel="noopener noreferrer" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 bg-slate-900 text-slate-300 transition-colors hover:border-emerald-500 hover:text-emerald-400"><svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.65l-5.22-6.82-5.97 6.82H1.68l7.73-8.84L1.25 2.25h6.83l4.71 6.23 5.45-6.23zm-1.16 17.52h1.83L7.08 4.13H5.12l11.96 15.64z"/></svg></a>
+            <a aria-label="Facebook" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 bg-slate-900 text-slate-300 transition-colors hover:border-emerald-500 hover:text-emerald-400"><svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.5h-2.8V24C19.62 23.1 24 18.1 24 12.07z"/></svg></a>
+            <a aria-label="Instagram" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 bg-slate-900 text-slate-300 transition-colors hover:border-emerald-500 hover:text-emerald-400"><svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.72-2.13 1.38A5.9 5.9 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.72 1.46 1.38 2.13.67.66 1.34 1.08 2.13 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.9 5.9 0 0 0 2.13-1.38 5.9 5.9 0 0 0 1.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.38-2.13A5.9 5.9 0 0 0 19.86.63C19.1.33 18.22.13 16.95.07 15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg></a>
+            <a aria-label="YouTube" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 bg-slate-900 text-slate-300 transition-colors hover:border-emerald-500 hover:text-emerald-400"><svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg></a>
           </div>
-          <p class="text-slate-400 leading-relaxed pr-6 text-xs">
-            ApexVanguard Commercial Capital LLC is an independent commercial equipment financing and business loan brokerage. We connect commercial operators with 75+ institutional credit funds, regional banks, and direct balance-sheet syndicates.
-          </p>
         </div>
-
+        <div class="lg:col-span-2">
         <div>
-          <h4 class="text-white font-bold text-sm mb-4">Financing Programs</h4>
-          <ul class="space-y-2 text-xs">
-            <li><a href="services.html#equipment-loans" class="hover:text-emerald-400 transition-colors">Equipment Loans (₹1 Buyout)</a></li>
-            <li><a href="services.html#fmv-lease" class="hover:text-emerald-400 transition-colors">FMV Operating Leases</a></li>
-            <li><a href="services.html#working-capital" class="hover:text-emerald-400 transition-colors">Working Capital Revolvers</a></li>
-            <li><a href="services.html#sba-loans" class="hover:text-emerald-400 transition-colors">SBA 7(a) & 504 Financing</a></li>
+          <h2 class="text-sm font-bold uppercase leading-10 tracking-wider text-white">Quick Links</h2>
+          <ul class="mt-3 space-y-2.5">
+            <li><a href="index.html" class="text-sm text-slate-400 transition-colors hover:text-emerald-400">Home 1</a></li>
+            <li><a href="home-2.html" class="text-sm text-slate-400 transition-colors hover:text-emerald-400">Home 2</a></li>
+            <li><a href="about.html" class="text-sm text-slate-400 transition-colors hover:text-emerald-400">About us</a></li>
+            <li><a href="blog.html" class="text-sm text-slate-400 transition-colors hover:text-emerald-400">Insights &amp; blog</a></li>
+            <li><a href="calculator.html" class="text-sm text-slate-400 transition-colors hover:text-emerald-400">EMI calculator</a></li>
+            <li><a href="login.html" class="text-sm text-slate-400 transition-colors hover:text-emerald-400">Client portal login</a></li>
           </ul>
         </div>
-
+        </div>
+        <div class="lg:col-span-3">
         <div>
-          <h4 class="text-white font-bold text-sm mb-4">Brokerage Tools</h4>
-          <ul class="space-y-2 text-xs">
-            <li><a href="calculator.html" class="hover:text-emerald-400 transition-colors">Interactive Loan Calculator</a></li>
-            <li><a href="login.html" class="hover:text-emerald-400 transition-colors">Client Portal Login</a></li>
-            <li><a href="dashboard.html" class="hover:text-emerald-400 transition-colors">Underwriting Status Tracker</a></li>
+          <h2 class="text-sm font-bold uppercase leading-10 tracking-wider text-white">Services</h2>
+          <ul class="mt-3 space-y-2.5">
+            <li><a href="services.html#equipment-loans" class="text-sm text-slate-400 transition-colors hover:text-emerald-400">Equipment loans</a></li>
+            <li><a href="services.html#operating-lease" class="text-sm text-slate-400 transition-colors hover:text-emerald-400">Operating leases</a></li>
+            <li><a href="services.html#working-capital" class="text-sm text-slate-400 transition-colors hover:text-emerald-400">Working capital lines</a></li>
+            <li><a href="services.html#msme-loans" class="text-sm text-slate-400 transition-colors hover:text-emerald-400">MSME &amp; CGTMSE loans</a></li>
+            <li><a href="services.html#sale-leaseback" class="text-sm text-slate-400 transition-colors hover:text-emerald-400">Sale &amp; leaseback</a></li>
+            <li><a href="services.html#invoice-discounting" class="text-sm text-slate-400 transition-colors hover:text-emerald-400">Invoice discounting</a></li>
           </ul>
         </div>
-
-        <div>
-          <h4 class="text-white font-bold text-sm mb-4">Underwriting Desk</h4>
-          <ul class="space-y-2 text-xs">
-            <li class="flex items-center gap-2">(800) 555-8920</li>
-            <li class="flex items-center gap-2">underwriting@apexvanguard.com</li>
-            <li class="pt-2 text-slate-500">100 Wall Street, 24th Floor, New York, NY 10005</li>
+        </div>
+        <div class="sm:col-span-2 lg:col-span-3">
+          <h2 class="text-sm font-bold uppercase leading-10 tracking-wider text-white">Contact</h2>
+          <ul class="mt-3 space-y-3 text-sm">
+            <li><a href="tel:+912248902200" class="flex items-start gap-3 text-sm text-slate-400 transition-colors hover:text-emerald-400"><svg class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 0 1 2-2h3.28a1 1 0 0 1 .95.68l1.5 4.5a1 1 0 0 1-.5 1.21l-2.26 1.13a11.04 11.04 0 0 0 5.52 5.52l1.13-2.26a1 1 0 0 1 1.21-.5l4.5 1.5a1 1 0 0 1 .68.95V19a2 2 0 0 1-2 2h-1C9.72 21 3 14.28 3 6V5z"/></svg><span>+91 22 4890 2200</span></a></li>
+            <li><a href="mailto:underwriting@apexvanguard.in" class="flex items-start gap-3 text-sm text-slate-400 transition-colors hover:text-emerald-400"><svg class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m3 8 7.89 5.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/></svg><span>underwriting<wbr>@apexvanguard.in</span></a></li>
+            <li class="flex items-start gap-3"><svg class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.66 16.66 13.41 20.9a2 2 0 0 1-2.83 0l-4.24-4.24a8 8 0 1 1 11.32 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/></svg><span>Level 9, Maker Maxity, Bandra Kurla Complex, Mumbai 400051</span></li>
+            <li class="flex items-start gap-3"><svg class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg><span>Mon to Sat, 9:30 am to 6:30 pm IST</span></li>
           </ul>
         </div>
       </div>
 
-      <div class="pt-8 text-[11px] text-slate-500 flex flex-col sm:flex-row items-center justify-between">
-        <span>&copy; 2026 ApexVanguard Commercial Capital LLC. All rights reserved.</span>
-        <div class="flex gap-4 mt-2 sm:mt-0">
-          <a href="#" class="hover:text-slate-400">Privacy Policy</a>
-          <a href="#" class="hover:text-slate-400">Terms of Brokerage</a>
+      <div class="mt-12 border-t border-slate-800 pt-8 text-xs leading-relaxed text-slate-400">
+        <p>Disclosure: ApexVanguard Capital acts as a loan and lease broker (direct selling agent) and is not a lender. All financing is subject to credit approval by the respective bank or NBFC. Rates, margin money and tenure depend on your credit profile, collateral, vintage and business financials. Facilities are for business purposes only.</p>
+        <div class="mt-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+          <p>&copy; <span data-year>2026</span> ApexVanguard Capital Pvt. Ltd. All rights reserved.</p>
+          <p>CIN U65999MH2014PTC254810 &middot; Made in Mumbai</p>
         </div>
       </div>
     </div>
   </footer>
-
-  <script src="assets/js/data.js"></script>
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/calculator.js"></script>
-  <script src="assets/js/animations.js" data-accent="#10b981"></script>
 </body>
 </html>

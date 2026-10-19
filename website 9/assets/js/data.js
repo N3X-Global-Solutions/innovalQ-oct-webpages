@@ -62,10 +62,3 @@ function escapeHTML(str) {
   d.textContent = str;
   return d.innerHTML;
 }
-
-// Mobile menu toggle shared by every page
-document.addEventListener('DOMContentLoaded', () => {
-  const btn = document.getElementById('menu-btn');
-  const menu = document.getElementById('mobile-menu');
-  if (btn && menu) btn.addEventListener('click', () => menu.classList.toggle('hidden'));
-});

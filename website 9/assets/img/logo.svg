@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Hisaab">
+  <rect width="32" height="32" rx="9" fill="#D4F57A"/>
+  <rect x="7" y="15" width="4" height="9" rx="1.5" fill="#12302A"/>
+  <rect x="14" y="9" width="4" height="15" rx="1.5" fill="#12302A"/>
+  <rect x="21" y="12" width="4" height="12" rx="1.5" fill="#12302A"/>
+  <circle cx="23" cy="7.5" r="2.2" fill="#FF8A5B"/>
+</svg>

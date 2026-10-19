@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The 100-Day Operations Reset | Northbeam Consulting</title>
+  <meta name="description" content="A fixed-scope, fixed-fee programme that stabilises service, frees cash and installs a performance rhythm in one quarter. Built for operations under pressure.">
+  <meta name="theme-color" content="#0B1B33">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <script>try{var d=document.documentElement,q=new URLSearchParams(location.search),t=q.get('theme')||localStorage.getItem('northbeam-theme');d.classList.add('js');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches))d.classList.add('dark');if((q.get('dir')||localStorage.getItem('northbeam-dir'))==='rtl')d.setAttribute('dir','rtl');}catch(e){document.documentElement.classList.add('js');}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            navy: { DEFAULT: '#0B1B33', 800: '#13284A', 700: '#1C355E', 950: '#06101F' },
+            panel: '#0D1B30',
+            paper: '#F6F5F1',
+            mist: '#EEF1F5',
+            gold: { DEFAULT: '#C8A24A', light: '#D9BC72', deep: '#7A5C14' }
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'], display: ['Fraunces', 'Georgia', 'serif'] }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/validation.js" defer></script>
+</head>
+<body class="bg-white text-navy dark:bg-navy-950 dark:text-slate-200 antialiased">
+
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:start-3 focus:z-50 btn-primary">Skip to content</a>
+  <header class="site-header sticky top-0 z-40 bg-white/95 dark:bg-navy-950/95 backdrop-blur border-b border-navy/10 dark:border-white/10">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 h-[4.5rem] flex items-center justify-between gap-3">
+      <div class="text-navy dark:text-white"><a href="index.html" data-logo class="inline-flex items-center gap-3 shrink-0" aria-label="Northbeam Consulting home"><img src="assets/img/logo.svg" alt="" width="36" height="36" class="h-9 w-9 shrink-0"><span class="leading-none"><span class="block text-[15px] font-bold tracking-[0.16em]">NORTHBEAM</span><span class="mt-1 block text-[10.5px] font-medium tracking-[0.34em]">CONSULTING</span></span></a></div>
+
+      <nav class="hidden lg:flex items-center gap-0.5 text-[13.5px] font-medium" aria-label="Main">
+        <div class="relative" data-home-dropdown>
+          <button type="button" class="nav-link inline-flex items-center gap-1 px-2.5 xl:px-3 py-2 rounded-md transition-colors is-active text-navy dark:text-white" aria-expanded="false" aria-controls="home-menu" aria-haspopup="true" data-dropdown-button>Home <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div id="home-menu" class="hidden absolute start-0 top-full mt-3 w-72 rounded-md bg-white dark:bg-panel border border-navy/10 dark:border-white/10 shadow-2xl shadow-navy/10 p-2 z-50" data-dropdown-menu>
+            <a href="index.html" class="block px-4 py-3 rounded-md hover:bg-mint dark:hover:bg-navy-800"><span class="block text-sm font-semibold text-navy dark:text-white">Home 1</span><span class="mt-0.5 block text-xs text-slate-600 dark:text-slate-400">Transformation results &amp; capabilities</span></a>
+            <a href="home-2.html" class="block px-4 py-3 rounded-md hover:bg-mint dark:hover:bg-navy-800 bg-mist dark:bg-navy-800" aria-current="page"><span class="block text-sm font-semibold text-navy dark:text-white">Home 2</span><span class="mt-0.5 block text-xs text-slate-600 dark:text-slate-400">The 100-Day Operations Reset</span></a>
+          </div>
+        </div>
+        <a href="about.html" class="nav-link px-2.5 xl:px-3 py-2 rounded-md transition-colors text-slate-700 hover:text-navy dark:text-slate-300 dark:hover:text-white">About</a>
+        <a href="services.html" class="nav-link px-2.5 xl:px-3 py-2 rounded-md transition-colors text-slate-700 hover:text-navy dark:text-slate-300 dark:hover:text-white">Services</a>
+        <a href="case-studies.html" class="nav-link px-2.5 xl:px-3 py-2 rounded-md transition-colors text-slate-700 hover:text-navy dark:text-slate-300 dark:hover:text-white">Case Studies</a>
+        <a href="blog.html" class="nav-link px-2.5 xl:px-3 py-2 rounded-md transition-colors text-slate-700 hover:text-navy dark:text-slate-300 dark:hover:text-white">Insights</a>
+        <a href="contact.html" class="nav-link px-2.5 xl:px-3 py-2 rounded-md transition-colors text-slate-700 hover:text-navy dark:text-slate-300 dark:hover:text-white">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-1.5 sm:gap-2 text-navy dark:text-white">
+        <button type="button" data-theme-toggle class="nav-ctl nav-icon" aria-label="Switch to dark theme" aria-pressed="false"><svg class="w-[18px] h-[18px] dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="w-[18px] h-[18px] hidden dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+        <button type="button" data-rtl-toggle class="nav-ctl nav-icon" aria-label="Switch to right-to-left layout" aria-pressed="false"><svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M14 3v10M16 3H9.5a3.5 3.5 0 0 0 0 7H10"/><path d="M4 19h16M7 16l-3 3 3 3M17 16l3 3-3 3"/></svg></button>
+        <a data-nav-cta class="btn-primary nav-ctl max-sm:!hidden" href="contact.html">Book a Consultation</a>
+        <button type="button" data-menu-button class="nav-ctl nav-icon lg:!hidden" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><svg data-icon="open" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg data-icon="close" class="w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+    </div>
+
+    <nav id="mobile-menu" class="hidden lg:hidden border-t border-navy/10 dark:border-white/10 bg-white dark:bg-navy-950 max-h-[calc(100vh-4.5rem)] overflow-y-auto" aria-label="Mobile">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 py-5 text-[15px] font-medium">
+        <p class="px-3 pb-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-600 dark:text-slate-400">Home</p>
+        <div class="grid grid-cols-2 gap-2 pb-3">
+          <a href="index.html" class="block text-center px-3 py-2.5 rounded-md border border-navy/15 text-slate-700 dark:border-white/15 dark:text-slate-300">Home 1</a>
+          <a href="home-2.html" class="block text-center px-3 py-2.5 rounded-md border border-navy bg-navy text-white dark:bg-gold dark:border-gold dark:text-navy" aria-current="page">Home 2</a>
+        </div>
+        <a href="about.html" class="flex items-center justify-between px-3 py-3 border-b border-navy/10 dark:border-white/10 text-slate-700 dark:text-slate-300">About</a>
+        <a href="services.html" class="flex items-center justify-between px-3 py-3 border-b border-navy/10 dark:border-white/10 text-slate-700 dark:text-slate-300">Services</a>
+        <a href="case-studies.html" class="flex items-center justify-between px-3 py-3 border-b border-navy/10 dark:border-white/10 text-slate-700 dark:text-slate-300">Case Studies</a>
+        <a href="blog.html" class="flex items-center justify-between px-3 py-3 border-b border-navy/10 dark:border-white/10 text-slate-700 dark:text-slate-300">Insights</a>
+        <a href="contact.html" class="flex items-center justify-between px-3 py-3 border-b border-navy/10 dark:border-white/10 text-slate-700 dark:text-slate-300">Contact</a>
+        <div class="pt-5"><a href="contact.html" class="btn-primary w-full">Book a Consultation</a></div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <section data-hero class="relative isolate overflow-hidden bg-navy text-white">
+      <img src="assets/img/hero-home2.jpg" alt="Long aisle of high-bay racking in a modern distribution centre" width="1600" height="1067" class="absolute inset-0 -z-10 h-full w-full object-cover" fetchpriority="high">
+      <div class="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(11,27,51,0.78)_0%,rgba(11,27,51,0.92)_70%)]" aria-hidden="true"></div>
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 py-28 sm:py-36 lg:py-44 text-center">
+        <div class="on-navy mx-auto max-w-4xl flex flex-col items-center">
+          <p class="inline-flex items-center gap-3 rounded-md border border-gold/50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-gold-light">Fixed scope &middot; fixed fee &middot; one quarter</p>
+          <h1 class="mt-8 text-[2.6rem] sm:text-6xl lg:text-7xl leading-[1.04] font-medium text-white">The 100-Day Operations Reset.</h1>
+          <p class="mt-7 max-w-2xl text-lg sm:text-xl leading-relaxed text-slate-200">For operations under pressure: stabilise service, free cash and install a performance rhythm in a single quarter, with fees partly at risk against agreed results.</p>
+          <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">
+            <a href="contact.html" class="btn-primary w-full sm:w-auto">Book a Consultation <svg class="w-4 h-4 flip-rtl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a href="#programme" class="btn-secondary w-full sm:w-auto text-white">How the 100 days work</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="Programme at a glance" class="bg-white dark:bg-navy-950 border-b border-navy/10 dark:border-white/10">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 grid grid-cols-2 lg:grid-cols-4 gap-8 py-12">
+        <div class="reveal border-s-2 border-gold ps-5"><p class="text-4xl font-light tracking-tight text-navy dark:text-white"><span class="num">100</span></p><p class="mt-2 text-sm text-slate-600 dark:text-slate-400">days, start to sustained results</p></div>
+        <div class="reveal border-s-2 border-gold ps-5"><p class="text-4xl font-light tracking-tight text-navy dark:text-white"><span class="num">4</span></p><p class="mt-2 text-sm text-slate-600 dark:text-slate-400">phases with stage-gated sign-off</p></div>
+        <div class="reveal border-s-2 border-gold ps-5"><p class="text-4xl font-light tracking-tight text-navy dark:text-white"><span class="num">3.4x</span></p><p class="mt-2 text-sm text-slate-600 dark:text-slate-400">average first-year return on fees</p></div>
+        <div class="reveal border-s-2 border-gold ps-5"><p class="text-4xl font-light tracking-tight text-navy dark:text-white"><span class="num">30%</span></p><p class="mt-2 text-sm text-slate-600 dark:text-slate-400">of our fee at risk on agreed KPIs</p></div>
+      </div>
+    </section>
+
+    <section id="programme" class="bg-paper dark:bg-panel/60 scroll-mt-20">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 py-24 lg:py-28">
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 reveal">
+        <div class="max-w-2xl">
+          <p class="eyebrow">The programme</p>
+          <h2 class="mt-5 text-3xl sm:text-4xl lg:text-[2.6rem] leading-[1.12] font-medium text-navy dark:text-white">Four phases. One quarter. Results your board can see.</h2>
+          <p class="mt-5 text-base sm:text-lg leading-relaxed text-slate-600 dark:text-slate-400">Each phase ends with a gate review with your executive sponsor. Nothing moves forward until the numbers are agreed.</p>
+        </div>
+        
+      </div>
+        <ol class="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <li class="reveal relative flex flex-col rounded-md bg-white dark:bg-panel border border-navy/10 dark:border-white/10 p-7">
+            <div class="absolute inset-x-0 top-0 h-1 rounded-t-md bg-navy dark:bg-navy-700" aria-hidden="true"></div>
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-gold-deep dark:text-gold-light">Days 0 to 10</p>
+            <h3 class="mt-3 text-xl font-semibold text-navy dark:text-white">Baseline</h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Data pull, gemba walks and a value map. One agreed number for cost, service and cash.</p>
+            <ul class="mt-6 space-y-2.5 border-t border-navy/10 dark:border-white/10 pt-5 text-sm text-slate-700 dark:text-slate-300">
+              <li class="flex gap-2.5"><svg class="mt-0.5 w-4 h-4 shrink-0 text-gold-deep dark:text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Signed-off baseline</span></li><li class="flex gap-2.5"><svg class="mt-0.5 w-4 h-4 shrink-0 text-gold-deep dark:text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Top 20 loss tree</span></li><li class="flex gap-2.5"><svg class="mt-0.5 w-4 h-4 shrink-0 text-gold-deep dark:text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Reset charter</span></li>
+            </ul>
+          </li>
+          <li class="reveal relative flex flex-col rounded-md bg-white dark:bg-panel border border-navy/10 dark:border-white/10 p-7">
+            <div class="absolute inset-x-0 top-0 h-1 rounded-t-md bg-navy dark:bg-navy-700" aria-hidden="true"></div>
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-gold-deep dark:text-gold-light">Days 11 to 40</p>
+            <h3 class="mt-3 text-xl font-semibold text-navy dark:text-white">Quick wins</h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Stabilise service and capture no-capex savings: scheduling, staffing, inventory policy.</p>
+            <ul class="mt-6 space-y-2.5 border-t border-navy/10 dark:border-white/10 pt-5 text-sm text-slate-700 dark:text-slate-300">
+              <li class="flex gap-2.5"><svg class="mt-0.5 w-4 h-4 shrink-0 text-gold-deep dark:text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Daily tier meetings live</span></li><li class="flex gap-2.5"><svg class="mt-0.5 w-4 h-4 shrink-0 text-gold-deep dark:text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>First $ captured</span></li><li class="flex gap-2.5"><svg class="mt-0.5 w-4 h-4 shrink-0 text-gold-deep dark:text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Service recovered</span></li>
+            </ul>
+          </li>
+          <li class="reveal relative flex flex-col rounded-md bg-white dark:bg-panel border border-navy/10 dark:border-white/10 p-7">
+            <div class="absolute inset-x-0 top-0 h-1 rounded-t-md bg-navy dark:bg-navy-700" aria-hidden="true"></div>
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-gold-deep dark:text-gold-light">Days 41 to 80</p>
+            <h3 class="mt-3 text-xl font-semibold text-navy dark:text-white">Redesign</h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Rebuild the two or three processes that drive most of the loss, then pilot and scale.</p>
+            <ul class="mt-6 space-y-2.5 border-t border-navy/10 dark:border-white/10 pt-5 text-sm text-slate-700 dark:text-slate-300">
+              <li class="flex gap-2.5"><svg class="mt-0.5 w-4 h-4 shrink-0 text-gold-deep dark:text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Future-state SOPs</span></li><li class="flex gap-2.5"><svg class="mt-0.5 w-4 h-4 shrink-0 text-gold-deep dark:text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Pilot results</span></li><li class="flex gap-2.5"><svg class="mt-0.5 w-4 h-4 shrink-0 text-gold-deep dark:text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Scale plan</span></li>
+            </ul>
+          </li>
+          <li class="reveal relative flex flex-col rounded-md bg-white dark:bg-panel border border-navy/10 dark:border-white/10 p-7">
+            <div class="absolute inset-x-0 top-0 h-1 rounded-t-md bg-gold" aria-hidden="true"></div>
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-gold-deep dark:text-gold-light">Days 81 to 100</p>
+            <h3 class="mt-3 text-xl font-semibold text-navy dark:text-white">Lock-in</h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Hand over a performance rhythm, KPI tree and capability plan your leaders own.</p>
+            <ul class="mt-6 space-y-2.5 border-t border-navy/10 dark:border-white/10 pt-5 text-sm text-slate-700 dark:text-slate-300">
+              <li class="flex gap-2.5"><svg class="mt-0.5 w-4 h-4 shrink-0 text-gold-deep dark:text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>KPI tree &amp; dashboards</span></li><li class="flex gap-2.5"><svg class="mt-0.5 w-4 h-4 shrink-0 text-gold-deep dark:text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Leader standard work</span></li><li class="flex gap-2.5"><svg class="mt-0.5 w-4 h-4 shrink-0 text-gold-deep dark:text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>12-month roadmap</span></li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="bg-white dark:bg-navy-950">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 py-24 lg:py-28">
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 reveal">
+        <div class="max-w-2xl">
+          <p class="eyebrow">Industries served</p>
+          <h2 class="mt-5 text-3xl sm:text-4xl lg:text-[2.6rem] leading-[1.12] font-medium text-navy dark:text-white">Built from 140 transformations across six sectors</h2>
+          <p class="mt-5 text-base sm:text-lg leading-relaxed text-slate-600 dark:text-slate-400">The Reset is tailored by sector: the levers differ, the discipline does not.</p>
+        </div>
+        <a href="case-studies.html" class="link-arrow shrink-0 text-navy dark:text-gold-light border-b border-current pb-1">Sector case studies <svg class="w-4 h-4 flip-rtl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+        <div class="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <article class="reveal group relative overflow-hidden rounded-md border border-navy/10 dark:border-white/10 bg-white dark:bg-panel">
+            <div class="img-zoom aspect-[4/3] overflow-hidden"><img src="assets/img/ind-manufacturing.jpg" alt="Automated manufacturing line" width="800" height="600" class="h-full w-full object-cover" loading="lazy" decoding="async"></div>
+            <div class="p-6">
+              <div class="flex items-start justify-between gap-4">
+                <h3 class="text-lg font-semibold text-navy dark:text-white">Industrial manufacturing</h3>
+                <span class="shrink-0 rounded-md bg-mist dark:bg-navy-800 px-2.5 py-1 text-xs font-semibold text-navy dark:text-gold-light"><span class="num">+18 pts OEE</span></span>
+              </div>
+              <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">OEE, changeover and scrap programmes for discrete and process plants.</p>
+            </div>
+          </article>
+          <article class="reveal group relative overflow-hidden rounded-md border border-navy/10 dark:border-white/10 bg-white dark:bg-panel">
+            <div class="img-zoom aspect-[4/3] overflow-hidden"><img src="assets/img/ind-retail.jpg" alt="Modern retail store interior" width="800" height="600" class="h-full w-full object-cover" loading="lazy" decoding="async"></div>
+            <div class="p-6">
+              <div class="flex items-start justify-between gap-4">
+                <h3 class="text-lg font-semibold text-navy dark:text-white">Retail &amp; consumer</h3>
+                <span class="shrink-0 rounded-md bg-mist dark:bg-navy-800 px-2.5 py-1 text-xs font-semibold text-navy dark:text-gold-light"><span class="num">-23% shrink</span></span>
+              </div>
+              <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Store labour, replenishment and distribution centre productivity.</p>
+            </div>
+          </article>
+          <article class="reveal group relative overflow-hidden rounded-md border border-navy/10 dark:border-white/10 bg-white dark:bg-panel">
+            <div class="img-zoom aspect-[4/3] overflow-hidden"><img src="assets/img/ind-healthcare.jpg" alt="Clinician reviewing patient information" width="800" height="600" class="h-full w-full object-cover" loading="lazy" decoding="async"></div>
+            <div class="p-6">
+              <div class="flex items-start justify-between gap-4">
+                <h3 class="text-lg font-semibold text-navy dark:text-white">Healthcare providers</h3>
+                <span class="shrink-0 rounded-md bg-mist dark:bg-navy-800 px-2.5 py-1 text-xs font-semibold text-navy dark:text-gold-light"><span class="num">-2.1 days length of stay</span></span>
+              </div>
+              <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Patient flow, theatre utilisation and back-office redesign.</p>
+            </div>
+          </article>
+          <article class="reveal group relative overflow-hidden rounded-md border border-navy/10 dark:border-white/10 bg-white dark:bg-panel">
+            <div class="img-zoom aspect-[4/3] overflow-hidden"><img src="assets/img/ind-logistics.jpg" alt="Stacked shipping containers at a logistics hub" width="800" height="600" class="h-full w-full object-cover" loading="lazy" decoding="async"></div>
+            <div class="p-6">
+              <div class="flex items-start justify-between gap-4">
+                <h3 class="text-lg font-semibold text-navy dark:text-white">Transport &amp; logistics</h3>
+                <span class="shrink-0 rounded-md bg-mist dark:bg-navy-800 px-2.5 py-1 text-xs font-semibold text-navy dark:text-gold-light"><span class="num">-21% cost per order</span></span>
+              </div>
+              <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Network design, warehouse productivity and fleet utilisation.</p>
+            </div>
+          </article>
+          <article class="reveal group relative overflow-hidden rounded-md border border-navy/10 dark:border-white/10 bg-white dark:bg-panel">
+            <div class="img-zoom aspect-[4/3] overflow-hidden"><img src="assets/img/ind-energy.jpg" alt="High-voltage power lines at dusk" width="800" height="600" class="h-full w-full object-cover" loading="lazy" decoding="async"></div>
+            <div class="p-6">
+              <div class="flex items-start justify-between gap-4">
+                <h3 class="text-lg font-semibold text-navy dark:text-white">Energy &amp; utilities</h3>
+                <span class="shrink-0 rounded-md bg-mist dark:bg-navy-800 px-2.5 py-1 text-xs font-semibold text-navy dark:text-gold-light"><span class="num">-19% maintenance cost</span></span>
+              </div>
+              <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Maintenance excellence, field-force productivity and outage planning.</p>
+            </div>
+          </article>
+          <article class="reveal group relative overflow-hidden rounded-md border border-navy/10 dark:border-white/10 bg-white dark:bg-panel">
+            <div class="img-zoom aspect-[4/3] overflow-hidden"><img src="assets/img/ind-pharma.jpg" alt="Pharmaceutical tablets on a production tray" width="800" height="600" class="h-full w-full object-cover" loading="lazy" decoding="async"></div>
+            <div class="p-6">
+              <div class="flex items-start justify-between gap-4">
+                <h3 class="text-lg font-semibold text-navy dark:text-white">Pharma &amp; life sciences</h3>
+                <span class="shrink-0 rounded-md bg-mist dark:bg-navy-800 px-2.5 py-1 text-xs font-semibold text-navy dark:text-gold-light"><span class="num">-38% batch release time</span></span>
+              </div>
+              <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">Batch release cycle time, S&amp;OP and GMP-compliant lean.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="on-navy bg-navy text-white">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 py-24 lg:py-28 grid gap-12 lg:grid-cols-2 lg:items-center">
+        <div class="reveal aspect-[4/3] overflow-hidden rounded-md"><img src="assets/img/reset-team.jpg" alt="Client and Northbeam team reviewing the 100-day plan together" width="800" height="600" class="h-full w-full object-cover" loading="lazy" decoding="async"></div>
+        <div class="reveal">
+          <p class="eyebrow">What you get on day 100</p>
+          <h2 class="mt-5 text-3xl sm:text-4xl leading-[1.12] font-medium text-white">Not a report. A running operation, measurably better.</h2>
+          <ul class="mt-8 grid gap-x-8 gap-y-4 sm:grid-cols-2 text-[15px] text-slate-200">
+            <li class="flex gap-3"><svg class="mt-1 w-4 h-4 shrink-0 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Finance-validated savings ledger</span></li>
+            <li class="flex gap-3"><svg class="mt-1 w-4 h-4 shrink-0 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Tiered daily performance meetings</span></li>
+            <li class="flex gap-3"><svg class="mt-1 w-4 h-4 shrink-0 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>KPI tree from shop floor to P&amp;L</span></li>
+            <li class="flex gap-3"><svg class="mt-1 w-4 h-4 shrink-0 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Rewritten SOPs for priority processes</span></li>
+            <li class="flex gap-3"><svg class="mt-1 w-4 h-4 shrink-0 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Trained internal improvement leads</span></li>
+            <li class="flex gap-3"><svg class="mt-1 w-4 h-4 shrink-0 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>A 12-month roadmap with owners</span></li>
+          </ul>
+          <div class="mt-10 grid grid-cols-3 border-t border-white/15 pt-8 gap-6">
+            <div><p class="text-3xl font-light text-white"><span class="num">$4.8M</span></p><p class="mt-1 text-xs text-slate-300">median run-rate savings</p></div><div><p class="text-3xl font-light text-white"><span class="num">+11 pts</span></p><p class="mt-1 text-xs text-slate-300">on-time in full</p></div><div><p class="text-3xl font-light text-white"><span class="num">-19%</span></p><p class="mt-1 text-xs text-slate-300">inventory</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-paper dark:bg-panel/60">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 py-24 lg:py-28">
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 reveal">
+        <div class="max-w-2xl">
+          <p class="eyebrow">From Reset clients</p>
+          <h2 class="mt-5 text-3xl sm:text-4xl lg:text-[2.6rem] leading-[1.12] font-medium text-navy dark:text-white">One quarter later</h2>
+          
+        </div>
+        
+      </div>
+        <div class="mt-14 grid gap-8 md:grid-cols-2">
+          <figure data-testimonial class="reveal flex flex-col rounded-md border border-navy/10 dark:border-white/10 bg-white dark:bg-panel p-8">
+            <svg class="w-8 h-8 text-gold" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M13 8C7.5 9.6 4 13.8 4 19.5 4 23 6.2 25 9 25c2.6 0 4.6-2 4.6-4.6 0-2.5-1.8-4.3-4.2-4.4.6-2.6 2.6-4.8 5.4-5.9zm15 0c-5.5 1.6-9 5.8-9 11.5 0 3.5 2.2 5.5 5 5.5 2.6 0 4.6-2 4.6-4.6 0-2.5-1.8-4.3-4.2-4.4.6-2.6 2.6-4.8 5.4-5.9z"/></svg>
+            <blockquote class="mt-6 flex-1 text-[15px] leading-relaxed text-slate-700 dark:text-slate-300">&ldquo;We were missing a third of customer orders when Northbeam arrived. By day 60 we were above 95% on time in full, and by day 100 my team was running the cadence without them in the room.&rdquo;</blockquote>
+            <figcaption class="mt-8 flex items-center gap-4 border-t border-navy/10 dark:border-white/10 pt-6">
+              <img src="assets/img/t-elena.jpg" alt="Portrait of Elena Marchetti" width="200" height="200" class="h-12 w-12 rounded-full object-cover" loading="lazy" decoding="async">
+              <span><span class="block text-sm font-semibold text-navy dark:text-white">Elena Marchetti</span><span class="block text-xs text-slate-600 dark:text-slate-400">Managing Director, Veronda Foods</span></span>
+            </figcaption>
+          </figure>
+          <figure data-testimonial class="reveal flex flex-col rounded-md border border-navy/10 dark:border-white/10 bg-white dark:bg-panel p-8">
+            <svg class="w-8 h-8 text-gold" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M13 8C7.5 9.6 4 13.8 4 19.5 4 23 6.2 25 9 25c2.6 0 4.6-2 4.6-4.6 0-2.5-1.8-4.3-4.2-4.4.6-2.6 2.6-4.8 5.4-5.9zm15 0c-5.5 1.6-9 5.8-9 11.5 0 3.5 2.2 5.5 5 5.5 2.6 0 4.6-2 4.6-4.6 0-2.5-1.8-4.3-4.2-4.4.6-2.6 2.6-4.8 5.4-5.9z"/></svg>
+            <blockquote class="mt-6 flex-1 text-[15px] leading-relaxed text-slate-700 dark:text-slate-300">&ldquo;The fee-at-risk model told me they were serious. They hit every gate, and the $6.2M run-rate saving is now in our budget, not on a slide.&rdquo;</blockquote>
+            <figcaption class="mt-8 flex items-center gap-4 border-t border-navy/10 dark:border-white/10 pt-6">
+              <img src="assets/img/t-rahul.jpg" alt="Portrait of Rahul Menon" width="200" height="200" class="h-12 w-12 rounded-full object-cover" loading="lazy" decoding="async">
+              <span><span class="block text-sm font-semibold text-navy dark:text-white">Rahul Menon</span><span class="block text-xs text-slate-600 dark:text-slate-400">Chief Operating Officer, Keystone Packaging</span></span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white dark:bg-navy-950">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 py-20 lg:py-24">
+        <div class="on-navy relative overflow-hidden rounded-md bg-navy dark:bg-panel px-6 py-14 sm:px-12 lg:px-16 lg:py-16 reveal">
+          <div class="absolute -top-24 -end-24 h-72 w-72 rounded-full border border-gold/30" aria-hidden="true"></div>
+          <div class="absolute -top-10 -end-10 h-44 w-44 rounded-full border border-gold/20" aria-hidden="true"></div>
+          <div class="relative grid gap-8 lg:grid-cols-12 lg:items-center">
+            <div class="lg:col-span-8">
+              <div class="rule-gold" aria-hidden="true"></div>
+              <h2 class="mt-6 text-3xl sm:text-4xl leading-tight font-medium text-white">Is a 100-day Reset right for your operation?</h2>
+              <p class="mt-4 text-base sm:text-lg text-slate-300 max-w-2xl">Book a consultation and we will run a short readiness check: data availability, sponsor capacity and the size of the prize.</p>
+            </div>
+            <div class="lg:col-span-4 lg:text-end">
+              <a href="contact.html" class="btn-primary">Book a Consultation <svg class="w-4 h-4 flip-rtl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="on-navy bg-navy dark:bg-[#040B16] text-white border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 pt-20 pb-10">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-12 items-start">
+        <div class="sm:col-span-2 lg:col-span-4">
+          <div class="text-white"><a href="index.html" data-logo class="inline-flex items-center gap-3 shrink-0" aria-label="Northbeam Consulting home"><img src="assets/img/logo.svg" alt="" width="36" height="36" class="h-9 w-9 shrink-0"><span class="leading-none"><span class="block text-[15px] font-bold tracking-[0.16em]">NORTHBEAM</span><span class="mt-1 block text-[10.5px] font-medium tracking-[0.34em]">CONSULTING</span></span></a></div>
+          <p class="mt-6 text-sm leading-relaxed text-slate-300 max-w-sm">Operations and transformation consultants to COOs, plant leaders and supply-chain executives. We tie every engagement to results your CFO signs off.</p>
+          <form class="mt-8 max-w-sm" novalidate data-validate-form data-success="Subscribed. The Operations Brief arrives on the first Tuesday of each month.">
+            <label for="footer-news-home-2" class="block text-sm font-semibold text-white">The Operations Brief, monthly</label>
+            <div class="mt-3 flex flex-col sm:flex-row gap-2" data-field>
+              <input id="footer-news-home-2" name="email" type="email" data-validate="email" autocomplete="email" placeholder="name@company.com" class="field min-w-0 flex-1 !bg-white/5 !border-white/25 !text-white placeholder:!text-slate-400">
+              <button type="submit" class="btn-primary">Subscribe</button>
+            </div>
+          </form>
+          <div class="mt-8 flex items-center gap-2" data-social>
+            <a href="https://www.linkedin.com/company/northbeam-consulting" target="_blank" rel="noopener" aria-label="LinkedIn" class="w-10 h-10 rounded-md border border-white/25 flex items-center justify-center text-white hover:bg-gold hover:border-gold hover:text-navy transition-colors"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.3 0-2.9-1.8-2.9s-2 1.4-2 2.8V21h-4z"/></svg></a>
+            <a href="https://x.com/northbeamops" target="_blank" rel="noopener" aria-label="X (Twitter)" class="w-10 h-10 rounded-md border border-white/25 flex items-center justify-center text-white hover:bg-gold hover:border-gold hover:text-navy transition-colors"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.8 3h3.1l-6.8 7.7L22 21h-6.2l-4.9-6.3L5.3 21H2.2l7.2-8.3L1.9 3h6.4l4.4 5.8zm-1.1 16.2h1.7L7.4 4.7H5.6z"/></svg></a>
+            <a href="https://www.youtube.com/@northbeamconsulting" target="_blank" rel="noopener" aria-label="YouTube" class="w-10 h-10 rounded-md border border-white/25 flex items-center justify-center text-white hover:bg-gold hover:border-gold hover:text-navy transition-colors"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.8 15.1V8.9L15.5 12z"/></svg></a>
+            <a href="https://medium.com/@northbeamconsulting" target="_blank" rel="noopener" aria-label="Medium" class="w-10 h-10 rounded-md border border-white/25 flex items-center justify-center text-white hover:bg-gold hover:border-gold hover:text-navy transition-colors"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="7" cy="12" rx="6" ry="6.2"/><ellipse cx="17" cy="12" rx="3" ry="5.8"/><ellipse cx="22.2" cy="12" rx="1.2" ry="5.2"/></svg></a>
+          </div>
+        </div>
+        <div class="lg:col-span-2">
+          <h2 class="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-gold-light leading-6">Quick Links</h2>
+          <ul class="mt-5 space-y-3 text-sm text-slate-300">
+            <li><a href="index.html" class="hover:text-white transition-colors">Home 1</a></li>
+            <li><a href="home-2.html" class="hover:text-white transition-colors">Home 2: 100-Day Reset</a></li>
+            <li><a href="about.html" class="hover:text-white transition-colors">About the firm</a></li>
+            <li><a href="case-studies.html" class="hover:text-white transition-colors">Case studies</a></li>
+            <li><a href="blog.html" class="hover:text-white transition-colors">Insights</a></li>
+            <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+        <div class="lg:col-span-3">
+          <h2 class="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-gold-light leading-6">Services</h2>
+          <ul class="mt-5 space-y-3 text-sm text-slate-300">
+            <li><a href="services.html#lean" class="hover:text-white transition-colors">Lean &amp; process redesign</a></li>
+            <li><a href="services.html#supply-chain" class="hover:text-white transition-colors">Supply chain &amp; S&amp;OP</a></li>
+            <li><a href="services.html#cost" class="hover:text-white transition-colors">Cost transformation</a></li>
+            <li><a href="services.html#operating-model" class="hover:text-white transition-colors">Operating model design</a></li>
+            <li><a href="services.html#digital" class="hover:text-white transition-colors">Digital operations &amp; automation</a></li>
+            <li><a href="services.html#pmo" class="hover:text-white transition-colors">Transformation office (PMO)</a></li>
+          </ul>
+        </div>
+        <div class="lg:col-span-3">
+          <h2 class="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-gold-light leading-6">Contact</h2>
+          <ul class="mt-5 space-y-3 text-sm text-slate-300">
+            <li class="leading-relaxed">30 Finsbury Square<br>London EC2A 1AG, United Kingdom</li>
+            <li><a href="tel:+442071234580" class="hover:text-white transition-colors">+44 20 7123 4580</a></li>
+            <li><a href="mailto:enquiries@northbeam-consulting.com" class="hover:text-white transition-colors">enquiries@northbeam-consulting.com</a></li>
+            <li>Mon to Fri, 08:00 to 18:30 GMT</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-16 pt-8 border-t border-white/15 flex flex-col md:flex-row gap-4 md:items-center justify-between text-xs text-slate-400">
+        <p>&copy; <span data-year>2026</span> Northbeam Consulting LLP. All rights reserved.</p>
+        <p>Registered in England &amp; Wales, OC 391 274. London &middot; New York &middot; Chicago &middot; Frankfurt &middot; Singapore &middot; Dubai</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

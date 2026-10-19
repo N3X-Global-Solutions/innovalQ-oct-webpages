@@ -1,181 +1,208 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth scroll-pt-24">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Client Dashboard | Kavach Insurance Brokers</title>
   <meta name="description" content="View your policies, compare quotes, track claims and download documents in your Kavach client dashboard.">
+  <meta name="theme-color" content="#2B1B12">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <script>(function(){try{var d=document.documentElement;if(localStorage.getItem('kavach-theme')==='dark')d.classList.add('dark');if(localStorage.getItem('kavach-dir')==='rtl')d.setAttribute('dir','rtl');}catch(e){}})();</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           colors: {
             brown: { DEFAULT: '#2B1B12', soft: '#4A3328' },
             sand: { DEFAULT: '#DCC5B8', light: '#EBDDD4' },
-            cream: '#FFF6F0'
+            cream: '#FFF6F0',
+            night: { DEFAULT: '#140D09', soft: '#1C130D', card: '#22170F' }
           },
           fontFamily: { sans: ['Montserrat', 'sans-serif'] }
         }
       }
     }
   </script>
-  <style>
-    body { font-family: 'Montserrat', sans-serif; color: #2B1B12; }
-    img { background: #EBDDD4; }
-    details summary::-webkit-details-marker { display: none; }
-    details[open] .chev { transform: rotate(180deg); }
-  </style>
+  <link rel="stylesheet" href="assets/css/site.css">
 </head>
-<body class="bg-white antialiased">
-
+<body class="bg-white text-brown antialiased dark:bg-night dark:text-cream">
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:start-3 focus:z-[60] focus:rounded-lg focus:bg-brown focus:px-4 focus:py-2 focus:text-white">Skip to content</a>
   <!-- Top bar -->
-  <header class="sticky top-0 z-50 bg-cream/95 backdrop-blur border-b border-brown/10">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-4">
-      <a href="index.html" class="flex items-center gap-2 text-xl font-extrabold tracking-tight">
-        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2l8 3v6c0 5-3.5 9.5-8 11-4.5-1.5-8-6-8-11V5z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
-        Kavach
-      </a>
-      <div class="flex items-center gap-4 sm:gap-6 text-sm font-semibold min-w-0">
-        <span class="flex items-center gap-2 min-w-0">
-          <span id="user-initials" class="hidden sm:flex w-9 h-9 rounded-full bg-sand items-center justify-center text-xs font-bold"></span>
-          <span id="user-name" class="truncate"></span>
+  <header class="sticky top-0 z-50 border-b border-brown/10 bg-cream/95 backdrop-blur dark:border-white/10 dark:bg-night/95">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-3">
+      <a href="index.html" data-logo class="inline-flex items-center gap-2.5 shrink-0" aria-label="Kavach Insurance Brokers, home"><img src="assets/img/logo.svg" alt="" width="36" height="36" class="h-9 w-9 shrink-0"><span class="flex flex-col leading-none"><span class="text-xl font-extrabold tracking-tight">Kavach</span><span class="mt-1 hidden min-[420px]:block text-[10px] font-semibold uppercase tracking-[0.2em] opacity-70">Insurance Brokers</span></span></a>
+
+      <nav aria-label="Main" class="hidden lg:flex items-center gap-8 text-sm font-semibold">
+        <a href="dashboard.html" class="nav-link" aria-current="page">Dashboard</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="flex min-w-0 items-center gap-2 text-sm font-semibold">
+        <span class="hidden min-w-0 items-center gap-2 md:flex">
+          <span id="user-initials" class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-sand text-xs font-bold text-[#2B1B12]"></span>
+          <span id="user-name" class="max-w-[10rem] truncate"></span>
         </span>
-        <button id="sign-out" class="shrink-0 hover:opacity-70">Sign out</button>
+        <button type="button" data-theme-toggle class="nav-ctl" aria-label="Switch to dark theme" aria-pressed="false"><svg class="icon-moon w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="icon-sun w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/></svg></button>
+        <button type="button" data-rtl-toggle class="nav-ctl" aria-label="Switch to right-to-left layout" aria-pressed="false"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M14 3v10M17 3H9.5a3.5 3.5 0 0 0 0 7H10"/><path d="M4 18h16M7 15l-3 3 3 3M17 15l3 3-3 3"/></svg></button>
+        <span class="hidden sm:block"><button type="button" id="sign-out" data-sign-out class="nav-ctl" aria-label="Sign out" title="Sign out">
+          <svg class="w-5 h-5 rtl:-scale-x-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+        </button></span>
+        <span class="lg:hidden"><button type="button" data-menu-button class="nav-ctl" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></span>
       </div>
+    </div>
+
+    <div id="mobile-menu" hidden class="lg:hidden border-t border-brown/10 dark:border-white/10">
+      <nav aria-label="Mobile" class="max-w-6xl mx-auto px-4 sm:px-6 py-4 grid gap-1 text-sm font-semibold">
+        <a href="dashboard.html" class="block rounded-lg px-3 py-2.5 hover:bg-brown/5 dark:hover:bg-white/5 aria-[current=page]:bg-brown/5 dark:aria-[current=page]:bg-white/10" aria-current="page">Dashboard</a>
+        <a href="index.html" class="block rounded-lg px-3 py-2.5 hover:bg-brown/5 dark:hover:bg-white/5 aria-[current=page]:bg-brown/5 dark:aria-[current=page]:bg-white/10">Website home</a>
+        <a href="services.html" class="block rounded-lg px-3 py-2.5 hover:bg-brown/5 dark:hover:bg-white/5 aria-[current=page]:bg-brown/5 dark:aria-[current=page]:bg-white/10">Services</a>
+        <a href="blog.html" class="block rounded-lg px-3 py-2.5 hover:bg-brown/5 dark:hover:bg-white/5 aria-[current=page]:bg-brown/5 dark:aria-[current=page]:bg-white/10">Blog</a>
+        <a href="contact.html" class="block rounded-lg px-3 py-2.5 hover:bg-brown/5 dark:hover:bg-white/5 aria-[current=page]:bg-brown/5 dark:aria-[current=page]:bg-white/10">Contact</a>
+        <span class="my-2 h-px bg-brown/10 dark:bg-white/10"></span>
+        <button type="button" data-sign-out class="flex items-center gap-2 rounded-lg px-3 py-2.5 text-start hover:bg-brown/5 dark:hover:bg-white/5"><svg class="w-4 h-4 rtl:-scale-x-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>Sign out</button>
+      </nav>
     </div>
   </header>
 
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
+  <main id="main" class="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
 
     <!-- Greeting + advisor -->
-    <section class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+    <section class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
       <div>
-        <p id="demo-note" class="hidden mb-2 text-xs font-semibold opacity-60">Demo mode</p>
-        <h1 id="greeting" class="text-3xl sm:text-4xl font-extrabold"></h1>
-        <p id="company" class="mt-2 text-sm font-medium opacity-70"></p>
+        <p id="demo-note" hidden class="mb-2 inline-block rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-800 dark:bg-amber-400/15 dark:text-amber-200">Demo mode · sample data</p>
+        <h1 id="greeting" class="text-3xl sm:text-4xl font-extrabold">Hi there</h1>
+        <p id="company" class="mt-2 text-sm font-medium text-brown/70 dark:text-cream/70"></p>
       </div>
-      <div class="bg-cream rounded-2xl p-5 flex items-center gap-4 md:min-w-[18rem]">
-        <span id="advisor-initials" class="w-11 h-11 rounded-full bg-brown text-white flex items-center justify-center text-sm font-bold shrink-0"></span>
-        <div class="text-sm min-w-0">
-          <p class="text-xs font-semibold opacity-60">Your advisor</p>
+      <div class="flex items-center gap-4 rounded-2xl bg-cream p-5 md:min-w-[18rem] dark:bg-night-card">
+        <span id="advisor-initials" class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brown text-sm font-bold text-white dark:bg-cream dark:text-brown"></span>
+        <div class="min-w-0 text-sm">
+          <p class="text-xs font-semibold text-brown/70 dark:text-cream/70">Your advisor</p>
           <p id="advisor-name" class="font-bold"></p>
-          <p class="mt-1 font-medium flex flex-wrap gap-x-3">
-            <a id="advisor-phone" class="hover:opacity-70"></a>
-            <a id="advisor-email" class="hover:opacity-70 truncate"></a>
+          <p class="mt-1 flex flex-wrap gap-x-3 font-medium">
+            <a id="advisor-phone" href="tel:+919820045678" class="hover:underline" dir="ltr"></a>
+            <a id="advisor-email" href="mailto:neha@kavach.in" class="truncate hover:underline"></a>
           </p>
         </div>
       </div>
     </section>
 
     <!-- Stats -->
-    <section class="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-4">
-      <div class="bg-cream rounded-2xl p-5 sm:p-6"><p class="text-xs font-semibold opacity-60">Active policies</p><p id="stat-active" class="mt-2 text-2xl sm:text-3xl font-extrabold"></p></div>
-      <div class="bg-cream rounded-2xl p-5 sm:p-6"><p class="text-xs font-semibold opacity-60">Total sum insured</p><p id="stat-sum" class="mt-2 text-2xl sm:text-3xl font-extrabold"></p></div>
-      <div class="bg-cream rounded-2xl p-5 sm:p-6"><p class="text-xs font-semibold opacity-60">Annual premium</p><p id="stat-premium" class="mt-2 text-2xl sm:text-3xl font-extrabold"></p></div>
-      <div class="bg-cream rounded-2xl p-5 sm:p-6"><p class="text-xs font-semibold opacity-60">Open claims</p><p id="stat-claims" class="mt-2 text-2xl sm:text-3xl font-extrabold"></p></div>
+    <section aria-label="Summary" class="mt-10 grid grid-cols-2 gap-4 lg:grid-cols-4">
+      <div class="rounded-2xl bg-cream p-5 sm:p-6 dark:bg-night-card"><p class="text-xs font-semibold text-brown/70 dark:text-cream/70">Active policies</p><p id="stat-active" class="mt-2 text-2xl font-extrabold sm:text-3xl">–</p></div>
+      <div class="rounded-2xl bg-cream p-5 sm:p-6 dark:bg-night-card"><p class="text-xs font-semibold text-brown/70 dark:text-cream/70">Total sum insured</p><p id="stat-sum" class="mt-2 text-2xl font-extrabold sm:text-3xl">–</p></div>
+      <div class="rounded-2xl bg-cream p-5 sm:p-6 dark:bg-night-card"><p class="text-xs font-semibold text-brown/70 dark:text-cream/70">Annual premium</p><p id="stat-premium" class="mt-2 text-2xl font-extrabold sm:text-3xl">–</p></div>
+      <div class="rounded-2xl bg-cream p-5 sm:p-6 dark:bg-night-card"><p class="text-xs font-semibold text-brown/70 dark:text-cream/70">Open claims</p><p id="stat-claims" class="mt-2 text-2xl font-extrabold sm:text-3xl">–</p></div>
     </section>
 
     <!-- Tabs -->
-    <nav class="mt-12 border-b border-sand flex gap-6 sm:gap-10 overflow-x-auto text-sm font-semibold" role="tablist">
-      <button data-tab="policies" role="tab" class="tab-btn pb-3 whitespace-nowrap border-b-2 border-transparent">Policies</button>
-      <button data-tab="quotes" role="tab" class="tab-btn pb-3 whitespace-nowrap border-b-2 border-transparent">Compare Quotes</button>
-      <button data-tab="claims" role="tab" class="tab-btn pb-3 whitespace-nowrap border-b-2 border-transparent">Claims</button>
-      <button data-tab="documents" role="tab" class="tab-btn pb-3 whitespace-nowrap border-b-2 border-transparent">Documents</button>
-    </nav>
+    <div class="mt-12 flex gap-6 overflow-x-auto border-b border-sand text-sm font-semibold sm:gap-10 dark:border-white/15" role="tablist" aria-label="Dashboard sections">
+      <button type="button" data-tab="policies" role="tab" aria-controls="tab-policies" class="tab-btn whitespace-nowrap border-b-2 border-transparent pb-3">Policies</button>
+      <button type="button" data-tab="quotes" role="tab" aria-controls="tab-quotes" class="tab-btn whitespace-nowrap border-b-2 border-transparent pb-3">Compare Quotes</button>
+      <button type="button" data-tab="claims" role="tab" aria-controls="tab-claims" class="tab-btn whitespace-nowrap border-b-2 border-transparent pb-3">Claims</button>
+      <button type="button" data-tab="documents" role="tab" aria-controls="tab-documents" class="tab-btn whitespace-nowrap border-b-2 border-transparent pb-3">Documents</button>
+    </div>
 
     <!-- Policies -->
-    <section id="tab-policies" class="tab-panel mt-8 space-y-4"></section>
+    <section id="tab-policies" role="tabpanel" aria-label="Policies" class="tab-panel mt-8 space-y-4"></section>
 
     <!-- Quotes -->
-    <section id="tab-quotes" class="tab-panel hidden mt-8">
-      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <h2 class="text-xl font-extrabold">Business Interruption cover — 3 quotes</h2>
+    <section id="tab-quotes" role="tabpanel" aria-label="Compare quotes" hidden class="tab-panel mt-8">
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <h2 class="text-xl font-extrabold">Business Interruption cover: 3 quotes</h2>
         <label class="flex items-center gap-3 text-sm font-semibold">
           Sort by
-          <select id="quote-sort" class="bg-cream border border-sand rounded-md px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-brown">
+          <select id="quote-sort" class="field w-auto py-2.5">
             <option value="price">Price</option>
             <option value="ratio">Claim ratio</option>
             <option value="deductible">Deductible</option>
           </select>
         </label>
       </div>
-      <div id="quote-list" class="mt-6 grid md:grid-cols-3 gap-4"></div>
-      <p id="quote-note" class="hidden mt-6 text-sm font-semibold"></p>
+      <div id="quote-list" class="mt-6 grid gap-4 md:grid-cols-3"></div>
+      <p id="quote-note" hidden class="mt-6 text-sm font-semibold" role="status"></p>
     </section>
 
     <!-- Claims -->
-    <section id="tab-claims" class="tab-panel hidden mt-8">
-      <div class="flex items-center justify-between gap-4">
+    <section id="tab-claims" role="tabpanel" aria-label="Claims" hidden class="tab-panel mt-8">
+      <div class="flex flex-wrap items-center justify-between gap-4">
         <h2 class="text-xl font-extrabold">Your claims</h2>
-        <button id="new-claim-btn" class="px-6 py-3 bg-brown text-white text-sm font-semibold rounded-md hover:bg-brown-soft transition-colors">Report a new claim</button>
+        <button type="button" id="new-claim-btn" aria-expanded="false" aria-controls="claim-form" class="btn-primary">Report a new claim</button>
       </div>
 
-      <form id="claim-form" class="hidden mt-6 bg-cream rounded-2xl p-6 sm:p-8 grid sm:grid-cols-2 gap-4" novalidate>
-        <div class="sm:col-span-2">
-          <label for="claim-policy" class="block text-sm font-semibold mb-1.5">Policy</label>
-          <select id="claim-policy" class="w-full bg-white border border-sand rounded-md px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brown"></select>
+      <form id="claim-form" hidden novalidate data-validate-form class="mt-6 grid gap-4 rounded-2xl bg-cream p-6 sm:grid-cols-2 sm:p-8 dark:bg-night-card">
+        <div data-field class="sm:col-span-2">
+          <label for="claim-policy" class="mb-1.5 block text-sm font-semibold">Policy</label>
+          <select id="claim-policy" name="policy" data-validate="required" class="field"></select>
         </div>
-        <div class="sm:col-span-2">
-          <label for="claim-what" class="block text-sm font-semibold mb-1.5">What happened?</label>
-          <input id="claim-what" type="text" placeholder="e.g. Fire in storage room" class="w-full bg-white border border-sand rounded-md px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brown">
+        <div data-field class="sm:col-span-2">
+          <label for="claim-what" class="mb-1.5 block text-sm font-semibold">What happened?</label>
+          <input id="claim-what" name="incident" type="text" data-validate="required" placeholder="e.g. Fire in storage room" class="field">
         </div>
-        <div>
-          <label for="claim-date" class="block text-sm font-semibold mb-1.5">Date</label>
-          <input id="claim-date" type="date" class="w-full bg-white border border-sand rounded-md px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brown">
+        <div data-field>
+          <label for="claim-date" class="mb-1.5 block text-sm font-semibold">Date of loss</label>
+          <input id="claim-date" name="date" type="date" data-validate="required" class="field">
         </div>
-        <div>
-          <label for="claim-amount" class="block text-sm font-semibold mb-1.5">Estimated loss (₹)</label>
-          <input id="claim-amount" type="number" min="1" placeholder="500000" class="w-full bg-white border border-sand rounded-md px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brown">
+        <div data-field>
+          <label for="claim-amount" class="mb-1.5 block text-sm font-semibold">Estimated loss (₹)</label>
+          <input id="claim-amount" name="amount" type="number" min="1" data-validate="positive" placeholder="500000" class="field">
         </div>
-        <p id="claim-error" class="hidden sm:col-span-2 text-sm font-medium text-red-600"></p>
-        <div class="sm:col-span-2 flex gap-3">
-          <button type="submit" class="px-6 py-3 bg-brown text-white text-sm font-semibold rounded-md hover:bg-brown-soft transition-colors">Submit claim</button>
-          <button type="button" id="claim-cancel" class="px-6 py-3 text-sm font-semibold rounded-md hover:opacity-70">Cancel</button>
+        <div class="flex flex-wrap gap-3 sm:col-span-2">
+          <button type="submit" class="btn-primary">Submit claim</button>
+          <button type="button" id="claim-cancel" class="btn-secondary">Cancel</button>
         </div>
       </form>
-      <p id="claim-note" class="hidden mt-4 text-sm font-semibold">Claim reported. Your advisor will be in touch.</p>
+      <p id="claim-note" hidden class="form-success" role="status">Claim reported. Your advisor will be in touch.</p>
 
       <div id="claim-list" class="mt-6 space-y-4"></div>
     </section>
 
     <!-- Documents -->
-    <section id="tab-documents" class="tab-panel hidden mt-8">
-      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+    <section id="tab-documents" role="tabpanel" aria-label="Documents" hidden class="tab-panel mt-8">
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <h2 class="text-xl font-extrabold">Documents</h2>
-        <input id="doc-search" type="search" placeholder="Search documents" class="w-full sm:max-w-xs bg-cream border border-sand rounded-md px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-brown">
+        <label for="doc-search" class="sr-only">Search documents</label>
+        <input id="doc-search" type="search" placeholder="Search documents" class="field sm:max-w-xs">
       </div>
-      <p id="doc-note" class="hidden mt-4 text-sm font-semibold bg-cream rounded-md px-4 py-3">Demo: download not available</p>
+      <p id="doc-note" hidden class="mt-4 rounded-lg bg-cream px-4 py-3 text-sm font-semibold dark:bg-night-card" role="status">Demo: download not available</p>
       <div id="doc-list" class="mt-6 space-y-3"></div>
     </section>
   </main>
 
-  <footer class="border-t border-sand">
-    <p id="help-line" class="max-w-6xl mx-auto px-4 sm:px-6 py-6 text-sm font-medium"></p>
-  </footer>
+  <div class="border-t border-sand dark:border-white/10">
+    <p id="help-line" class="max-w-6xl mx-auto px-4 sm:px-6 py-6 text-sm font-medium">Need help? Call your advisor on <a href="tel:+919820045678" class="font-bold hover:underline" dir="ltr">+91 98200 45678</a> · <a href="index.html" class="font-bold hover:underline">Back to website</a></p>
+  </div>
 
-  <script src="assets/js/data.js"></script>
+  <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/validation.js" defer></script>
+  <script src="assets/js/data.js" defer></script>
   <script>
+    document.addEventListener('DOMContentLoaded', function () {
     const esc = (s) => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
     const $ = (id) => document.getElementById(id);
+    const CARD = 'rounded-2xl border border-sand p-6 dark:border-white/10 dark:bg-night-card';
+    const MUTED = 'text-brown/70 dark:text-cream/70';
 
     // ---- User ----
     let user = null;
     try { user = JSON.parse(localStorage.getItem('kavach_user')); } catch (e) {}
-    if (!user || !user.name) { user = { name: CLIENT.name, email: CLIENT.email }; $('demo-note').classList.remove('hidden'); }
+    if (!user || !user.name) { user = { name: CLIENT.name, email: CLIENT.email }; $('demo-note').hidden = false; }
     const first = user.name.trim().split(/\s+/)[0] || 'there';
     const firstName = first.charAt(0).toUpperCase() + first.slice(1);
     $('user-name').textContent = user.name;
     $('user-initials').textContent = initials(user.name).slice(0, 2).toUpperCase();
     $('greeting').textContent = 'Hi, ' + firstName;
-    $('company').textContent = CLIENT.company;
-    $('sign-out').addEventListener('click', () => {
+    $('company').textContent = user.company || CLIENT.company;
+    document.querySelectorAll('[data-sign-out]').forEach((b) => b.addEventListener('click', () => {
       try { localStorage.removeItem('kavach_user'); } catch (e) {}
       window.location.href = 'login.html';
-    });
+    }));
 
     // ---- Advisor ----
     const adv = CLIENT.advisor;
@@ -184,7 +211,6 @@
     $('advisor-name').textContent = adv.name;
     $('advisor-phone').textContent = adv.phone; $('advisor-phone').href = tel;
     $('advisor-email').textContent = adv.email; $('advisor-email').href = 'mailto:' + adv.email;
-    $('help-line').innerHTML = `Need help? Call your advisor on <a href="${tel}" class="font-bold hover:opacity-70">${esc(adv.phone)}</a>`;
 
     // ---- Stats ----
     const claims = CLAIMS.slice();
@@ -203,11 +229,13 @@
       document.querySelectorAll('.tab-btn').forEach(b => {
         const on = b.dataset.tab === name;
         b.classList.toggle('border-brown', on);
+        b.classList.toggle('dark:border-cream', on);
         b.classList.toggle('border-transparent', !on);
-        b.classList.toggle('opacity-50', !on);
-        b.setAttribute('aria-selected', on);
+        b.classList.toggle('opacity-70', !on);
+        b.setAttribute('aria-selected', String(on));
+        b.tabIndex = on ? 0 : -1;
       });
-      TABS.forEach(t => $('tab-' + t).classList.toggle('hidden', t !== name));
+      TABS.forEach(t => { $('tab-' + t).hidden = t !== name; });
     }
     document.querySelectorAll('.tab-btn').forEach(b => b.addEventListener('click', () => {
       history.replaceState(null, '', '#' + b.dataset.tab);
@@ -218,28 +246,28 @@
 
     // ---- Policies ----
     const pill = (s) => s === 'Active'
-      ? '<span class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700">Active</span>'
-      : `<span class="px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700">${esc(s)}</span>`;
+      ? '<span class="rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700 dark:bg-emerald-400/15 dark:text-emerald-300">Active</span>'
+      : `<span class="rounded-full bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-700 dark:bg-amber-400/15 dark:text-amber-200">${esc(s)}</span>`;
 
     $('tab-policies').innerHTML = POLICIES.map(p => `
-      <article class="border border-sand rounded-2xl p-6">
+      <article class="${CARD}">
         <div class="flex flex-wrap items-start justify-between gap-3">
           <div>
             <h3 class="text-lg font-extrabold">${esc(p.type)}</h3>
-            <p class="mt-1 text-sm font-medium opacity-70">${esc(p.insurer)} · ${esc(p.asset)}</p>
+            <p class="mt-1 text-sm font-medium ${MUTED}">${esc(p.insurer)} · ${esc(p.asset)}</p>
           </div>
           ${pill(p.status)}
         </div>
-        <dl class="mt-5 grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
-          <div><dt class="text-xs font-semibold opacity-60">Sum insured</dt><dd class="mt-1 font-bold">${formatShort(p.sumInsured)}</dd></div>
-          <div><dt class="text-xs font-semibold opacity-60">Premium / year</dt><dd class="mt-1 font-bold">${formatINR(p.premium)}</dd></div>
-          <div><dt class="text-xs font-semibold opacity-60">Ends</dt><dd class="mt-1 font-bold">${formatDate(p.end)}</dd></div>
-          <div><dt class="text-xs font-semibold opacity-60">Policy no.</dt><dd class="mt-1 font-bold">${esc(p.id)}</dd></div>
+        <dl class="mt-5 grid grid-cols-2 gap-4 text-sm sm:grid-cols-4">
+          <div><dt class="text-xs font-semibold ${MUTED}">Sum insured</dt><dd class="mt-1 font-bold">${formatShort(p.sumInsured)}</dd></div>
+          <div><dt class="text-xs font-semibold ${MUTED}">Premium / year</dt><dd class="mt-1 font-bold">${formatINR(p.premium)}</dd></div>
+          <div><dt class="text-xs font-semibold ${MUTED}">Ends</dt><dd class="mt-1 font-bold">${formatDate(p.end)}</dd></div>
+          <div><dt class="text-xs font-semibold ${MUTED}">Policy no.</dt><dd class="mt-1 font-bold">${esc(p.id)}</dd></div>
         </dl>
         ${p.status === 'Renewal due' ? `
           <div class="mt-5 flex flex-wrap items-center gap-4">
-            <button data-renew="${esc(p.id)}" class="px-6 py-3 bg-brown text-white text-sm font-semibold rounded-md hover:bg-brown-soft transition-colors">Renew</button>
-            <p class="renew-note hidden text-sm font-semibold">Renewal request sent to your advisor</p>
+            <button type="button" data-renew="${esc(p.id)}" class="btn-primary">Renew</button>
+            <p class="renew-note text-sm font-semibold" hidden role="status">Renewal request sent to your advisor</p>
           </div>` : ''}
       </article>`).join('');
 
@@ -247,9 +275,8 @@
       const btn = e.target.closest('[data-renew]');
       if (!btn) return;
       btn.disabled = true;
-      btn.classList.add('opacity-50');
       btn.textContent = 'Requested';
-      btn.parentElement.querySelector('.renew-note').classList.remove('hidden');
+      btn.parentElement.querySelector('.renew-note').hidden = false;
     });
 
     // ---- Quotes ----
@@ -266,21 +293,21 @@
         const tags = [
           q.premium === lowest ? 'Lowest price' : '',
           q.claimRatio === bestRatio ? 'Best claims record' : ''
-        ].filter(Boolean).map(t => `<span class="px-3 py-1 rounded-full bg-sand text-xs font-semibold">${t}</span>`).join('');
+        ].filter(Boolean).map(t => `<span class="rounded-full bg-sand px-3 py-1 text-xs font-semibold text-[#2B1B12]">${t}</span>`).join('');
         return `
-          <article class="rounded-2xl p-6 flex flex-col ${sel ? 'border-2 border-brown bg-cream' : 'border border-sand'}">
-            <div class="min-h-[1.75rem] flex flex-wrap gap-2">${tags}</div>
+          <article class="flex flex-col rounded-2xl p-6 ${sel ? 'border-2 border-brown bg-cream dark:border-cream dark:bg-white/5' : 'border border-sand dark:border-white/10 dark:bg-night-card'}">
+            <div class="flex min-h-[1.75rem] flex-wrap gap-2">${tags}</div>
             <h3 class="mt-3 text-lg font-extrabold">${esc(q.insurer)}</h3>
-            <p class="mt-4 text-3xl font-extrabold">${formatINR(q.premium)}<span class="text-sm font-semibold opacity-60"> / year</span></p>
+            <p class="mt-4 text-3xl font-extrabold">${formatINR(q.premium)}<span class="text-sm font-semibold ${MUTED}"> / year</span></p>
             <dl class="mt-5 space-y-2 text-sm">
-              <div class="flex justify-between"><dt class="font-medium opacity-70">Sum insured</dt><dd class="font-bold">${formatShort(q.sumInsured)}</dd></div>
-              <div class="flex justify-between"><dt class="font-medium opacity-70">Deductible</dt><dd class="font-bold">${formatINR(q.deductible)}</dd></div>
-              <div class="flex justify-between"><dt class="font-medium opacity-70">Claims settled</dt><dd class="font-bold">${q.claimRatio}%</dd></div>
+              <div class="flex justify-between gap-3"><dt class="font-medium ${MUTED}">Sum insured</dt><dd class="font-bold">${formatShort(q.sumInsured)}</dd></div>
+              <div class="flex justify-between gap-3"><dt class="font-medium ${MUTED}">Deductible</dt><dd class="font-bold">${formatINR(q.deductible)}</dd></div>
+              <div class="flex justify-between gap-3"><dt class="font-medium ${MUTED}">Claims settled</dt><dd class="font-bold">${q.claimRatio}%</dd></div>
             </dl>
-            <ul class="mt-5 space-y-1.5 text-sm font-medium flex-1">
-              ${q.extras.map(x => `<li class="flex items-center gap-2"><svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>${esc(x)}</li>`).join('')}
+            <ul class="mt-5 flex-1 space-y-1.5 text-sm font-medium">
+              ${q.extras.map(x => `<li class="flex items-center gap-2"><svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>${esc(x)}</li>`).join('')}
             </ul>
-            <button data-choose="${esc(q.insurer)}" class="mt-6 w-full px-6 py-3 text-sm font-semibold rounded-md transition-colors ${sel ? 'bg-brown text-white' : 'border border-brown hover:bg-cream'}">${sel ? 'Selected' : 'Choose this quote'}</button>
+            <button type="button" data-choose="${esc(q.insurer)}" aria-pressed="${sel}" class="mt-6 w-full ${sel ? 'btn-primary' : 'btn-secondary'}">${sel ? 'Selected' : 'Choose this quote'}</button>
           </article>`;
       }).join('');
     }
@@ -292,7 +319,7 @@
       renderQuotes();
       const note = $('quote-note');
       note.textContent = `${adv.name.split(' ')[0]} will contact you to complete the purchase.`;
-      note.classList.remove('hidden');
+      note.hidden = false;
     });
     renderQuotes();
 
@@ -302,29 +329,31 @@
         ${CLAIM_STEPS.map((s, i) => {
           const done = i < step || (i === step && i === CLAIM_STEPS.length - 1);
           const current = i === step && !done;
-          const circle = done ? 'bg-brown border-brown text-white' : current ? 'bg-white border-brown text-brown' : 'bg-white border-sand text-sand';
-          return `<li class="flex-1 flex flex-col items-center text-center relative">
-            ${i > 0 ? `<span class="absolute top-3.5 right-1/2 w-full h-0.5 ${i <= step ? 'bg-brown' : 'bg-sand'}"></span>` : ''}
-            <span class="relative w-7 h-7 rounded-full border-2 flex items-center justify-center text-xs font-bold ${circle}">
-              ${done ? '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>' : i + 1}
+          const circle = done ? 'bg-brown border-brown text-white dark:bg-cream dark:border-cream dark:text-brown'
+            : current ? 'bg-white border-brown text-brown dark:bg-night dark:border-cream dark:text-cream'
+            : 'bg-white border-sand text-brown/70 dark:bg-night dark:border-white/20 dark:text-cream/70';
+          return `<li class="relative flex flex-1 flex-col items-center text-center">
+            ${i > 0 ? `<span class="absolute top-3.5 end-1/2 h-0.5 w-full ${i <= step ? 'bg-brown dark:bg-cream' : 'bg-sand dark:bg-white/20'}"></span>` : ''}
+            <span class="relative flex h-7 w-7 items-center justify-center rounded-full border-2 text-xs font-bold ${circle}">
+              ${done ? '<svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>' : i + 1}
             </span>
-            <span class="mt-2 px-1 text-[10px] sm:text-xs font-semibold leading-tight ${i > step ? 'opacity-40' : ''}">${esc(s)}</span>
+            <span class="mt-2 px-1 text-[10px] font-semibold leading-tight sm:text-xs ${i > step ? 'opacity-70' : ''}">${esc(s)}</span>
           </li>`;
         }).join('')}
       </ol>`;
     }
     function renderClaims() {
       $('claim-list').innerHTML = claims.map(c => `
-        <article class="border border-sand rounded-2xl p-6">
+        <article class="${CARD}">
           <div class="flex flex-wrap items-start justify-between gap-3">
             <div>
               <h3 class="text-lg font-extrabold">${esc(c.title)}</h3>
-              <p class="mt-1 text-sm font-medium opacity-70">${esc(c.id)} · ${esc(c.policyId)} · Filed ${formatDate(c.filed)}</p>
+              <p class="mt-1 text-sm font-medium ${MUTED}">${esc(c.id)} · ${esc(c.policyId)} · Filed ${formatDate(c.filed)}</p>
             </div>
-            <div class="text-right text-sm">
-              <p class="text-xs font-semibold opacity-60">Claimed</p>
+            <div class="text-end text-sm">
+              <p class="text-xs font-semibold ${MUTED}">Claimed</p>
               <p class="font-bold">${formatINR(c.amount)}</p>
-              ${c.status === 'Settled' && c.settled ? `<p class="mt-1 text-xs font-semibold text-emerald-700">Settled ${formatINR(c.settled)}</p>` : ''}
+              ${c.status === 'Settled' && c.settled ? `<p class="mt-1 text-xs font-semibold text-emerald-700 dark:text-emerald-300">Settled ${formatINR(c.settled)}</p>` : ''}
             </div>
           </div>
           ${tracker(c.step)}
@@ -332,33 +361,23 @@
     }
     renderClaims();
 
-    $('claim-policy').innerHTML = POLICIES.map(p => `<option value="${esc(p.id)}">${esc(p.type)} (${esc(p.id)})</option>`).join('');
+    $('claim-policy').innerHTML = '<option value="">Select a policy</option>' + POLICIES.map(p => `<option value="${esc(p.id)}">${esc(p.type)} (${esc(p.id)})</option>`).join('');
     $('claim-date').max = new Date().toISOString().slice(0, 10);
     const claimForm = $('claim-form');
-    $('new-claim-btn').addEventListener('click', () => {
-      claimForm.classList.toggle('hidden');
-      $('claim-note').classList.add('hidden');
-    });
-    $('claim-cancel').addEventListener('click', () => claimForm.classList.add('hidden'));
-    claimForm.addEventListener('submit', (e) => {
+    const newBtn = $('new-claim-btn');
+    const setFormOpen = (open) => { claimForm.hidden = !open; newBtn.setAttribute('aria-expanded', String(open)); if (open) $('claim-policy').focus(); };
+    newBtn.addEventListener('click', () => { setFormOpen(claimForm.hidden); $('claim-note').hidden = true; });
+    $('claim-cancel').addEventListener('click', () => setFormOpen(false));
+    claimForm.addEventListener('form:valid', (e) => {
       e.preventDefault();
-      const what = $('claim-what').value.trim();
-      const date = $('claim-date').value;
-      const amount = Number($('claim-amount').value);
-      const err = $('claim-error');
-      if (!what || !date || !(amount > 0)) {
-        err.textContent = 'Please fill in what happened, the date and an estimated loss.';
-        err.classList.remove('hidden');
-        return;
-      }
-      err.classList.add('hidden');
+      const d = e.detail;
       const id = 'CLM-' + (1103 + claims.length - CLAIMS.length);
-      claims.unshift({ id, policyId: $('claim-policy').value, title: what, filed: date, amount, status: 'Reported', step: 0 });
+      claims.unshift({ id, policyId: d.policy, title: d.incident.trim(), filed: d.date, amount: Number(d.amount), status: 'Reported', step: 0 });
       renderClaims();
       renderStats();
       claimForm.reset();
-      claimForm.classList.add('hidden');
-      $('claim-note').classList.remove('hidden');
+      setFormOpen(false);
+      $('claim-note').hidden = false;
     });
 
     // ---- Documents ----
@@ -366,28 +385,29 @@
       const q = $('doc-search').value.trim().toLowerCase();
       const list = DOCUMENTS.filter(d => d.name.toLowerCase().includes(q));
       $('doc-list').innerHTML = list.length ? list.map(d => `
-        <div class="border border-sand rounded-2xl p-4 sm:p-5 flex items-center gap-4">
-          <span class="w-11 h-11 rounded-xl bg-cream flex items-center justify-center shrink-0">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M14 3v6h6"/></svg>
+        <div class="flex items-center gap-4 rounded-2xl border border-sand p-4 sm:p-5 dark:border-white/10 dark:bg-night-card">
+          <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-cream dark:bg-white/10">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M14 3v6h6"/></svg>
           </span>
-          <div class="flex-1 min-w-0">
-            <p class="font-bold text-sm truncate">${esc(d.name)}</p>
-            <p class="mt-1 text-xs font-medium opacity-60">${esc(d.policyId)} · ${formatDate(d.date)} · ${esc(d.size)}</p>
+          <div class="min-w-0 flex-1">
+            <p class="truncate text-sm font-bold">${esc(d.name)}</p>
+            <p class="mt-1 text-xs font-medium ${MUTED}">${esc(d.policyId)} · ${formatDate(d.date)} · ${esc(d.size)}</p>
           </div>
-          <button class="dl-btn shrink-0 px-4 sm:px-6 py-2.5 border border-brown text-sm font-semibold rounded-md hover:bg-cream transition-colors">Download</button>
+          <button type="button" class="dl-btn btn-secondary shrink-0 !px-4">Download</button>
         </div>`).join('')
-        : '<p class="text-sm font-medium opacity-60">No documents match your search.</p>';
+        : `<p class="text-sm font-medium ${MUTED}">No documents match your search.</p>`;
     }
     $('doc-search').addEventListener('input', renderDocs);
     let docTimer;
     $('doc-list').addEventListener('click', (e) => {
       if (!e.target.closest('.dl-btn')) return;
       const note = $('doc-note');
-      note.classList.remove('hidden');
+      note.hidden = false;
       clearTimeout(docTimer);
-      docTimer = setTimeout(() => note.classList.add('hidden'), 3000);
+      docTimer = setTimeout(() => { note.hidden = true; }, 3000);
     });
     renderDocs();
+    });
   </script>
 </body>
 </html>

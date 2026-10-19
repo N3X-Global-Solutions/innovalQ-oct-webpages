@@ -1,246 +1,166 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-pt-24">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Dashboard | ApexVanguard Capital</title>
-  <meta name="description" content="Track your loan applications, upload documents and apply for new financing.">
+  <title>Client Dashboard | ApexVanguard Capital</title>
+  <meta name="description" content="Track your equipment finance applications, active loans and documents in the ApexVanguard Capital client portal.">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <script>(function(){try{var d=document.documentElement,t=localStorage.getItem('av-theme'),r=localStorage.getItem('av-dir');if(t==='dark'||(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches))d.classList.add('dark');if(r==='rtl')d.setAttribute('dir','rtl');}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{slate:{850:'#151f32'}},fontFamily:{sans:['Inter','ui-sans-serif','system-ui','sans-serif']}}}};</script>
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/validation.js" defer></script>
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/dashboard.js" defer></script>
 </head>
-<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col">
-
-  <!-- Header -->
-  <header class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-slate-200">
-    <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-2.5">
-        <div class="w-9 h-9 rounded-lg bg-slate-900 flex items-center justify-center text-white font-bold text-sm">AV</div>
-        <span class="font-bold text-slate-900">ApexVanguard</span>
-      </a>
-      <div class="flex items-center gap-4 text-sm">
-        <span id="user-name" class="hidden sm:inline text-slate-700 font-medium"></span>
-        <a href="login.html" class="text-slate-600 hover:text-slate-900">Sign out</a>
+<body class="flex min-h-screen flex-col bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+  <header class="sticky top-0 z-40 border-b border-slate-200 bg-white/95 text-slate-900 backdrop-blur dark:border-slate-800 dark:bg-slate-950/95 dark:text-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between gap-2">
+      <a href="index.html" data-logo class="inline-flex shrink-0 items-center gap-2.5" aria-label="ApexVanguard Capital home"><img src="assets/img/logo.svg" alt="ApexVanguard Capital logo" width="40" height="40" class="h-10 w-10"><span class="text-lg font-extrabold leading-none tracking-tight">ApexVanguard <span class="logo-accent">Capital</span></span></a>
+      <nav class="hidden items-center gap-1 lg:flex" aria-label="Dashboard">
+        <a href="#applications" class="rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white">Applications</a>
+        <a href="#loans" class="rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white">Active loans</a>
+        <a href="#apply" class="rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white">New application</a>
+        <a href="#documents" class="rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white">Documents</a>
+      </nav>
+      <div class="flex items-center gap-1.5">
+        <button type="button" data-theme-toggle class="nav-ctl" aria-label="Switch to dark theme"><svg class="h-5 w-5 dark:hidden" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg class="hidden h-5 w-5 dark:block" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path stroke-linecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button>
+        <button type="button" data-rtl-toggle class="nav-ctl" aria-label="Switch to right-to-left layout"><svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M16 4h-6.5a3.5 3.5 0 0 0 0 7h.5M14 15V4M10 15V4M5 19h14m-2-2 2 2-2 2"/></svg></button>
+        <a href="login.html" class="btn-secondary nav-ctl hidden px-4 sm:inline-flex">Sign out</a>
+        <button type="button" data-menu-toggle class="nav-ctl lg:hidden" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><svg data-icon-open class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg><svg data-icon-close class="hidden h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></svg></button>
       </div>
+    </div>
+    <div id="mobile-menu" data-mobile-menu class="hidden max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-slate-200 bg-white lg:hidden dark:border-slate-800 dark:bg-slate-950">
+      <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-1 py-4" aria-label="Dashboard mobile">
+        <a href="#applications" class="block rounded-lg px-3 py-2.5 text-base font-semibold text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800">Applications</a>
+        <a href="#loans" class="block rounded-lg px-3 py-2.5 text-base font-semibold text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800">Active loans</a>
+        <a href="#apply" class="block rounded-lg px-3 py-2.5 text-base font-semibold text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800">New application</a>
+        <a href="#documents" class="block rounded-lg px-3 py-2.5 text-base font-semibold text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800">Documents</a>
+        <a href="login.html" class="btn-secondary mt-3 w-full">Sign out</a>
+      </nav>
     </div>
   </header>
 
-  <main class="flex-1 max-w-5xl w-full mx-auto px-4 py-8 space-y-8">
-
-    <!-- Welcome -->
-    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-      <div>
-        <h1 class="text-2xl font-bold text-slate-900">Hi, <span id="user-first-name">there</span></h1>
-        <p class="text-sm text-slate-500" id="user-company"></p>
-      </div>
-      <a href="#apply" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-lg text-center transition-colors">
-        + New application
-      </a>
-    </div>
-
-    <!-- Stats -->
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-      <div class="bg-white rounded-xl border border-slate-200 p-5">
-        <div class="text-sm text-slate-500">Applications</div>
-        <div id="stat-apps" class="text-2xl font-bold mt-1">0</div>
-      </div>
-      <div class="bg-white rounded-xl border border-slate-200 p-5">
-        <div class="text-sm text-slate-500">Total requested</div>
-        <div id="stat-total" class="text-2xl font-bold mt-1 font-mono-numbers">₹0</div>
-      </div>
-      <div class="bg-white rounded-xl border border-slate-200 p-5">
-        <div class="text-sm text-slate-500">Documents uploaded</div>
-        <div id="stat-docs" class="text-2xl font-bold mt-1">0</div>
-      </div>
-    </div>
-
-    <!-- Applications -->
-    <section>
-      <h2 class="text-lg font-bold text-slate-900 mb-3">My applications</h2>
-      <div id="applications-list" class="bg-white rounded-xl border border-slate-200 divide-y divide-slate-100"></div>
-    </section>
-
-    <!-- New Application -->
-    <section id="apply" class="bg-white rounded-xl border border-slate-200 p-6 scroll-mt-6">
-      <h2 class="text-lg font-bold text-slate-900">New application</h2>
-      <p class="text-sm text-slate-500 mb-5">Takes about 2 minutes. No fees.</p>
-
-      <form id="new-application-form" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div class="sm:col-span-2">
-          <label for="app-equipment-name" class="block text-sm font-medium text-slate-700 mb-1">What do you need financed?</label>
-          <input type="text" id="app-equipment-name" required placeholder="e.g. CAT 320 Excavator" class="w-full px-3.5 py-2.5 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
-        </div>
+  <main id="main" class="flex-1">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-8 py-8 lg:py-10">
+      <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
         <div>
-          <label for="app-amount" class="block text-sm font-medium text-slate-700 mb-1">Amount (₹)</label>
-          <input type="number" id="app-amount" required value="150000" min="10000" step="1000" class="w-full px-3.5 py-2.5 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
+          <p class="text-sm text-slate-500 dark:text-slate-400">Client portal</p>
+          <h1 class="text-2xl font-bold text-slate-900 sm:text-3xl dark:text-white">Welcome back, <span id="user-first-name">Rohan</span></h1>
+          <p id="user-company" class="mt-1 text-sm text-slate-600 dark:text-slate-300">Mehta Precision Engineering Pvt. Ltd., Pune</p>
         </div>
-        <div>
-          <label for="app-term" class="block text-sm font-medium text-slate-700 mb-1">Term</label>
-          <select id="app-term" class="w-full px-3.5 py-2.5 border border-slate-300 rounded-lg text-sm bg-white">
-            <option value="36">36 months</option>
-            <option value="48">48 months</option>
-            <option value="60" selected>60 months</option>
-            <option value="72">72 months</option>
-          </select>
+        <div class="flex flex-col gap-2 sm:flex-row">
+          <a href="calculator.html" class="btn-secondary">EMI calculator</a>
+          <a href="#apply" class="btn-primary">+ New application</a>
+          <a href="login.html" class="btn-secondary sm:hidden">Sign out</a>
         </div>
-        <div class="sm:col-span-2">
-          <button type="submit" class="w-full sm:w-auto px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-lg transition-colors">
-            Submit application
-          </button>
-        </div>
-      </form>
-    </section>
-
-    <!-- Documents -->
-    <section id="documents" class="scroll-mt-6">
-      <div class="flex items-center justify-between mb-3">
-        <h2 class="text-lg font-bold text-slate-900">Documents</h2>
-        <label class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold rounded-lg cursor-pointer transition-colors">
-          Upload file
-          <input type="file" id="doc-file-input" class="hidden" multiple accept=".pdf,.docx,.xlsx,.png,.jpg">
-        </label>
       </div>
-      <div id="documents-list" class="bg-white rounded-xl border border-slate-200 divide-y divide-slate-100"></div>
-    </section>
 
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 p-5">
+          <p class="text-sm text-slate-500 dark:text-slate-400">Applications</p>
+          <p id="stat-apps" class="mt-1 text-2xl font-bold font-mono-numbers text-slate-900 dark:text-white">3</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 p-5">
+          <p class="text-sm text-slate-500 dark:text-slate-400">Total requested</p>
+          <p id="stat-total" class="mt-1 text-2xl font-bold font-mono-numbers text-slate-900 dark:text-white">&#8377;99,50,000</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 p-5">
+          <p class="text-sm text-slate-500 dark:text-slate-400">Monthly EMIs</p>
+          <p id="stat-emi" class="mt-1 text-2xl font-bold font-mono-numbers text-emerald-700 dark:text-emerald-400">&#8377;1,07,600</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 p-5">
+          <p class="text-sm text-slate-500 dark:text-slate-400">Documents uploaded</p>
+          <p id="stat-docs" class="mt-1 text-2xl font-bold font-mono-numbers text-slate-900 dark:text-white">4</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 items-start gap-8 lg:grid-cols-3">
+        <div class="space-y-8 lg:col-span-2">
+          <section id="applications" class="scroll-mt-24" aria-labelledby="apps-title">
+            <h2 id="apps-title" class="mb-3 text-lg font-bold text-slate-900 dark:text-white">My applications</h2>
+            <div id="applications-list" class="rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 divide-y divide-slate-100 dark:divide-slate-800"></div>
+          </section>
+
+          <section id="loans" class="scroll-mt-24" aria-labelledby="loans-title">
+            <h2 id="loans-title" class="mb-3 text-lg font-bold text-slate-900 dark:text-white">Active loans &amp; leases</h2>
+            <div id="contracts-list" class="grid grid-cols-1 gap-4 sm:grid-cols-2"></div>
+          </section>
+
+          <section id="apply" class="rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 scroll-mt-24 p-6" aria-labelledby="apply-title">
+            <h2 id="apply-title" class="text-lg font-bold text-slate-900 dark:text-white">New application</h2>
+            <p class="mb-5 text-sm text-slate-500 dark:text-slate-400">Takes about 2 minutes. No fees, no impact on your credit score.</p>
+            <form id="new-application-form" novalidate data-validate-form data-custom-submit class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div data-field class="sm:col-span-2">
+                <label for="app-equipment" class="mb-1.5 block text-sm font-semibold text-slate-700 dark:text-slate-200">What do you need financed?</label>
+                <input type="text" id="app-equipment" name="equipment" required placeholder="e.g. Tata Hitachi EX200 excavator" class="block w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 shadow-sm outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/30 dark:border-slate-700 dark:bg-slate-950 dark:text-white">
+              </div>
+              <div data-field>
+                <label for="app-amount" class="mb-1.5 block text-sm font-semibold text-slate-700 dark:text-slate-200">Amount (&#8377;)</label>
+                <input type="number" id="app-amount" name="amount" inputmode="numeric" required value="1500000" min="25000" step="1000" class="block w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 shadow-sm outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/30 dark:border-slate-700 dark:bg-slate-950 dark:text-white">
+              </div>
+              <div data-field>
+                <label for="app-term" class="mb-1.5 block text-sm font-semibold text-slate-700 dark:text-slate-200">Tenure</label>
+                <select id="app-term" name="term" class="block w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 shadow-sm outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/30 dark:border-slate-700 dark:bg-slate-950 dark:text-white">
+                  <option value="36">36 months</option>
+                  <option value="48">48 months</option>
+                  <option value="60" selected>60 months</option>
+                  <option value="72">72 months</option>
+                </select>
+              </div>
+              <div class="sm:col-span-2">
+                <button type="submit" class="btn-primary w-full sm:w-auto">Submit application</button>
+              </div>
+            </form>
+          </section>
+
+          <section id="documents" class="scroll-mt-24" aria-labelledby="docs-title">
+            <div class="mb-3 flex items-center justify-between gap-3">
+              <h2 id="docs-title" class="text-lg font-bold text-slate-900 dark:text-white">Documents</h2>
+              <label class="btn-secondary cursor-pointer">
+                Upload file
+                <input type="file" id="doc-file-input" class="sr-only" multiple accept=".pdf,.docx,.xlsx,.png,.jpg">
+              </label>
+            </div>
+            <div id="documents-list" class="rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 divide-y divide-slate-100 dark:divide-slate-800"></div>
+          </section>
+        </div>
+
+        <aside class="space-y-6 lg:sticky lg:top-24">
+          <div class="rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 p-6">
+            <p class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Your advisor</p>
+            <div class="mt-4 flex items-center gap-4">
+              <img src="assets/img/avatar-11.jpg" alt="Portrait of your advisor Vikas Menon" width="56" height="56" loading="lazy" class="h-14 w-14 rounded-full object-cover">
+              <div>
+                <p id="broker-name" class="font-bold text-slate-900 dark:text-white">Vikas Menon</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Senior Relationship Manager</p>
+                <p class="mt-1 inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700 dark:text-emerald-400"><span class="h-2 w-2 rounded-full bg-emerald-500"></span>Available now</p>
+              </div>
+            </div>
+            <div class="mt-5 grid grid-cols-1 gap-2">
+              <a href="tel:+912248902214" class="btn-primary">Call advisor</a>
+              <a href="mailto:vikas.menon@apexvanguard.in" class="btn-secondary">Send an email</a>
+            </div>
+          </div>
+          <div class="rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900 p-6">
+            <p class="text-sm font-bold text-slate-900 dark:text-white">Credit profile</p>
+            <p id="user-credit" class="mt-1 text-sm text-emerald-700 dark:text-emerald-400">Prime (CIBIL 781)</p>
+            <p class="mt-3 text-xs leading-relaxed text-slate-600 dark:text-slate-300">Pre-approved top-up limit of &#8377;20,00,000 is available on your account until 31 Dec 2026.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
   </main>
 
-  <footer class="py-6 text-center text-xs text-slate-500">
-    Need help? Call <strong class="text-slate-700">(800) 555-8920</strong>
+  <footer class="border-t border-slate-200 py-6 text-center text-xs text-slate-500 dark:border-slate-800 dark:text-slate-400">
+    Need help? Call <a href="tel:+912248902200" class="font-semibold text-emerald-700 hover:text-emerald-800 hover:underline dark:text-emerald-400 dark:hover:text-emerald-300">+91 22 4890 2200</a> &middot; This portal shows sample data for demonstration.
   </footer>
-
-  <script src="assets/js/data.js"></script>
-  <script src="assets/js/main.js"></script>
-  <script>
-    const user = DataStore.getUser();
-    let applications = DataStore.getApplications();
-    let documents = DataStore.getDocuments();
-
-    function esc(str) {
-      const d = document.createElement('div');
-      d.textContent = str;
-      return d.innerHTML;
-    }
-
-    document.getElementById('user-name').textContent = user.name;
-    document.getElementById('user-first-name').textContent = user.name.split(' ')[0];
-    document.getElementById('user-company').textContent = user.company;
-
-    function statusClass(stage) {
-      return stage === 'Funded' || stage === 'Approved'
-        ? 'bg-emerald-50 text-emerald-700'
-        : 'bg-amber-50 text-amber-700';
-    }
-
-    function renderStats() {
-      document.getElementById('stat-apps').textContent = applications.length;
-      document.getElementById('stat-total').textContent = formatCurrency(applications.reduce((sum, a) => sum + a.amount, 0));
-      document.getElementById('stat-docs').textContent = documents.length;
-    }
-
-    function renderApplications() {
-      const list = document.getElementById('applications-list');
-      if (applications.length === 0) {
-        list.innerHTML = '<p class="p-5 text-sm text-slate-500">No applications yet.</p>';
-        return;
-      }
-      list.innerHTML = applications.map(app => `
-        <div class="p-5">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-            <div>
-              <div class="font-semibold text-slate-900">${esc(app.title)}</div>
-              <div class="text-xs text-slate-500 mt-0.5">${esc(app.id)} &bull; ${app.termMonths} months &bull; Submitted ${esc(app.submissionDate)}</div>
-            </div>
-            <div class="flex items-center gap-3">
-              <span class="font-bold font-mono-numbers">${formatCurrency(app.amount)}</span>
-              <span class="text-xs font-medium px-2.5 py-1 rounded-full ${statusClass(app.stage)}">${esc(app.stage)}</span>
-            </div>
-          </div>
-          <div class="mt-3 h-1.5 bg-slate-100 rounded-full overflow-hidden">
-            <div class="h-full bg-emerald-500 rounded-full" style="width:${app.progressPercent}%"></div>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    function renderDocuments() {
-      const list = document.getElementById('documents-list');
-      if (documents.length === 0) {
-        list.innerHTML = '<p class="p-5 text-sm text-slate-500">No documents uploaded yet.</p>';
-        return;
-      }
-      list.innerHTML = documents.map(doc => `
-        <div class="p-4 flex items-center justify-between gap-3">
-          <div class="min-w-0">
-            <div class="text-sm font-medium text-slate-900 truncate">${esc(doc.name)}</div>
-            <div class="text-xs text-slate-500">${esc(doc.uploadedAt)} &bull; ${esc(doc.fileSize)}</div>
-          </div>
-          <span class="shrink-0 text-xs font-medium px-2.5 py-1 rounded-full ${doc.status === 'Verified' ? 'bg-emerald-50 text-emerald-700' : 'bg-amber-50 text-amber-700'}">${esc(doc.status)}</span>
-        </div>
-      `).join('');
-    }
-
-    // New application
-    document.getElementById('new-application-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const amount = parseFloat(document.getElementById('app-amount').value) || 150000;
-      const termMonths = parseInt(document.getElementById('app-term').value, 10) || 60;
-      const newApp = {
-        id: `APP-${Math.floor(8100 + Math.random() * 800)}`,
-        title: document.getElementById('app-equipment-name').value.trim() || 'Equipment financing',
-        category: 'Equipment Financing',
-        amount,
-        termMonths,
-        submissionDate: 'Just now',
-        stage: 'Submitted',
-        progressPercent: 25
-      };
-      applications = DataStore.addApplication(newApp);
-      renderApplications();
-      renderStats();
-      e.target.reset();
-      showToast(`Application ${newApp.id} submitted. We'll be in touch soon.`, 'success');
-      document.getElementById('applications-list').scrollIntoView({ behavior: 'smooth' });
-    });
-
-    // Document upload
-    document.getElementById('doc-file-input').addEventListener('change', (e) => {
-      Array.from(e.target.files).forEach(file => {
-        documents = DataStore.addDocument({
-          id: `DOC-${Date.now()}`,
-          name: file.name,
-          uploadedAt: 'Just now',
-          fileSize: file.size > 1048576 ? `${(file.size / 1048576).toFixed(1)} MB` : `${Math.max(1, Math.round(file.size / 1024))} KB`,
-          status: 'Under Review'
-        });
-      });
-      renderDocuments();
-      renderStats();
-      if (e.target.files.length) showToast('File uploaded.', 'success');
-      e.target.value = '';
-    });
-
-    // Links from other pages: ?tab=new-app, ?tab=vault, ?from_quote=true
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('from_quote') === 'true') {
-      try {
-        const q = JSON.parse(localStorage.getItem('apexvanguard_saved_quote'));
-        if (q) {
-          document.getElementById('app-amount').value = q.amount;
-          const termSelect = document.getElementById('app-term');
-          if (termSelect.querySelector(`option[value="${q.term}"]`)) termSelect.value = q.term;
-        }
-      } catch (err) {}
-    }
-    const tab = params.get('tab');
-    if (tab === 'new-app' || params.get('from_quote') || params.get('prefilled')) {
-      document.getElementById('apply').scrollIntoView();
-    } else if (tab === 'vault') {
-      document.getElementById('documents').scrollIntoView();
-    }
-
-    renderStats();
-    renderApplications();
-    renderDocuments();
-  </script>
 </body>
 </html>

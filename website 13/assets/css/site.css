@@ -1,0 +1,114 @@
+/* Northbeam Consulting shared styles: type, buttons, nav controls, forms, reveals, dark mode, RTL, reduced motion.
+   Palette: navy #0B1B33, white, paper #F6F5F1, accent gold #C8A24A (used sparingly). Radius never above 6px. */
+
+body { font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+h1, h2, .font-display { font-family: 'Fraunces', Georgia, serif; font-optical-sizing: auto; letter-spacing: -0.015em; }
+h3, h4, h5, h6 { font-family: 'Inter', system-ui, sans-serif; }
+::selection { background: #C8A24A; color: #0B1B33; }
+
+/* ---------- Brand helpers ---------- */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: .75rem;
+  font-size: .75rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: #7A5C14;
+}
+.eyebrow::before { content: ""; width: 2rem; height: 1px; background: currentColor; flex: none; }
+.dark .eyebrow, .on-navy .eyebrow { color: #D9BC72; }
+.rule-gold { width: 3rem; height: 2px; background: #C8A24A; }
+/* Result figures: keep "-32%" / "+18 pts" / "$14M" reading left-to-right inside RTL layouts. */
+.num { font-variant-numeric: tabular-nums lining-nums; direction: ltr; unicode-bidi: isolate; display: inline-block; }
+details summary::-webkit-details-marker { display: none; }
+details summary { list-style: none; cursor: pointer; }
+details .chev { transition: transform .2s ease; }
+details[open] .chev { transform: rotate(45deg); }
+.img-zoom img { transition: transform .7s cubic-bezier(.2, .7, .2, 1); }
+.img-zoom:hover img, .img-zoom:focus-within img { transform: scale(1.04); }
+
+/* ---------- Buttons (one primary style site-wide) ---------- */
+.btn-primary,
+.btn-secondary {
+  display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
+  padding: .8rem 1.4rem; border-radius: 4px; font-size: .875rem; font-weight: 600; line-height: 1.25;
+  letter-spacing: .01em; text-align: center; white-space: nowrap; cursor: pointer;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.btn-primary { background: #C8A24A; color: #0B1B33; border: 1px solid #C8A24A; }
+.btn-primary:hover { background: #D7B868; border-color: #D7B868; box-shadow: 0 8px 24px -12px rgba(200, 162, 74, .7); }
+.btn-primary:active { background: #BC9539; }
+.btn-secondary { background: transparent; color: inherit; border: 1px solid currentColor; }
+.btn-secondary:hover { background: rgba(127, 127, 127, .14); }
+.btn-primary:focus-visible, .btn-secondary:focus-visible, .nav-ctl:focus-visible,
+a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid #C8A24A; outline-offset: 2px;
+}
+.link-arrow { display: inline-flex; align-items: center; gap: .5rem; font-weight: 600; font-size: .875rem; }
+.link-arrow svg { transition: transform .2s ease; }
+.link-arrow:hover svg { transform: translateX(3px); }
+[dir="rtl"] .link-arrow:hover svg { transform: scaleX(-1) translateX(3px); }
+
+/* ---------- Header controls: identical height and radius ---------- */
+.nav-ctl {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 2.5rem; min-width: 2.5rem; border-radius: 4px; padding-top: 0; padding-bottom: 0;
+}
+.nav-ctl.btn-primary { padding-left: 1.1rem; padding-right: 1.1rem; }
+.nav-icon { width: 2.5rem; padding: 0; border: 1px solid rgba(11, 27, 51, .2); background: transparent; color: inherit; }
+.nav-icon:hover { background: #EEF1F5; }
+.dark .nav-icon { border-color: rgba(255, 255, 255, .22); }
+.dark .nav-icon:hover { background: #13284A; }
+.site-header { transition: box-shadow .25s ease, background-color .25s ease; }
+.site-header.is-stuck { box-shadow: 0 10px 30px -18px rgba(11, 27, 51, .45); }
+.nav-link { position: relative; }
+.nav-link[aria-current="page"]::after, .nav-link.is-active::after {
+  content: ""; position: absolute; inset-inline: .75rem; bottom: -2px; height: 2px; background: #C8A24A;
+}
+
+/* ---------- Forms ---------- */
+.field {
+  width: 100%; border-radius: 4px; border: 1px solid #C9D0DA; background: #FFFFFF; color: #0B1B33;
+  padding: .75rem .9rem; font-size: .9375rem; line-height: 1.4; transition: border-color .15s ease, box-shadow .15s ease;
+}
+.field:focus { outline: none; border-color: #0B1B33; box-shadow: 0 0 0 3px rgba(200, 162, 74, .35); }
+.dark .field { background: #0D1B30; border-color: #34465F; color: #F1F4F8; }
+.dark .field:focus { border-color: #C8A24A; }
+.field::placeholder { color: #5B6677; }
+.dark .field::placeholder { color: #9AA8BA; }
+.field-error { margin-top: .4rem; font-size: .8125rem; font-weight: 500; color: #B42318; }
+.dark .field-error, .on-navy .field-error { color: #FDA29B; }
+[aria-invalid="true"] { border-color: #D92D20 !important; }
+.dark [aria-invalid="true"], .on-navy [aria-invalid="true"] { border-color: #F97066 !important; }
+.form-success {
+  margin-top: .9rem; padding: .7rem .9rem; border-radius: 4px; font-size: .875rem; font-weight: 500;
+  background: #EAF4EC; color: #14532D; border-inline-start: 3px solid #1F7A45;
+}
+.dark .form-success, .on-navy .form-success { background: #13284A; color: #F1F4F8; border-inline-start-color: #C8A24A; }
+.dark input, .dark select, .dark textarea { color-scheme: dark; }
+
+/* ---------- Filters ---------- */
+.chip {
+  display: inline-flex; align-items: center; height: 2.25rem; padding: 0 1rem; border-radius: 4px;
+  border: 1px solid #C9D0DA; font-size: .8125rem; font-weight: 600; color: #26344A; background: transparent;
+  transition: background-color .15s ease, color .15s ease, border-color .15s ease;
+}
+.chip:hover { border-color: #0B1B33; }
+.chip[aria-pressed="true"] { background: #0B1B33; border-color: #0B1B33; color: #FFFFFF; }
+.dark .chip { border-color: #34465F; color: #D5DCE6; }
+.dark .chip:hover { border-color: #C8A24A; }
+.dark .chip[aria-pressed="true"] { background: #C8A24A; border-color: #C8A24A; color: #0B1B33; }
+
+/* ---------- Reveal on scroll (only when JS is running) ---------- */
+.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1); }
+.js .reveal.is-visible { opacity: 1; transform: none; }
+
+/* ---------- RTL ---------- */
+[dir="rtl"] .flip-rtl { transform: scaleX(-1); }
+/* The brand word mark is Latin: keep it left-to-right inside an RTL layout. */
+[data-logo] > span { direction: ltr; unicode-bidi: isolate; }
+[dir="rtl"] .eyebrow { letter-spacing: .12em; }
+
+/* ---------- Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .js .reveal { opacity: 1; transform: none; }
+  .img-zoom:hover img { transform: none; }
+}

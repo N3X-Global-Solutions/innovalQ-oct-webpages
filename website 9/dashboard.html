@@ -1,20 +1,25 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth scroll-pt-24">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Client Dashboard | Hisaab — Bookkeeping & CFO for Small Business</title>
+  <title>Client Dashboard | Hisaab</title>
   <meta name="description" content="Your Hisaab client dashboard: cash flow, monthly statements and messages with your bookkeeping team.">
+  <meta name="theme-color" content="#12302A">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <script>try{var q=new URLSearchParams(location.search),t=q.get('theme')||localStorage.getItem('hisaab-theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark');if((q.get('dir')||localStorage.getItem('hisaab-dir'))==='rtl')document.documentElement.setAttribute('dir','rtl');}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           colors: {
             ink: { DEFAULT: '#12302A', soft: '#1E4A40' },
+            night: '#0B1E1A',
             paper: '#FAF7F0',
             lime: '#D4F57A',
             mint: '#E6F0E8',
@@ -25,125 +30,110 @@
       }
     }
   </script>
-  <style>
-    body { font-family: 'Outfit', sans-serif; color: #12302A; background: #FAF7F0; }
-    .hl { background: linear-gradient(transparent 55%, #D4F57A 55%); padding: 0 .15em; }
-    .sticker { display: inline-block; transform: rotate(-3deg); background: #D4F57A; border: 1.5px solid #12302A; border-radius: 9999px; padding: .25rem .8rem; font-size: .75rem; font-weight: 600; }
-    details summary::-webkit-details-marker { display: none; }
-    details[open] .chev { transform: rotate(45deg); }
-    .no-scrollbar::-webkit-scrollbar { display: none; }
-    .no-scrollbar { scrollbar-width: none; }
-  </style>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
 </head>
-<body class="antialiased">
+<body class="antialiased bg-paper text-ink dark:bg-night dark:text-paper">
 
-  <div class="lg:flex min-h-screen">
+<div class="lg:flex min-h-screen">
 
     <!-- Sidebar (lg+) -->
-    <aside class="hidden lg:flex lg:flex-col w-60 shrink-0 bg-ink text-paper px-5 py-8 sticky top-0 h-screen">
-      <a href="index.html" class="flex items-center gap-2 text-xl font-semibold tracking-tight px-2">
-        <span class="w-8 h-8 rounded-lg bg-lime text-ink flex items-center justify-center">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg>
-        </span>
-        hisaab<span class="text-coral">.</span>
-      </a>
+    <aside class="hidden lg:flex lg:flex-col w-64 shrink-0 bg-ink dark:bg-[#081713] dark:border-e dark:border-paper/10 text-paper px-5 py-8 sticky top-0 h-screen" aria-label="Dashboard">
+      <div class="px-2"><a href="index.html" data-logo class="inline-flex items-center gap-2.5 shrink-0 text-xl font-semibold tracking-tight" aria-label="Hisaab home"><img src="assets/img/logo.svg" alt="" width="32" height="32" class="h-8 w-8"><span>hisaab<span class="text-coral" aria-hidden="true">.</span></span></a></div>
       <nav class="mt-12 space-y-1 text-sm font-medium">
         <a href="#overview" data-nav="overview" class="side-link flex items-center gap-3 px-4 py-3 rounded-2xl">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19V9M10 19V5M16 19v-7"/></svg>Overview</a>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 19V9M10 19V5M16 19v-7"/></svg>Overview</a>
         <a href="#statements" data-nav="statements" class="side-link flex items-center gap-3 px-4 py-3 rounded-2xl">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg>Statements</a>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg>Statements</a>
         <a href="#messages" data-nav="messages" class="side-link flex items-center gap-3 px-4 py-3 rounded-2xl">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>Messages</a>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>Messages</a>
       </nav>
       <div class="mt-auto">
-        <div class="px-4 pb-4 text-xs text-paper/50 user-company"></div>
-        <button type="button" class="sign-out w-full text-left flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-medium text-paper/70 hover:text-paper hover:bg-ink-soft">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"/></svg>Sign out</button>
+        <div class="flex items-center gap-2 px-2 pb-4">
+          <button type="button" data-theme-toggle class="nav-ctl nav-icon !border-paper/25 hover:!bg-ink-soft" aria-label="Switch to dark theme" aria-pressed="false"><svg class="w-5 h-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="w-5 h-5 hidden dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+          <button type="button" data-rtl-toggle class="nav-ctl nav-icon !border-paper/25 hover:!bg-ink-soft" aria-label="Switch to right-to-left layout" aria-pressed="false"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M14 3v10M16 3H9.5a3.5 3.5 0 0 0 0 7H10"/><path d="M4 19h16M7 16l-3 3 3 3M17 16l3 3-3 3"/></svg></button>
+        </div>
+        <div class="px-4 pb-4 text-xs text-paper/70 user-company"></div>
+        <button type="button" class="sign-out w-full text-start flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-medium text-paper/80 hover:text-paper hover:bg-ink-soft">
+          <svg class="w-4 h-4 flip-rtl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"/></svg>Sign out</button>
       </div>
     </aside>
 
     <!-- Top bar (mobile / tablet) -->
-    <header class="lg:hidden sticky top-0 z-30 bg-ink text-paper">
-      <div class="px-4 sm:px-6 pt-4 flex items-center justify-between">
-        <a href="index.html" class="flex items-center gap-2 text-lg font-semibold tracking-tight">
-          <span class="w-7 h-7 rounded-lg bg-lime text-ink flex items-center justify-center">
-            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg>
-          </span>
-          hisaab<span class="text-coral">.</span>
-        </a>
-        <button type="button" class="sign-out text-sm font-medium text-paper/70 hover:text-paper">Sign out</button>
+    <div class="lg:hidden sticky top-0 z-30 bg-ink dark:bg-[#081713] text-paper">
+      <div class="px-4 sm:px-6 pt-4 flex items-center justify-between gap-2">
+        <a href="index.html" data-logo class="inline-flex items-center gap-2.5 shrink-0 text-xl font-semibold tracking-tight" aria-label="Hisaab home"><img src="assets/img/logo.svg" alt="" width="32" height="32" class="h-8 w-8"><span>hisaab<span class="text-coral" aria-hidden="true">.</span></span></a>
+        <div class="flex items-center gap-2">
+          <button type="button" data-theme-toggle class="nav-ctl nav-icon !border-paper/25 hover:!bg-ink-soft" aria-label="Switch to dark theme" aria-pressed="false"><svg class="w-5 h-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="w-5 h-5 hidden dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+          <button type="button" data-rtl-toggle class="nav-ctl nav-icon !border-paper/25 hover:!bg-ink-soft" aria-label="Switch to right-to-left layout" aria-pressed="false"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M14 3v10M16 3H9.5a3.5 3.5 0 0 0 0 7H10"/><path d="M4 19h16M7 16l-3 3 3 3M17 16l3 3-3 3"/></svg></button>
+          <button type="button" class="sign-out text-sm font-medium text-paper/80 hover:text-paper px-2">Sign out</button>
+        </div>
       </div>
-      <nav class="no-scrollbar flex gap-2 overflow-x-auto px-4 sm:px-6 py-4 text-sm font-medium">
+      <nav class="no-scrollbar flex gap-2 overflow-x-auto px-4 sm:px-6 py-4 text-sm font-medium" aria-label="Dashboard sections">
         <a href="#overview" data-nav="overview" class="pill-link shrink-0 px-4 py-2 rounded-full">Overview</a>
         <a href="#statements" data-nav="statements" class="pill-link shrink-0 px-4 py-2 rounded-full">Statements</a>
         <a href="#messages" data-nav="messages" class="pill-link shrink-0 px-4 py-2 rounded-full">Messages</a>
       </nav>
-    </header>
+    </div>
 
-    <main class="flex-1 min-w-0 px-4 sm:px-6 lg:px-12 py-8 lg:py-12">
+    <main id="main" class="flex-1 min-w-0 px-4 sm:px-6 lg:px-12 py-8 lg:py-12">
       <div class="max-w-6xl mx-auto">
 
         <!-- ===== OVERVIEW ===== -->
         <section id="sec-overview" data-section="overview" class="hidden">
           <div class="flex flex-wrap items-start justify-between gap-4">
             <div>
-              <p class="text-sm text-ink/60" id="company-line"></p>
+              <p class="text-sm text-ink/70 dark:text-paper/80" id="company-line"></p>
               <h1 class="mt-1 text-3xl sm:text-4xl font-semibold tracking-tight">
                 <span id="greeting">Hello</span>, <span class="hl" id="first-name"></span>
-                <span id="demo-sticker" class="sticker align-middle ml-1 hidden">Demo</span>
+                <span id="demo-sticker" class="sticker align-middle ms-1 hidden text-ink">Demo</span>
               </h1>
             </div>
-            <span class="inline-flex items-center gap-2 bg-mint rounded-full px-4 py-2 text-sm font-medium">Books closed for September ✓</span>
+            <span class="inline-flex items-center gap-2 bg-mint rounded-full px-4 py-2 text-sm font-medium dark:bg-ink-soft">Books closed for September ✓</span>
           </div>
 
-          <!-- KPIs -->
           <div id="kpis" class="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-4"></div>
 
-          <div class="mt-6 grid lg:grid-cols-3 gap-6">
-            <!-- Cash flow -->
-            <div class="lg:col-span-2 bg-white rounded-3xl border border-ink/10 p-6 sm:p-8">
-              <div class="flex items-center justify-between gap-4">
+          <div class="mt-6 grid xl:grid-cols-3 gap-6">
+            <div class="xl:col-span-2 bg-white rounded-3xl border border-ink/10 p-6 sm:p-8 dark:bg-ink dark:border-paper/15">
+              <div class="flex flex-wrap items-center justify-between gap-4">
                 <div>
                   <h2 class="text-lg font-semibold tracking-tight">Cash flow</h2>
-                  <div class="mt-1 flex items-center gap-4 text-xs text-ink/60">
-                    <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-ink"></span>Revenue</span>
-                    <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-lime"></span>Expenses</span>
+                  <div class="mt-1 flex items-center gap-4 text-xs text-ink/70 dark:text-paper/80">
+                    <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-ink dark:bg-paper"></span>Revenue</span>
+                    <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-lime text-ink"></span>Expenses</span>
                   </div>
                 </div>
-                <div class="flex bg-mint rounded-full p-1 text-xs font-medium" id="period-toggle">
+                <div class="flex bg-mint rounded-full p-1 text-xs font-medium dark:bg-ink-soft" id="period-toggle" role="group" aria-label="Chart period">
                   <button type="button" data-period="6" class="px-3 py-1.5 rounded-full">6M</button>
                   <button type="button" data-period="12" class="px-3 py-1.5 rounded-full">12M</button>
                 </div>
               </div>
-              <div class="mt-6 h-64"><canvas id="flow-chart" aria-label="Revenue vs expenses bar chart"></canvas></div>
+              <div class="mt-6 h-64"><canvas id="flow-chart" role="img" aria-label="Revenue vs expenses bar chart"></canvas></div>
             </div>
 
-            <!-- Doughnut -->
-            <div class="bg-white rounded-3xl border border-ink/10 p-6 sm:p-8">
-              <h2 class="text-lg font-semibold tracking-tight">Where the money went <span class="text-ink/50 font-normal">(Oct)</span></h2>
-              <div class="mt-6 h-40"><canvas id="split-chart" aria-label="October expense split"></canvas></div>
+            <div class="bg-white rounded-3xl border border-ink/10 p-6 sm:p-8 dark:bg-ink dark:border-paper/15">
+              <h2 class="text-lg font-semibold tracking-tight">Where the money went <span class="text-ink/70 font-normal dark:text-paper/80">(Oct)</span></h2>
+              <div class="mt-6 h-40"><canvas id="split-chart" role="img" aria-label="October expense split"></canvas></div>
               <ul id="split-legend" class="mt-6 space-y-2.5 text-sm"></ul>
             </div>
 
-            <!-- Cash in bank -->
-            <div class="lg:col-span-2 bg-white rounded-3xl border border-ink/10 p-6 sm:p-8">
+            <div class="xl:col-span-2 bg-white rounded-3xl border border-ink/10 p-6 sm:p-8 dark:bg-ink dark:border-paper/15">
               <div class="flex items-end justify-between gap-4">
                 <h2 class="text-lg font-semibold tracking-tight">Cash in bank</h2>
                 <span class="text-2xl font-semibold tracking-tight" id="cash-now"></span>
               </div>
-              <div class="mt-6 h-56"><canvas id="cash-chart" aria-label="Cash in bank line chart"></canvas></div>
+              <div class="mt-6 h-56"><canvas id="cash-chart" role="img" aria-label="Cash in bank line chart"></canvas></div>
             </div>
 
-            <!-- Runway -->
-            <div class="bg-ink text-paper rounded-3xl p-6 sm:p-8 flex flex-col">
+            <div class="bg-ink text-paper rounded-3xl p-6 sm:p-8 flex flex-col dark:border dark:border-paper/15">
               <div class="flex items-center justify-between">
                 <h2 class="text-lg font-semibold tracking-tight">Runway</h2>
                 <span class="sticker text-ink">CFO view</span>
               </div>
               <div class="mt-auto pt-10">
                 <div id="runway-value" class="text-3xl sm:text-4xl font-semibold tracking-tight text-lime"></div>
-                <p id="runway-note" class="mt-2 text-sm text-paper/60"></p>
+                <p id="runway-note" class="mt-2 text-sm text-paper/75"></p>
               </div>
             </div>
           </div>
@@ -152,20 +142,20 @@
         <!-- ===== STATEMENTS ===== -->
         <section id="sec-statements" data-section="statements" class="hidden">
           <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight">Statements</h1>
-          <p class="mt-2 text-ink/60">Your monthly books, ready to share.</p>
+          <p class="mt-2 text-ink/70 dark:text-paper/80">Your monthly books, ready to share.</p>
 
-          <div class="mt-10 grid lg:grid-cols-3 gap-6 items-start">
-            <div id="statement-list" class="lg:col-span-2 space-y-4"></div>
+          <div class="mt-10 grid xl:grid-cols-3 gap-6 items-start">
+            <div id="statement-list" class="xl:col-span-2 space-y-4"></div>
 
-            <div class="bg-white rounded-3xl border border-ink/10 p-6 sm:p-8">
+            <div class="bg-white rounded-3xl border border-ink/10 p-6 sm:p-8 dark:bg-ink dark:border-paper/15">
               <h2 class="text-lg font-semibold tracking-tight">Send us documents</h2>
-              <label for="file-input" class="mt-5 flex flex-col items-center justify-center text-center gap-3 border-2 border-dashed border-ink/20 rounded-3xl px-6 py-10 cursor-pointer hover:border-ink hover:bg-mint transition-colors">
-                <span class="w-12 h-12 rounded-2xl bg-lime flex items-center justify-center">
-                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></svg>
+              <label for="file-input" class="mt-5 flex flex-col items-center justify-center text-center gap-3 border-2 border-dashed border-ink/20 rounded-3xl px-6 py-10 cursor-pointer hover:border-ink hover:bg-mint transition-colors dark:border-paper/20 dark:hover:border-paper/60 dark:hover:bg-ink-soft">
+                <span class="w-12 h-12 rounded-2xl bg-lime flex items-center justify-center text-ink">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></svg>
                 </span>
                 <span class="font-medium">Upload receipts / bank statement</span>
-                <span class="text-xs text-ink/50">PDF, JPG, PNG or CSV</span>
-                <input id="file-input" type="file" multiple class="hidden">
+                <span class="text-xs text-ink/70 dark:text-paper/80">PDF, JPG, PNG or CSV</span>
+                <input id="file-input" type="file" multiple class="sr-only">
               </label>
               <div id="file-out" class="hidden mt-5">
                 <ul id="file-list" class="space-y-2 text-sm"></ul>
@@ -178,19 +168,20 @@
         <!-- ===== MESSAGES ===== -->
         <section id="sec-messages" data-section="messages" class="hidden">
           <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight">Messages</h1>
-          <p class="mt-2 text-ink/60">Chat with your Hisaab team.</p>
+          <p class="mt-2 text-ink/70 dark:text-paper/80">Chat with your Hisaab team.</p>
 
-          <div class="mt-10 bg-mint rounded-3xl overflow-hidden max-w-3xl">
-            <div id="team" class="flex flex-wrap gap-x-8 gap-y-4 px-6 sm:px-8 py-5 border-b border-ink/10 bg-white/60"></div>
-
-            <div id="chat" class="h-[26rem] overflow-y-auto px-4 sm:px-8 py-6 space-y-5"></div>
-
+          <div class="mt-10 bg-mint rounded-3xl overflow-hidden max-w-3xl dark:bg-ink-soft">
+            <div id="team" class="flex flex-wrap gap-x-8 gap-y-4 px-6 sm:px-8 py-5 border-b border-ink/10 bg-white/60 dark:border-paper/15 dark:bg-ink/60"></div>
+            <div id="chat" class="h-[26rem] overflow-y-auto px-4 sm:px-8 py-6 space-y-5" aria-live="polite"></div>
             <div class="px-4 sm:px-8 pb-6">
               <div id="quick-replies" class="no-scrollbar flex gap-2 overflow-x-auto pb-3"></div>
-              <form id="chat-form" class="flex gap-2">
-                <input id="chat-input" type="text" placeholder="Write a message…" autocomplete="off"
-                  class="w-full bg-white border border-ink/15 rounded-xl px-4 py-3 text-sm outline-none focus:border-ink focus:ring-2 focus:ring-lime">
-                <button type="submit" class="shrink-0 px-6 py-3 rounded-full bg-ink text-paper text-sm font-medium hover:bg-ink-soft transition-colors">Send</button>
+              <form id="chat-form" class="flex items-start gap-2" novalidate data-validate-form>
+                <div class="flex-1 min-w-0" data-field>
+                  <label for="chat-input" class="sr-only">Message</label>
+                  <input id="chat-input" name="message" type="text" data-validate="required" data-error="Type a message first." placeholder="Write a message…" autocomplete="off"
+                    class="w-full bg-white border border-ink/15 rounded-xl px-4 py-3 text-sm outline-none focus:border-ink focus:ring-2 focus:ring-lime dark:bg-ink dark:border-paper/15">
+                </div>
+                <button type="submit" class="btn-primary shrink-0">Send</button>
               </form>
             </div>
           </div>
@@ -200,9 +191,13 @@
     </main>
   </div>
 
-  <script src="assets/js/data.js"></script>
-  <script>
-    (function () {
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/validation.js" defer></script>
+  <script src="assets/js/site.js" defer></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const isDark = () => document.documentElement.classList.contains('dark');
+
       /* ---------- User ---------- */
       let user = null;
       try { user = JSON.parse(localStorage.getItem('hisaab_user')); } catch (e) { user = null; }
@@ -219,7 +214,7 @@
       document.getElementById('greeting').textContent = h < 12 ? 'Good morning' : h < 17 ? 'Good afternoon' : 'Good evening';
 
       document.querySelectorAll('.sign-out').forEach(b => b.addEventListener('click', () => {
-        try { localStorage.removeItem('hisaab_user'); } catch (e) {}
+        try { localStorage.removeItem('hisaab_user'); } catch (e) { /* storage blocked */ }
         window.location.href = 'login.html';
       }));
 
@@ -227,26 +222,23 @@
       const L = MONTHS.length - 1;
       const lastM = MONTHS[L];
       const profit = REVENUE.map((r, i) => r - EXPENSES[i]);
-      function pct(cur, prev) { return prev ? ((cur - prev) / Math.abs(prev)) * 100 : 0; }
+      const pct = (cur, prev) => prev ? ((cur - prev) / Math.abs(prev)) * 100 : 0;
       const kpis = [
         { label: `Revenue (${lastM})`, value: REVENUE[L], change: pct(REVENUE[L], REVENUE[L - 1]), upGood: true },
         { label: `Expenses (${lastM})`, value: EXPENSES[L], change: pct(EXPENSES[L], EXPENSES[L - 1]), upGood: false },
-        { label: `Net profit (${lastM})`, value: profit[L], change: pct(profit[L], profit[L - 1]), upGood: true,
-          extra: `${Math.round(profit[L] / REVENUE[L] * 100)}% margin` },
+        { label: `Net profit (${lastM})`, value: profit[L], change: pct(profit[L], profit[L - 1]), upGood: true, extra: `${Math.round(profit[L] / REVENUE[L] * 100)}% margin` },
         { label: 'Cash in bank', value: CASH_BALANCE[L], change: pct(CASH_BALANCE[L], CASH_BALANCE[L - 1]), upGood: true }
       ];
       document.getElementById('kpis').innerHTML = kpis.map(k => {
         const up = k.change >= 0;
         const good = up === k.upGood;
         return `
-          <div class="bg-white rounded-3xl border border-ink/10 p-5 sm:p-6">
-            <div class="text-xs sm:text-sm text-ink/60">${k.label}</div>
+          <div class="bg-white dark:bg-ink rounded-3xl border border-ink/10 dark:border-paper/15 p-5 sm:p-6">
+            <div class="text-xs sm:text-sm text-ink/70 dark:text-paper/75">${k.label}</div>
             <div class="mt-3 text-2xl sm:text-3xl font-semibold tracking-tight">${formatShort(k.value)}</div>
             <div class="mt-3 flex flex-wrap items-center gap-2">
-              <span class="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold ${good ? 'bg-lime' : 'bg-coral text-white'}">
-                ${up ? '↑' : '↓'} ${Math.abs(k.change).toFixed(1)}%
-              </span>
-              ${k.extra ? `<span class="text-xs text-ink/60">${k.extra}</span>` : '<span class="text-xs text-ink/50">vs last month</span>'}
+              <span class="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold text-ink ${good ? 'bg-lime' : 'bg-coral'}">${up ? '↑' : '↓'} ${Math.abs(k.change).toFixed(1)}%</span>
+              <span class="text-xs text-ink/70 dark:text-paper/70">${k.extra || 'vs last month'}</span>
             </div>
           </div>`;
       }).join('');
@@ -254,82 +246,86 @@
       /* ---------- Runway ---------- */
       const burns = REVENUE.map((r, i) => Math.max(0, EXPENSES[i] - r));
       const avgBurn = burns.reduce((a, b) => a + b, 0) / burns.length;
-      const runwayEl = document.getElementById('runway-value');
-      const runwayNote = document.getElementById('runway-note');
       if (avgBurn === 0) {
-        runwayEl.textContent = 'Profitable — no burn 🎉';
-        runwayNote.textContent = 'Every month this year, revenue beat expenses.';
+        document.getElementById('runway-value').textContent = 'Profitable, no burn';
+        document.getElementById('runway-note').textContent = 'Every month this year, revenue beat expenses.';
       } else {
-        runwayEl.textContent = `${(CASH_BALANCE[L] / avgBurn).toFixed(1)} months`;
-        runwayNote.textContent = `Average burn ${formatShort(avgBurn)} / month.`;
+        document.getElementById('runway-value').textContent = `${(CASH_BALANCE[L] / avgBurn).toFixed(1)} months`;
+        document.getElementById('runway-note').textContent = `Average burn ${formatShort(avgBurn)} / month.`;
       }
       document.getElementById('cash-now').textContent = formatShort(CASH_BALANCE[L]);
 
       /* ---------- Doughnut legend ---------- */
-      const SPLIT_COLORS = ['#12302A', '#D4F57A', '#E6F0E8', '#FF8A5B', '#9BB5A8', '#C9C2B0'];
-      document.getElementById('split-legend').innerHTML = EXPENSE_SPLIT.map((s, i) => `
-        <li class="flex items-center justify-between gap-3">
-          <span class="flex items-center gap-2.5"><span class="w-3 h-3 rounded-full border border-ink/15" style="background:${SPLIT_COLORS[i % SPLIT_COLORS.length]}"></span>${escapeHTML(s.label)}</span>
-          <span class="font-medium">${formatShort(s.amount)}</span>
-        </li>`).join('');
+      const splitColors = () => isDark()
+        ? ['#FAF7F0', '#D4F57A', '#7FB8A4', '#FF8A5B', '#3E7A69', '#C9C2B0']
+        : ['#12302A', '#D4F57A', '#9BB5A8', '#FF8A5B', '#1E4A40', '#C9C2B0'];
+      function paintLegend() {
+        const c = splitColors();
+        document.getElementById('split-legend').innerHTML = EXPENSE_SPLIT.map((s, i) => `
+          <li class="flex items-center justify-between gap-3">
+            <span class="flex items-center gap-2.5"><span class="w-3 h-3 rounded-full border border-ink/15" style="background:${c[i % c.length]}"></span>${escapeHTML(s.label)}</span>
+            <span class="font-medium">${formatShort(s.amount)}</span>
+          </li>`).join('');
+      }
+      paintLegend();
 
-      /* ---------- Charts (created lazily once Overview is visible) ---------- */
-      let charts = null, flowChart = null, period = 6;
+      /* ---------- Charts (theme aware, created once Overview is visible) ---------- */
+      let charts = [], flowChart = null, period = 6;
       function setPeriodButtons() {
         document.querySelectorAll('#period-toggle button').forEach(b => {
           const on = Number(b.dataset.period) === period;
-          b.classList.toggle('bg-ink', on);
-          b.classList.toggle('text-paper', on);
+          ['bg-ink', 'text-paper', 'dark:bg-lime', 'dark:text-ink'].forEach(c => b.classList.toggle(c, on));
+          b.setAttribute('aria-pressed', on);
         });
       }
       setPeriodButtons();
 
       function initCharts() {
-        if (charts || typeof Chart === 'undefined') return;
+        if (charts.length || typeof Chart === 'undefined') return;
+        const dark = isDark();
+        const fg = dark ? '#FAF7F0' : '#12302A';
+        const cardBg = dark ? '#12302A' : '#ffffff';
         Chart.defaults.font.family = 'Outfit, sans-serif';
-        Chart.defaults.color = 'rgba(18,48,42,0.6)';
-        const grid = { color: 'rgba(18,48,42,0.06)', drawTicks: false };
+        Chart.defaults.color = dark ? 'rgba(250,247,240,0.75)' : 'rgba(18,48,42,0.7)';
+        const grid = { color: dark ? 'rgba(250,247,240,0.08)' : 'rgba(18,48,42,0.06)', drawTicks: false };
         const tooltip = {
-          backgroundColor: '#12302A', titleColor: '#FAF7F0', bodyColor: '#FAF7F0', padding: 10, cornerRadius: 10,
+          backgroundColor: dark ? '#FAF7F0' : '#12302A', titleColor: dark ? '#12302A' : '#FAF7F0', bodyColor: dark ? '#12302A' : '#FAF7F0', padding: 10, cornerRadius: 10,
           callbacks: { label: c => ` ${c.dataset.label ? c.dataset.label + ': ' : ''}${formatShort(c.parsed.y ?? c.parsed)}` }
         };
-        const yAxis = { border: { display: false }, grid, ticks: { padding: 8, maxTicksLimit: 5, callback: v => formatShort(v) } };
-        const xAxis = { border: { display: false }, grid: { display: false } };
+        const rtl = document.documentElement.getAttribute('dir') === 'rtl';
+        const yAxis = { position: rtl ? 'right' : 'left', border: { display: false }, grid, ticks: { padding: 8, maxTicksLimit: 5, callback: v => formatShort(v) } };
+        const xAxis = { reverse: rtl, border: { display: false }, grid: { display: false } };
 
         flowChart = new Chart(document.getElementById('flow-chart'), {
           type: 'bar',
-          data: {
-            labels: MONTHS.slice(-period),
-            datasets: [
-              { label: 'Revenue', data: REVENUE.slice(-period), backgroundColor: '#12302A', borderRadius: 6, maxBarThickness: 18 },
-              { label: 'Expenses', data: EXPENSES.slice(-period), backgroundColor: '#D4F57A', borderRadius: 6, maxBarThickness: 18 }
-            ]
-          },
+          data: { labels: MONTHS.slice(-period), datasets: [
+            { label: 'Revenue', data: REVENUE.slice(-period), backgroundColor: fg, borderRadius: 6, maxBarThickness: 18 },
+            { label: 'Expenses', data: EXPENSES.slice(-period), backgroundColor: '#D4F57A', borderRadius: 6, maxBarThickness: 18 }
+          ] },
           options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip }, scales: { x: xAxis, y: { ...yAxis, beginAtZero: true } } }
         });
-
-        new Chart(document.getElementById('cash-chart'), {
+        const cash = new Chart(document.getElementById('cash-chart'), {
           type: 'line',
-          data: {
-            labels: MONTHS,
-            datasets: [{ label: 'Cash', data: CASH_BALANCE, borderColor: '#12302A', borderWidth: 2.5, tension: 0.35,
-              fill: true, backgroundColor: 'rgba(212,245,122,0.35)', pointRadius: 0, pointHoverRadius: 5, pointBackgroundColor: '#12302A' }]
-          },
-          options: { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false },
-            plugins: { legend: { display: false }, tooltip }, scales: { x: xAxis, y: yAxis } }
+          data: { labels: MONTHS, datasets: [{ label: 'Cash', data: CASH_BALANCE, borderColor: dark ? '#D4F57A' : '#12302A', borderWidth: 2.5, tension: 0.35,
+            fill: true, backgroundColor: dark ? 'rgba(212,245,122,0.15)' : 'rgba(212,245,122,0.35)', pointRadius: 0, pointHoverRadius: 5, pointBackgroundColor: fg }] },
+          options: { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false }, plugins: { legend: { display: false }, tooltip }, scales: { x: xAxis, y: yAxis } }
         });
-
-        new Chart(document.getElementById('split-chart'), {
+        const split = new Chart(document.getElementById('split-chart'), {
           type: 'doughnut',
-          data: {
-            labels: EXPENSE_SPLIT.map(s => s.label),
-            datasets: [{ data: EXPENSE_SPLIT.map(s => s.amount), backgroundColor: SPLIT_COLORS, borderColor: '#ffffff', borderWidth: 3, hoverOffset: 4 }]
-          },
-          options: { responsive: true, maintainAspectRatio: false, cutout: '68%',
-            plugins: { legend: { display: false }, tooltip: { ...tooltip, callbacks: { label: c => ` ${c.label}: ${formatShort(c.parsed)}` } } } }
+          data: { labels: EXPENSE_SPLIT.map(s => s.label), datasets: [{ data: EXPENSE_SPLIT.map(s => s.amount), backgroundColor: splitColors(), borderColor: cardBg, borderWidth: 3, hoverOffset: 4 }] },
+          options: { responsive: true, maintainAspectRatio: false, cutout: '68%', plugins: { legend: { display: false }, tooltip: { ...tooltip, callbacks: { label: c => ` ${c.label}: ${formatShort(c.parsed)}` } } } }
         });
-        charts = true;
+        charts = [flowChart, cash, split];
       }
+      function rebuildCharts() {
+        paintLegend();
+        if (!charts.length) return;
+        charts.forEach(c => c.destroy());
+        charts = [];
+        initCharts();
+      }
+      document.addEventListener('themechange', rebuildCharts);
+      new MutationObserver(rebuildCharts).observe(document.documentElement, { attributes: true, attributeFilter: ['dir'] });
 
       document.querySelectorAll('#period-toggle button').forEach(b => b.addEventListener('click', () => {
         period = Number(b.dataset.period);
@@ -346,16 +342,16 @@
       document.getElementById('statement-list').innerHTML = STATEMENTS.map((s, idx) => {
         const ready = s.status === 'Ready';
         const pill = ready
-          ? '<span class="rounded-full bg-lime px-3 py-1 text-xs font-semibold">Ready</span>'
-          : `<span class="rounded-full bg-mint px-3 py-1 text-xs font-semibold">In progress · Ready by ${escapeHTML(s.ready)}</span>`;
+          ? '<span class="rounded-full bg-lime text-ink px-3 py-1 text-xs font-semibold">Ready</span>'
+          : `<span class="rounded-full bg-mint text-ink px-3 py-1 text-xs font-semibold">In progress · Ready by ${escapeHTML(s.ready)}</span>`;
         const files = ready && s.files.length ? `
           <div class="mt-5 flex flex-wrap gap-2">
-            ${s.files.map(f => `<button type="button" class="file-chip inline-flex items-center gap-1.5 rounded-full border border-ink/15 px-3.5 py-2 text-xs font-medium hover:border-ink hover:bg-mint transition-colors" data-card="${idx}">
-              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M7 11l5 5 5-5M4 20h16"/></svg>${escapeHTML(f)}</button>`).join('')}
+            ${s.files.map(f => `<button type="button" class="file-chip inline-flex items-center gap-1.5 rounded-full border border-ink/15 dark:border-paper/20 px-3.5 py-2 text-xs font-medium hover:border-ink hover:bg-mint dark:hover:bg-ink-soft transition-colors" data-card="${idx}">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M7 11l5 5 5-5M4 20h16"/></svg>${escapeHTML(f)}</button>`).join('')}
           </div>
-          <p class="toast hidden mt-3 text-xs font-medium text-ink/70" data-toast="${idx}">Demo: download not available</p>` : '';
+          <p class="toast hidden mt-3 text-xs font-medium text-ink/70 dark:text-paper/75" data-toast="${idx}" role="status">Demo: download not available</p>` : '';
         return `
-          <div class="bg-white rounded-3xl border border-ink/10 p-6">
+          <div class="bg-white dark:bg-ink rounded-3xl border border-ink/10 dark:border-paper/15 p-6">
             <div class="flex flex-wrap items-center justify-between gap-3">
               <h3 class="text-lg font-semibold tracking-tight">${escapeHTML(s.month)}</h3>
               ${pill}
@@ -379,8 +375,8 @@
         const files = Array.from(e.target.files || []);
         if (!files.length) return;
         document.getElementById('file-list').innerHTML = files.map(f => `
-          <li class="flex items-center gap-2 bg-paper rounded-xl px-3 py-2">
-            <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/></svg>
+          <li class="flex items-center gap-2 bg-paper dark:bg-night rounded-xl px-3 py-2">
+            <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/></svg>
             <span class="truncate">${escapeHTML(f.name)}</span>
           </li>`).join('');
         document.getElementById('file-out').classList.remove('hidden');
@@ -388,30 +384,23 @@
 
       /* ---------- Messages ---------- */
       const avatar = (name, dark) =>
-        `<span class="w-9 h-9 shrink-0 rounded-full ${dark ? 'bg-ink text-lime' : 'bg-lime text-ink'} flex items-center justify-center text-xs font-semibold">${escapeHTML(initials(name))}</span>`;
-
+        `<span class="w-9 h-9 shrink-0 rounded-full ${dark ? 'bg-ink text-lime dark:bg-paper dark:text-ink' : 'bg-lime text-ink'} flex items-center justify-center text-xs font-semibold">${escapeHTML(initials(name))}</span>`;
       document.getElementById('team').innerHTML = CLIENT.team.map((p, i) => `
         <div class="flex items-center gap-3">
           ${avatar(p.name, i === 0)}
           <div class="leading-tight">
             <div class="text-sm font-semibold">${escapeHTML(p.name)}</div>
-            <div class="text-xs text-ink/60">${escapeHTML(p.role)}</div>
+            <div class="text-xs text-ink/70 dark:text-paper/75">${escapeHTML(p.role)}</div>
           </div>
         </div>`).join('');
 
       const chat = document.getElementById('chat');
       function bubble(m) {
         const name = m.mine ? 'You' : m.from;
-        if (m.mine) {
-          return `<div class="flex flex-col items-end">
-            <div class="text-[11px] text-ink/50 mb-1">${escapeHTML(name)} · ${escapeHTML(m.time)}</div>
-            <div class="max-w-[85%] sm:max-w-[75%] bg-ink text-paper rounded-2xl rounded-br-md px-4 py-3 text-sm leading-relaxed">${escapeHTML(m.text)}</div>
-          </div>`;
-        }
-        return `<div class="flex flex-col items-start">
-          <div class="text-[11px] text-ink/50 mb-1">${escapeHTML(name)} · ${escapeHTML(m.time)}</div>
-          <div class="max-w-[85%] sm:max-w-[75%] bg-white rounded-2xl rounded-bl-md px-4 py-3 text-sm leading-relaxed">${escapeHTML(m.text)}</div>
-        </div>`;
+        const meta = `<div class="text-[11px] text-ink/70 dark:text-paper/70 mb-1">${escapeHTML(name)} · ${escapeHTML(m.time)}</div>`;
+        return m.mine
+          ? `<div class="flex flex-col items-end">${meta}<div class="max-w-[85%] sm:max-w-[75%] bg-ink text-paper dark:bg-lime dark:text-ink rounded-2xl rounded-ee-md px-4 py-3 text-sm leading-relaxed">${escapeHTML(m.text)}</div></div>`
+          : `<div class="flex flex-col items-start">${meta}<div class="max-w-[85%] sm:max-w-[75%] bg-white dark:bg-ink rounded-2xl rounded-es-md px-4 py-3 text-sm leading-relaxed">${escapeHTML(m.text)}</div></div>`;
       }
       function addMessage(m) {
         chat.insertAdjacentHTML('beforeend', bubble(m));
@@ -422,19 +411,15 @@
       const input = document.getElementById('chat-input');
       const quick = ['Upload done', 'Can we schedule a call?', "When will this month's books close?"];
       document.getElementById('quick-replies').innerHTML = quick.map(q =>
-        `<button type="button" class="qr shrink-0 rounded-full bg-white border border-ink/10 px-3.5 py-2 text-xs font-medium hover:border-ink">${escapeHTML(q)}</button>`).join('');
+        `<button type="button" class="qr shrink-0 rounded-full bg-white dark:bg-ink border border-ink/10 dark:border-paper/15 px-3.5 py-2 text-xs font-medium hover:border-ink">${escapeHTML(q)}</button>`).join('');
       document.querySelectorAll('.qr').forEach(b => b.addEventListener('click', () => { input.value = b.textContent; input.focus(); }));
 
-      document.getElementById('chat-form').addEventListener('submit', e => {
+      document.getElementById('chat-form').addEventListener('validated-submit', e => {
         e.preventDefault();
         const text = input.value.trim();
-        if (!text) return;
         addMessage({ from: user.name, mine: true, time: 'Just now', text });
         input.value = '';
-        setTimeout(() => addMessage({
-          from: 'Rohan Das', mine: false, time: 'Just now',
-          text: `Thanks ${first}! Got it — we'll get back to you within a few hours.`
-        }), 1200);
+        setTimeout(() => addMessage({ from: 'Rohan Das', mine: false, time: 'Just now', text: `Thanks ${first}! Got it, we'll get back to you within a few hours.` }), 1200);
       });
 
       /* ---------- Hash routing ---------- */
@@ -447,9 +432,9 @@
           const on = a.dataset.nav === current;
           a.classList.toggle('bg-lime', on);
           a.classList.toggle('text-ink', on);
-          a.classList.toggle('text-paper/70', !on);
-          a.classList.toggle('hover:text-paper', !on);
+          a.classList.toggle('text-paper/80', !on);
           a.classList.toggle('hover:bg-ink-soft', !on);
+          if (on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
         });
         document.querySelectorAll('.pill-link').forEach(a => {
           const on = a.dataset.nav === current;
@@ -457,6 +442,7 @@
           a.classList.toggle('text-ink', on);
           a.classList.toggle('bg-ink-soft', !on);
           a.classList.toggle('text-paper', !on);
+          if (on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
         });
         if (current === 'overview') initCharts();
         if (current === 'messages') chat.scrollTop = chat.scrollHeight;
@@ -471,7 +457,7 @@
       window.addEventListener('hashchange', route);
       window.addEventListener('popstate', route);
       route();
-    })();
+    });
   </script>
 </body>
 </html>

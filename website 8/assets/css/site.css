@@ -1,0 +1,141 @@
+/* Kavach Insurance Brokers — shared styles (loaded after the Tailwind CDN on every page). */
+
+:root {
+  --brown: #2B1B12;
+  --brown-soft: #4A3328;
+  --sand: #DCC5B8;
+  --sand-light: #EBDDD4;
+  --cream: #FFF6F0;
+  --night: #140D09;
+  --ctl-h: 2.75rem;
+  --ctl-r: 0.625rem;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+body { font-family: 'Montserrat', system-ui, sans-serif; overflow-x: hidden; }
+img { background: var(--sand-light); }
+img[src$=".svg"] { background: transparent; }
+.dark img { background: #24170F; }
+.dark img[src$=".svg"] { background: transparent; }
+
+[hidden] { display: none !important; }
+:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+
+/* ---------- Buttons: one primary style site-wide ---------- */
+.btn-primary,
+.btn-secondary {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  min-height: var(--ctl-h); padding: 0 1.5rem; border-radius: var(--ctl-r);
+  font-size: .875rem; font-weight: 600; line-height: 1.2; text-align: center; white-space: nowrap;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
+  cursor: pointer;
+}
+.btn-primary { background: var(--brown); color: #fff; border: 2px solid var(--brown); }
+.btn-primary:hover { background: var(--brown-soft); border-color: var(--brown-soft); }
+.btn-primary:disabled { opacity: .55; cursor: not-allowed; }
+.btn-secondary { background: transparent; color: inherit; border: 2px solid currentColor; }
+.btn-secondary:hover { background: rgba(43, 27, 18, .06); }
+
+/* On brown bands, hero overlays and in dark mode the primary button inverts to cream */
+.on-dark .btn-primary,
+.dark .btn-primary { background: var(--cream); color: var(--brown); border-color: var(--cream); }
+.on-dark .btn-primary:hover,
+.dark .btn-primary:hover { background: var(--sand); border-color: var(--sand); }
+.on-dark .btn-secondary:hover,
+.dark .btn-secondary:hover { background: rgba(255, 246, 240, .1); }
+
+/* ---------- Navbar controls: identical height + radius ---------- */
+.nav-ctl {
+  height: var(--ctl-h); min-height: var(--ctl-h); border-radius: var(--ctl-r);
+  display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+button.nav-ctl:not(.btn-primary) {
+  width: var(--ctl-h); border: 1px solid rgba(43, 27, 18, .15); background: transparent; color: inherit;
+  transition: background-color .2s ease, border-color .2s ease;
+}
+button.nav-ctl:not(.btn-primary):hover { background: rgba(43, 27, 18, .06); }
+.dark button.nav-ctl:not(.btn-primary) { border-color: rgba(255, 246, 240, .18); }
+.dark button.nav-ctl:not(.btn-primary):hover { background: rgba(255, 246, 240, .08); }
+.nav-ctl.btn-primary { padding: 0 1.25rem; }
+
+/* Theme toggle icon swap */
+.icon-moon { display: block; }
+.icon-sun { display: none; }
+.dark .icon-moon { display: none; }
+.dark .icon-sun { display: block; }
+
+/* Active nav link */
+.nav-link { position: relative; padding: .5rem 0; transition: opacity .2s; }
+.nav-link:hover { opacity: .7; }
+.nav-link[aria-current="page"]::after,
+.nav-link.is-active::after {
+  content: ""; position: absolute; inset-inline: 0; bottom: 0; height: 2px; border-radius: 2px; background: currentColor;
+}
+
+/* Home dropdown */
+[data-home-dropdown] [data-dropdown-panel] { transform-origin: top; }
+[data-home-dropdown].is-open [data-dropdown-caret] { transform: rotate(180deg); }
+
+/* ---------- Typography helpers ---------- */
+.eyebrow { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .18em; opacity: .75; }
+
+/* ---------- Forms ---------- */
+.field {
+  width: 100%; background: var(--cream); border: 1px solid var(--sand); border-radius: .5rem;
+  padding: .75rem 1rem; font-size: .875rem; color: var(--brown); outline: none; transition: box-shadow .15s, border-color .15s;
+}
+.field::placeholder { color: rgba(43, 27, 18, .45); }
+.field:focus { box-shadow: 0 0 0 2px var(--brown); border-color: var(--brown); }
+.dark .field { background: #1E140E; border-color: rgba(255, 246, 240, .16); color: var(--cream); }
+.dark .field::placeholder { color: rgba(255, 246, 240, .4); }
+.dark .field:focus { box-shadow: 0 0 0 2px var(--sand); border-color: var(--sand); }
+.dark select.field option { background: #1E140E; color: var(--cream); }
+.field[aria-invalid="true"] { border-color: #DC2626; }
+.dark .field[aria-invalid="true"] { border-color: #F87171; }
+.field-error { margin-top: .375rem; font-size: .75rem; font-weight: 600; color: #B91C1C; }
+.dark .field-error { color: #FCA5A5; }
+.on-dark .field-error { color: #FCA5A5; }
+.form-success { margin-top: 1rem; border-radius: .75rem; padding: .875rem 1rem; font-size: .875rem; font-weight: 600;
+  background: #ECFDF5; color: #065F46; border: 1px solid #A7F3D0; }
+.dark .form-success, .on-dark .form-success { background: rgba(16, 185, 129, .12); color: #A7F3D0; border-color: rgba(16, 185, 129, .35); }
+details summary::-webkit-details-marker { display: none; }
+details summary { list-style: none; }
+details[open] .chev { transform: rotate(180deg); }
+
+/* ---------- Dark-mode safety net for Tailwind brand utilities ---------- */
+.dark body { background: var(--night); color: #F5E9E1; }
+.dark .text-brown { color: var(--cream); }
+.dark .text-brown\/70 { color: rgba(255, 246, 240, .72); }
+.dark .text-brown\/60 { color: rgba(255, 246, 240, .62); }
+.dark .text-brown\/30 { color: rgba(255, 246, 240, .3); }
+.dark .border-brown\/10 { border-color: rgba(255, 246, 240, .1); }
+.dark .border-sand { border-color: rgba(255, 246, 240, .14); }
+
+/* ---------- Motion ---------- */
+.hero-zoom { animation: heroZoom 20s ease-in-out infinite alternate; }
+@keyframes heroZoom { from { transform: scale(1); } to { transform: scale(1.06); } }
+.marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.marquee-track { display: flex; width: max-content; padding: 6px 0; animation: marquee 40s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .hero-zoom, .marquee-track { animation: none !important; }
+}
+
+/* ---------- RTL fixes ---------- */
+[dir="rtl"] .flip-rtl { transform: scaleX(-1); }
+[dir="rtl"] .group:hover .group-hover\:translate-x-1 { transform: translateX(-0.25rem); }
+[dir="rtl"] .origin-left { transform-origin: right; }
+[dir="rtl"] body { font-family: 'Montserrat', 'Noto Sans Arabic', system-ui, sans-serif; }
+[dir="rtl"] .eyebrow { letter-spacing: .08em; }
+
+/* RTL demo: flip the layout but keep English sentences readable. Each text block takes its own
+   direction from its first letter (so "Cover." does not render as ".Cover"), while its alignment
+   still follows the RTL parent (start = right, centred blocks stay centred). */
+[dir="rtl"] :where(p, h1, h2, h3, h4, h5, h6, li, blockquote, figcaption, dt, dd, label, summary, td, th, legend) {
+  unicode-bidi: plaintext;
+  text-align: match-parent;
+}
